@@ -37,11 +37,15 @@ Or add the remote once published:
 
 ## Quality gates
 
-Tooling is managed with [`uv`](https://docs.astral.sh/uv/). From the repo root:
+Tooling is managed with [`uv`](https://docs.astral.sh/uv/) and run via
+[`just`](https://github.com/casey/just). From the repo root:
 
 ```bash
-uv run validate-plugins            # structural lint (or: uv run python tests/validate_plugins.py)
+just setup     # uv sync — create the venv and install deps
+just test      # run the structural linter (uv run validate-plugins)
 ```
+
+Without `just`: `uv run validate-plugins` (or `uv run python tests/validate_plugins.py`).
 
 - **Structural lint** — blocking; checks manifests, frontmatter, and required skill sections. Exits non-zero on any error.
 - **Output eval** (Langfuse) — regression gate over each skill's `evals/` cards. *Wiring deferred until credentials are provided.*
