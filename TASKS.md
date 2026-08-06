@@ -150,7 +150,7 @@ Build-heavy: almost nothing importable, highest originality. See
 | stakeholder-identification | GENERATE | P2 | done |
 | stakeholder-engagement-advisor | GENERATE | P2 | done |
 | incoming-request-advisor | GENERATE | P2 | done |
-| alignment-narrative | GENERATE | P2 | todo |
+| alignment-narrative | GENERATE | P2 | done |
 | raci-decision-rights | GENERATE | P2 | todo |
 | feedback-note | GENERATE | P2 | done |
 | escalation | GENERATE | P3 | todo |
