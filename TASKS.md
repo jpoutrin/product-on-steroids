@@ -82,7 +82,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | sql-queries | IMPORT | P2 | done |
 | proto-persona | GENERATE | P2 | done |
 | problem-framing-canvas | GENERATE | P2 | done |
-| lean-ux-canvas | GENERATE | P2 | todo |
+| lean-ux-canvas | GENERATE | P2 | done |
 | voice-of-customer-miner | GENERATE | P2 | todo |
 | discovery-interview-prep | GENERATE | P2 | todo |
 | pol-probe | GENERATE | P3 | todo |
