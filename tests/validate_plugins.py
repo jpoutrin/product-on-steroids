@@ -241,8 +241,20 @@ def validate_plugin(plugin_dir: str) -> dict:
     return res
 
 
+def _default_base() -> str:
+    """Repo root relative to this file when run in-tree; otherwise the CWD
+    (so the installed `validate-plugins` console script scans the current repo)."""
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    try:
+        if any(os.path.isdir(os.path.join(here, e, ".claude-plugin")) for e in os.listdir(here)):
+            return here
+    except OSError:
+        pass
+    return os.getcwd()
+
+
 def main():
-    base = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base = sys.argv[1] if len(sys.argv) > 1 else _default_base()
     if not os.path.isdir(base):
         print(f"Error: {base} is not a directory")
         sys.exit(2)
