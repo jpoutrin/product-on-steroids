@@ -98,7 +98,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | beachhead-segment | IMPORT | P1 | done |
 | positioning-ideas | IMPORT | P1 | done |
 | positioning-statement | GENERATE | P1 | done |
-| gtm-motions | IMPORT | P2 | todo |
+| gtm-motions | IMPORT | P2 | done |
 | growth-loops | IMPORT | P2 | todo |
 | competitive-battlecard | IMPORT | P2 | todo |
 | value-prop-statements | IMPORT | P2 | todo |
