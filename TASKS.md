@@ -121,7 +121,7 @@ Forge owns PRD **lifecycle** + QA; here we own PRD/story **content**. See
 | create-prd | IMPORT | P1 | done |
 | user-stories | IMPORT | P1 | done |
 | test-scenarios | IMPORT | P1 | done |
-| job-stories | IMPORT | P2 | todo |
+| job-stories | IMPORT | P2 | done |
 | wwas | IMPORT | P2 | done |
 | sprint-plan | IMPORT | P2 | done |
 | release-notes | IMPORT | P2 | done |
