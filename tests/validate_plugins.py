@@ -185,6 +185,11 @@ def validate_skill(skill_dir: str) -> ValidationResult:
     r.errors += r_evals.errors
     r.warnings += r_evals.warnings
     r.info += r_evals.info
+
+    # Template
+    r_tpl = validate_template(skill_dir, content)
+    r.errors += r_tpl.errors
+    r.warnings += r_tpl.warnings
     return r
 
 
@@ -217,6 +222,36 @@ def validate_evals(skill_dir: str, skill_name: str) -> ValidationResult:
         if not isinstance(fm.get("rubric"), dict) or not fm.get("rubric"):
             r.error(f"evals/{card}: 'rubric' must be a non-empty map")
     r.note(f"{len(cards)} eval card(s)")
+    return r
+
+
+def _output_contract_item_count(content: str) -> int:
+    """Count numbered items under the '## Output Contract' section."""
+    low = content.lower()
+    start = low.find("## output contract")
+    if start == -1:
+        return 0
+    rest = content[start:]
+    nxt = re.search(r"\n##\s", rest[3:])   # next top-level heading
+    section = rest[: nxt.start() + 3] if nxt else rest
+    return len(re.findall(r"(?m)^\d+\.\s+\*\*", section))
+
+
+def validate_template(skill_dir: str, content: str) -> ValidationResult:
+    r = ValidationResult()
+    references = "template.md" in content
+    tpath = os.path.join(skill_dir, "template.md")
+    exists = os.path.isfile(tpath)
+    body = Path(tpath).read_text(encoding="utf-8").strip() if exists else ""
+    if references and (not exists or not body):
+        r.error("body references template.md but it is missing or empty")
+        return r
+    if exists and body:
+        headings = len(re.findall(r"(?m)^##\s", body))
+        items = _output_contract_item_count(content)
+        if items and headings < items:
+            r.warn(f"template.md has {headings} '##' headings but the Output "
+                   f"Contract lists {items} sections — headings should mirror them")
     return r
 
 
