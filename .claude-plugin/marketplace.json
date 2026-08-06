@@ -1,0 +1,42 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "product-on-steroids",
+  "version": "0.1.0",
+  "description": "Product-management best-practice skills for Claude Code — 5 plugins on the Peak Product Manager quadrants: discovery, strategy, go-to-market, execution, and influence.",
+  "owner": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "plugins": [
+    {
+      "name": "pm-strategy",
+      "description": "Product strategy skills: outcomes ownership, vision & roadmap, and strategic impact (market sizing, competitive analysis, positioning, macro frameworks).",
+      "source": "./pm-strategy",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-discovery",
+      "description": "Customer insight skills: interviews & synthesis, opportunity-solution trees, assumptions & experiments, personas, journeys, segmentation, and analytics.",
+      "source": "./pm-discovery",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-gtm",
+      "description": "Go-to-market skills: GTM strategy & motions, ICP & beachhead, positioning, growth loops, battlecards, and launch artifacts.",
+      "source": "./pm-gtm",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-execution",
+      "description": "Product execution skills: PRDs, user stories, story mapping & splitting, sprint planning, pre-mortems, retros, and test scenarios.",
+      "source": "./pm-execution",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-influence",
+      "description": "Influencing-people skills: managing up, stakeholder management, and team leadership — exec updates, decision memos, alignment narratives, escalation.",
+      "source": "./pm-influence",
+      "category": "product-management"
+    }
+  ]
+}

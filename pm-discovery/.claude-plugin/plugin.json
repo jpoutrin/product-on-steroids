@@ -1,0 +1,12 @@
+{
+  "name": "pm-discovery",
+  "displayName": "PM Discovery",
+  "version": "0.1.0",
+  "description": "Customer insight skills: interviews & synthesis, opportunity-solution trees, assumptions & experiments, personas, journeys, segmentation, and analytics.",
+  "author": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "keywords": ["product-management", "discovery", "user-research", "personas", "jobs-to-be-done", "experiments"],
+  "license": "MIT"
+}

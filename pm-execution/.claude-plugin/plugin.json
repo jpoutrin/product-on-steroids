@@ -1,0 +1,12 @@
+{
+  "name": "pm-execution",
+  "displayName": "PM Execution",
+  "version": "0.1.0",
+  "description": "Product execution skills: PRDs, user stories, story mapping & splitting, sprint planning, pre-mortems, retros, and test scenarios.",
+  "author": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "keywords": ["product-management", "execution", "prd", "user-stories", "sprint", "delivery"],
+  "license": "MIT"
+}

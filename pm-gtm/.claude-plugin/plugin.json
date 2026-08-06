@@ -1,0 +1,12 @@
+{
+  "name": "pm-gtm",
+  "displayName": "PM Go-to-Market",
+  "version": "0.1.0",
+  "description": "Go-to-market skills: GTM strategy & motions, ICP & beachhead, positioning, growth loops, battlecards, and launch artifacts.",
+  "author": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "keywords": ["product-management", "go-to-market", "positioning", "growth", "icp", "battlecard"],
+  "license": "MIT"
+}

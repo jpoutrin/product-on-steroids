@@ -1,0 +1,12 @@
+{
+  "name": "pm-influence",
+  "displayName": "PM Influence",
+  "version": "0.1.0",
+  "description": "Influencing-people skills: managing up, stakeholder management, and team leadership — exec updates, decision memos, alignment narratives, escalation.",
+  "author": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "keywords": ["product-management", "leadership", "stakeholders", "managing-up", "communication", "influence"],
+  "license": "MIT"
+}

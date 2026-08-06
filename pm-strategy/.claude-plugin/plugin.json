@@ -1,0 +1,12 @@
+{
+  "name": "pm-strategy",
+  "displayName": "PM Strategy",
+  "version": "0.1.0",
+  "description": "Product strategy skills: outcomes ownership, vision & roadmap, and strategic impact (market sizing, competitive analysis, positioning, macro frameworks).",
+  "author": {
+    "name": "Jeremie Poutrin",
+    "email": "jpoutrin@productvista.fr"
+  },
+  "keywords": ["product-management", "strategy", "vision", "roadmap", "market-sizing", "okrs", "positioning"],
+  "license": "MIT"
+}
