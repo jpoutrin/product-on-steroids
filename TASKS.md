@@ -38,7 +38,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | market-segments | IMPORT | P2 | done |
 | feature-investment-advisor | GENERATE | P2 | done |
 | product-strategy-session | GENERATE | P2 | done |
-| press-release | GENERATE | P2 | todo |
+| press-release | GENERATE | P2 | done |
 | saas-revenue-growth-metrics | GENERATE | P2 | todo |
 | saas-economics-efficiency-metrics | GENERATE | P2 | todo |
 | finance-metrics-quickref | GENERATE | P2 | todo |
