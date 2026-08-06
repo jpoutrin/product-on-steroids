@@ -76,7 +76,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | identify-assumptions-new | IMPORT | P2 | done |
 | prioritize-assumptions | IMPORT | P2 | done |
 | user-segmentation | IMPORT | P2 | done |
-| sentiment-analysis | IMPORT | P2 | todo |
+| sentiment-analysis | IMPORT | P2 | done |
 | ab-test-analysis | IMPORT | P2 | todo |
 | cohort-analysis | IMPORT | P2 | todo |
 | sql-queries | IMPORT | P2 | todo |
