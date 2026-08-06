@@ -48,6 +48,33 @@ Every skill follows `docs/SKILL-STANDARD.md`. To create one, **copy `docs/skill-
 └── evals/            # ≥ 3 scenario cards: happy + edge + adversarial
 ```
 
+### Efficient authoring workflow (token-lean)
+
+Tooling lives in `scripts/skillkit.py`, exposed as `just` recipes. Use it instead of
+re-reading the standard/exemplar every time — read `docs/SKILL-STANDARD.md` and the
+gold exemplar **at most once per session**; `just context` carries the rest.
+
+**Per-skill loop:**
+1. `just next` — pick the next `todo` skill in build order.
+2. `just scaffold <skill>` — generate the dir with frontmatter (incl. pinned `source`
+   SHA), `template.md`, and three eval stubs. Idempotent; refuses to overwrite.
+3. `just context <skill>` — print the one-shot build pack: the `SKILL-BRIEF` cheat-sheet,
+   the ledger row, and (for IMPORT) the raw phuryn source to adapt. This replaces
+   reading the standard + exemplar + template + hunting the source.
+4. Author the skill (IMPORT = restructure/enrich phuryn into the house sections;
+   GENERATE = original, `deanpeters` is idea-reference only).
+5. `just test` (the PostToolUse hook also lints each SKILL.md/eval edit automatically).
+6. `just done <skill>` — runs the linter gate, then flips the TASKS.md row to `done`.
+7. Commit: `feat(<plugin>): <skill> skill`.
+
+**Batch loop (parallel, keeps main context small):** skills are independent, so dispatch
+**one subagent per skill** (`superpowers:dispatching-parallel-agents`). Each subagent
+runs `just context <skill>` for its own tiny self-contained context, authors, validates,
+`just done`s, and commits its single skill. The main thread never loads reference
+material — that's where the savings compound.
+
+`just progress` shows done/wip/todo per plugin at a glance.
+
 **Linter-enforced requirements** (from `tests/validate_plugins.py`):
 - Frontmatter must have `name` (== directory name), `description`, `version` (semver), `type`, `source`.
   - `type` ∈ `{component, interactive, workflow}`.
