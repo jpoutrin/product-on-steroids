@@ -129,7 +129,7 @@ Forge owns PRD **lifecycle** + QA; here we own PRD/story **content**. See
 | retro | IMPORT | P2 | done |
 | summarize-meeting | IMPORT | P2 | done |
 | dummy-dataset | IMPORT | P2 | done |
-| intended-vs-implemented | IMPORT | P2 | todo |
+| intended-vs-implemented | IMPORT | P2 | done |
 | shipping-artifacts | IMPORT | P2 | done |
 | user-story-mapping | GENERATE | P2 | done |
 | user-story-splitting | GENERATE | P2 | todo |
