@@ -96,7 +96,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | gtm-strategy | IMPORT | P1 | done |
 | ideal-customer-profile | IMPORT | P1 | done |
 | beachhead-segment | IMPORT | P1 | done |
-| positioning-ideas | IMPORT | P1 | todo |
+| positioning-ideas | IMPORT | P1 | done |
 | positioning-statement | GENERATE | P1 | todo |
 | gtm-motions | IMPORT | P2 | todo |
 | growth-loops | IMPORT | P2 | todo |
