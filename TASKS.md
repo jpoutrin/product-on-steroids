@@ -53,7 +53,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | build-vs-buy | GENERATE | P3 | done |
 | market-landscape-scan | GENERATE | P3 | done |
 | pestel-delta-monitor | GENERATE | P3 | done |
-| competitive-intel-watch | GENERATE | P3 | todo |
+| competitive-intel-watch | GENERATE | P3 | done |
 
 ## pm-discovery — Customer Insight
 
