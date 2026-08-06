@@ -86,5 +86,12 @@ Scenario cards in `evals/`:
 Pass bar: baseline overall ≥ 0.8; a change dropping overall > 0.05 fails.
 
 ## References
-- [Market Research: Advanced Techniques](https://www.productcompass.pm/p/market-research-advanced-techniques)
-- [Crossing the Chasm: The Ultimate Guide For PMs](https://www.productcompass.pm/p/crossing-the-chasm)
+
+### Related Skills
+- `beachhead-segment` — picks the first target segment; consumes the SAM/SOM boundaries this skill sets.
+- `competitor-analysis` — competitive position and share data feed the SOM defensible-fraction estimate.
+
+### External Frameworks
+- Bill Aulet, *Disciplined Entrepreneurship* (2013), Steps 2 & 5 — canonical **bottom-up TAM** (end users × annual revenue per user) and the dual top-down/bottom-up, conservative-estimate discipline this skill is built on.
+- Steve Blank, *The Four Steps to the Epiphany* — TAM/SAM/target-market segmentation for new ventures.
+- [Sequoia — Writing a Business Plan](https://sequoiacap.com/article/writing-a-business-plan/) — investor-lens "market potential" expectations for a sizing memo used in fundraising.
