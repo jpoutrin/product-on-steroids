@@ -18,7 +18,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 
 | Skill | Disposition | Priority | Status |
 |-------|-------------|----------|--------|
-| market-sizing | IMPORT | P1 | wip |
+| market-sizing | IMPORT | P1 | done |
 | product-vision | IMPORT | P1 | todo |
 | product-strategy-canvas | IMPORT | P1 | todo |
 | outcome-roadmap | IMPORT | P1 | todo |
