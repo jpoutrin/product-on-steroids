@@ -50,10 +50,10 @@ nor for market sizing (use `market-sizing`).
 The deliverable is a **quick-reference table** (or a single-row answer when one
 term is asked). Every row has exactly four columns:
 
-1. **Term** — the metric or concept name (plus common acronym).
-2. **One-line definition** — plain-language, ≤ 20 words, no formula.
-3. **Formula** — the canonical calculation, or "—" if it is a concept, not a ratio.
-4. **Why a PM cares** — the product decision or lever it informs, ≤ 20 words.
+- **Term** — the metric or concept name (plus common acronym).
+- **One-line definition** — plain-language, ≤ 20 words, no formula.
+- **Formula** — the canonical calculation, or "—" if it is a concept, not a ratio.
+- **Why a PM cares** — the product decision or lever it informs, ≤ 20 words.
 
 Rules:
 - Standard sheet covers at least: **gross margin, net margin, COGS, EBITDA, cash
