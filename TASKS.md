@@ -93,7 +93,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 
 | Skill | Disposition | Priority | Status |
 |-------|-------------|----------|--------|
-| gtm-strategy | IMPORT | P1 | todo |
+| gtm-strategy | IMPORT | P1 | done |
 | ideal-customer-profile | IMPORT | P1 | todo |
 | beachhead-segment | IMPORT | P1 | todo |
 | positioning-ideas | IMPORT | P1 | todo |
