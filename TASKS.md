@@ -68,7 +68,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | problem-statement | GENERATE | P1 | done |
 | discovery-process | GENERATE | P1 | done |
 | analyze-feature-requests | IMPORT | P2 | done |
-| brainstorm-ideas-existing | IMPORT | P2 | todo |
+| brainstorm-ideas-existing | IMPORT | P2 | done |
 | brainstorm-ideas-new | IMPORT | P2 | todo |
 | brainstorm-experiments-existing | IMPORT | P2 | todo |
 | brainstorm-experiments-new | IMPORT | P2 | todo |
