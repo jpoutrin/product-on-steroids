@@ -102,7 +102,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | growth-loops | IMPORT | P2 | done |
 | competitive-battlecard | IMPORT | P2 | done |
 | value-prop-statements | IMPORT | P2 | done |
-| product-name | IMPORT | P2 | todo |
+| product-name | IMPORT | P2 | done |
 | marketing-ideas | IMPORT | P2 | todo |
 | positioning-workshop | GENERATE | P2 | todo |
 | competitive-research-snapshot | GENERATE | P2 | todo |
