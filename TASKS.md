@@ -65,7 +65,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | user-personas | IMPORT | P1 | done |
 | customer-journey-map | IMPORT | P1 | done |
 | jobs-to-be-done | GENERATE | P1 | done |
-| problem-statement | GENERATE | P1 | todo |
+| problem-statement | GENERATE | P1 | done |
 | discovery-process | GENERATE | P1 | todo |
 | analyze-feature-requests | IMPORT | P2 | todo |
 | brainstorm-ideas-existing | IMPORT | P2 | todo |
