@@ -35,7 +35,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | pricing-strategy | IMPORT | P2 | done |
 | metrics-dashboard | IMPORT | P2 | done |
 | prioritization-frameworks | IMPORT | P2 | done |
-| market-segments | IMPORT | P2 | todo |
+| market-segments | IMPORT | P2 | done |
 | feature-investment-advisor | GENERATE | P2 | todo |
 | product-strategy-session | GENERATE | P2 | todo |
 | press-release | GENERATE | P2 | todo |
