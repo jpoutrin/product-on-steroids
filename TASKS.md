@@ -59,7 +59,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 
 | Skill | Disposition | Priority | Status |
 |-------|-------------|----------|--------|
-| interview-script | IMPORT | P1 | todo |
+| interview-script | IMPORT | P1 | done |
 | summarize-interview | IMPORT | P1 | todo |
 | opportunity-solution-tree | IMPORT | P1 | todo |
 | user-personas | IMPORT | P1 | todo |
