@@ -160,7 +160,51 @@ def cmd_scaffold(args: list[str]) -> int:
     return 0
 
 
-COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold}
+def phuryn_source_path(skill: str) -> Path | None:
+    name = SOURCE_ALIAS.get(skill, skill)
+    matches = sorted(PHURYN_ROOT.glob(f"*/skills/{name}/SKILL.md"))
+    return matches[0] if matches else None
+
+
+def build_pack(task: dict, brief: str, source_text: str | None) -> str:
+    row = (f"skill: {task['skill']}  |  plugin: {task['plugin']}  |  "
+           f"disposition: {task['disposition']}  |  priority: {task['priority']}")
+    parts = [f"# BUILD PACK — {task['skill']}", "", row, "", "=== SKILL-BRIEF ===",
+             brief]
+    if task["disposition"] == "IMPORT":
+        if source_text is not None:
+            parts += ["", "=== PHURYN SOURCE (adapt this — MIT) ===", source_text]
+    else:
+        parts += ["", "=== GENERATE ===",
+                  "Write an original skill. deanpeters is idea-reference only — "
+                  "never copy its text. Set source: original (scaffold did this)."]
+    return "\n".join(parts)
+
+
+def cmd_context(args: list[str]) -> int:
+    if not args:
+        print("usage: skillkit.py context <skill>", file=sys.stderr)
+        return 2
+    skill = args[0]
+    try:
+        task = find_task(load_tasks(TASKS_PATH.read_text(encoding="utf-8")), skill)
+    except KeyError:
+        print(f"error: '{skill}' not found in TASKS.md", file=sys.stderr)
+        return 1
+    brief = BRIEF_PATH.read_text(encoding="utf-8")
+    source_text = None
+    if task["disposition"] == "IMPORT":
+        src = phuryn_source_path(skill)
+        if src is None:
+            print(f"error: phuryn source for '{skill}' not found under {PHURYN_ROOT}. "
+                  f"Clone/refresh work/phuryn-pm-skills (gitignored).", file=sys.stderr)
+            return 1
+        source_text = src.read_text(encoding="utf-8")
+    print(build_pack(task, brief, source_text))
+    return 0
+
+
+COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold, "context": cmd_context}
 
 
 def main(argv: list[str]) -> int:
