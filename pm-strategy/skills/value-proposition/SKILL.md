@@ -3,9 +3,13 @@ name: value-proposition
 description: >
   Map a Value Proposition Canvas — customer jobs, pains, and gains against your
   pain relievers, gain creators, and products — then distill it into a crisp
-  value-proposition statement. Use when designing a value proposition, testing
-  problem/solution fit, articulating why a segment should choose your product,
-  or preparing a JTBD-grounded value map for one customer segment.
+  value-proposition statement. Use when designing a value proposition or testing
+  problem/solution fit for a specific customer segment.
+when_to_use: >
+  Invoke when articulating why a named segment should choose your product,
+  preparing a JTBD-grounded value map before launch messaging, or running a
+  fit analysis to surface orphan features and uncovered top pains/gains.
+argument-hint: "[segment] [product or offering]"
 version: 0.1.0
 type: component
 source: import:phuryn/pm-skills@18468a9
