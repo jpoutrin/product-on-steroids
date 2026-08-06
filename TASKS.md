@@ -78,7 +78,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | user-segmentation | IMPORT | P2 | done |
 | sentiment-analysis | IMPORT | P2 | done |
 | ab-test-analysis | IMPORT | P2 | done |
-| cohort-analysis | IMPORT | P2 | todo |
+| cohort-analysis | IMPORT | P2 | done |
 | sql-queries | IMPORT | P2 | todo |
 | proto-persona | GENERATE | P2 | todo |
 | problem-framing-canvas | GENERATE | P2 | todo |
