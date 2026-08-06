@@ -28,7 +28,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | competitor-analysis | IMPORT | P1 | done |
 | roadmap-planning | GENERATE | P1 | done |
 | roadmap-communication | GENERATE | P1 | done |
-| value-proposition | IMPORT | P2 | todo |
+| value-proposition | IMPORT | P2 | done |
 | business-model | IMPORT | P2 | todo |
 | lean-canvas | IMPORT | P2 | todo |
 | monetization-strategy | IMPORT | P2 | todo |
