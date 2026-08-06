@@ -147,7 +147,7 @@ Build-heavy: almost nothing importable, highest originality. See
 | exec-update | GENERATE | P1 | done |
 | decision-memo | GENERATE | P1 | todo |
 | managing-up-brief | GENERATE | P1 | todo |
-| stakeholder-identification | GENERATE | P2 | todo |
+| stakeholder-identification | GENERATE | P2 | done |
 | stakeholder-engagement-advisor | GENERATE | P2 | todo |
 | incoming-request-advisor | GENERATE | P2 | todo |
 | alignment-narrative | GENERATE | P2 | todo |
