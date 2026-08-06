@@ -70,7 +70,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | analyze-feature-requests | IMPORT | P2 | done |
 | brainstorm-ideas-existing | IMPORT | P2 | done |
 | brainstorm-ideas-new | IMPORT | P2 | done |
-| brainstorm-experiments-existing | IMPORT | P2 | todo |
+| brainstorm-experiments-existing | IMPORT | P2 | done |
 | brainstorm-experiments-new | IMPORT | P2 | todo |
 | identify-assumptions-existing | IMPORT | P2 | todo |
 | identify-assumptions-new | IMPORT | P2 | todo |
