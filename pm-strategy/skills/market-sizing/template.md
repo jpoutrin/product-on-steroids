@@ -33,3 +33,8 @@
 ## Key Assumptions & Risks
 1. <assumption> — confidence: <high/med/low> — validate by: <method>
 2. <assumption> — confidence: <high/med/low> — validate by: <method>
+
+## Sources
+| # | Source | Type | Year | URL / Reference | Used for |
+|---|--------|------|------|-----------------|----------|
+| 1 | <name / publication> | <report · article · database · internal> | <year> | <URL or citation> | <TAM top-down · SAM constraint · growth driver · …> |

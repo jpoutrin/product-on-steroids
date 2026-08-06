@@ -52,6 +52,7 @@ The deliverable is a **market-sizing memo** with these sections (see
 5. **Summary table** — TAM/SAM/SOM as three distinct numbers, current vs 2–3-year projection.
 6. **Growth drivers & trends** — what could expand or contract the market.
 7. **Key assumptions & risks** — numbered, each with a confidence level (high/med/low) and how to validate the most uncertain ones.
+8. **Sources** — a table of every external source used (name, type, year, URL/citation, what it was used for), so any figure can be traced and verified.
 
 Format: prose + one summary table. Length: ~1–2 pages. Every number is either
 cited or labeled an assumption/estimate — never an unsupported figure.
@@ -85,7 +86,8 @@ Before returning, confirm:
 - [ ] SOM is a **defensible fraction** of SAM tied to competitive position / GTM capacity — not a round guess.
 - [ ] Key assumptions are **numbered** with confidence levels and validation steps.
 - [ ] A 2–3-year projection is included alongside current figures.
-- [ ] If the memo is written to a file, it follows `template.md` — all 7 sections present, in order, headings matching (a skill-scoped hook re-checks this on write).
+- [ ] A **Sources table** is present listing every external source with name, type, year, URL/citation, and what it was used for.
+- [ ] If the memo is written to a file, it follows `template.md` — all 8 sections present, in order, headings matching (a skill-scoped hook re-checks this on write).
 
 ## Validation & Eval
 Scenario cards in `evals/`:
