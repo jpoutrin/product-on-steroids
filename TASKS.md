@@ -74,7 +74,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | brainstorm-experiments-new | IMPORT | P2 | done |
 | identify-assumptions-existing | IMPORT | P2 | done |
 | identify-assumptions-new | IMPORT | P2 | done |
-| prioritize-assumptions | IMPORT | P2 | todo |
+| prioritize-assumptions | IMPORT | P2 | done |
 | user-segmentation | IMPORT | P2 | todo |
 | sentiment-analysis | IMPORT | P2 | todo |
 | ab-test-analysis | IMPORT | P2 | todo |
