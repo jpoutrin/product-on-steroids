@@ -152,7 +152,7 @@ Build-heavy: almost nothing importable, highest originality. See
 | incoming-request-advisor | GENERATE | P2 | done |
 | alignment-narrative | GENERATE | P2 | todo |
 | raci-decision-rights | GENERATE | P2 | todo |
-| feedback-note | GENERATE | P2 | todo |
+| feedback-note | GENERATE | P2 | done |
 | escalation | GENERATE | P3 | todo |
 | executive-onboarding-playbook | GENERATE | P3 | todo |
 
