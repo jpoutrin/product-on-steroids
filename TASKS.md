@@ -86,7 +86,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | voice-of-customer-miner | GENERATE | P2 | done |
 | discovery-interview-prep | GENERATE | P2 | done |
 | pol-probe | GENERATE | P3 | done |
-| storyboard | GENERATE | P3 | todo |
+| storyboard | GENERATE | P3 | done |
 | derisk-measurement-advisor | GENERATE | P3 | todo |
 
 ## pm-gtm — Go-to-Market
