@@ -51,7 +51,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | strategy-red-team | IMPORT | P3 | done |
 | business-health-diagnostic | GENERATE | P3 | done |
 | build-vs-buy | GENERATE | P3 | done |
-| market-landscape-scan | GENERATE | P3 | todo |
+| market-landscape-scan | GENERATE | P3 | done |
 | pestel-delta-monitor | GENERATE | P3 | todo |
 | competitive-intel-watch | GENERATE | P3 | todo |
 
