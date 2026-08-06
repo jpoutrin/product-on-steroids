@@ -8,6 +8,7 @@ Stdlib only; reuses validate_plugins for linting.
 from __future__ import annotations
 
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -102,7 +103,64 @@ def cmd_progress(_: list[str]) -> int:
     return 0
 
 
-COMMANDS = {"next": cmd_next, "progress": cmd_progress}
+_VARIANTS = ("happy", "edge", "adversarial")
+
+
+def find_task(tasks: list[dict], skill: str) -> dict:
+    for t in tasks:
+        if t["skill"] == skill:
+            return t
+    raise KeyError(skill)
+
+
+def import_source(disposition: str, skill: str) -> str:
+    if disposition == "IMPORT":
+        return f"import:phuryn/pm-skills@{PHURYN_SHA}"
+    return "original"
+
+
+def cmd_scaffold(args: list[str]) -> int:
+    if not args:
+        print("usage: skillkit.py scaffold <skill>", file=sys.stderr)
+        return 2
+    skill = args[0]
+    try:
+        task = find_task(load_tasks(TASKS_PATH.read_text(encoding="utf-8")), skill)
+    except KeyError:
+        print(f"error: '{skill}' not found in TASKS.md", file=sys.stderr)
+        return 1
+    dest = REPO_ROOT / task["plugin"] / "skills" / skill
+    if dest.exists():
+        print(f"error: {dest} already exists — refusing to overwrite", file=sys.stderr)
+        return 1
+    shutil.copytree(TEMPLATE_DIR, dest)
+
+    # Fill frontmatter
+    skill_md = dest / "SKILL.md"
+    text = skill_md.read_text(encoding="utf-8")
+    text = re.sub(r"(?m)^name:\s*skill-name$", f"name: {skill}", text)
+    text = re.sub(r"(?m)^source:\s*original$",
+                  f"source: {import_source(task['disposition'], skill)}", text)
+    skill_md.write_text(text, encoding="utf-8")
+
+    # Expand the single example eval card into happy/edge/adversarial
+    example = dest / "evals" / "example.md"
+    proto = example.read_text(encoding="utf-8") if example.exists() else \
+        "---\nid: skill-name-happy\nskill: skill-name\n---\n"
+    for variant in _VARIANTS:
+        card = proto
+        card = re.sub(r"(?m)^id:\s*skill-name-\w+$", f"id: {skill}-{variant}", card)
+        card = re.sub(r"(?m)^id:\s*skill-name$", f"id: {skill}-{variant}", card)
+        card = re.sub(r"(?m)^skill:\s*skill-name$", f"skill: {skill}", card)
+        (dest / "evals" / f"{skill}-{variant}.md").write_text(card, encoding="utf-8")
+    if example.exists():
+        example.unlink()
+
+    print(f"scaffolded {dest.relative_to(REPO_ROOT)}")
+    return 0
+
+
+COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold}
 
 
 def main(argv: list[str]) -> int:
