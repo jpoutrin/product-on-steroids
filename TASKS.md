@@ -24,7 +24,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | outcome-roadmap | IMPORT | P1 | done |
 | prioritize-features | IMPORT | P1 | done |
 | north-star-metric | IMPORT | P1 | done |
-| brainstorm-okrs | IMPORT | P1 | todo |
+| brainstorm-okrs | IMPORT | P1 | done |
 | competitor-analysis | IMPORT | P1 | todo |
 | roadmap-planning | GENERATE | P1 | todo |
 | roadmap-communication | GENERATE | P1 | todo |
