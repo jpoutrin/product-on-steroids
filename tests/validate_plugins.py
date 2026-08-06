@@ -232,7 +232,7 @@ def _output_contract_item_count(content: str) -> int:
     if start == -1:
         return 0
     rest = content[start:]
-    nxt = re.search(r"\n##\s", rest[3:])   # next top-level heading
+    nxt = re.search(r"\n##\s", rest[3:])   # next level-2 heading
     section = rest[: nxt.start() + 3] if nxt else rest
     return len(re.findall(r"(?m)^\d+\.\s+\*\*", section))
 
@@ -246,7 +246,7 @@ def validate_template(skill_dir: str, content: str) -> ValidationResult:
     if references and (not exists or not body):
         r.error("body references template.md but it is missing or empty")
         return r
-    if exists and body:
+    if references and exists and body:
         headings = len(re.findall(r"(?m)^##\s", body))
         items = _output_contract_item_count(content)
         if items and headings < items:

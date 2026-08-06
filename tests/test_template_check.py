@@ -33,3 +33,13 @@ def test_no_template_reference_is_silent(tmp_path):
     d = _mk(tmp_path, skill, template_md=None)
     r = vp.validate_template(d, skill)
     assert not r.errors and not r.warnings
+
+def test_unreferenced_template_with_fewer_headings_is_silent(tmp_path):
+    # SKILL.md does NOT reference template.md, but a template.md exists with
+    # fewer headings than the Output Contract — must stay silent.
+    skill = ("---\nname: x\n---\n## Output Contract\n"
+             "1. **A** — a\n2. **B** — b\nAdvisory, no template reference.\n"
+             "## Validation & Eval\n")
+    d = _mk(tmp_path, skill, template_md="# T\n## only-one\n")
+    r = vp.validate_template(d, skill)
+    assert not r.errors and not r.warnings
