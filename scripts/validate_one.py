@@ -31,7 +31,7 @@ def skill_dir_for(path: str) -> str | None:
 def run(payload: dict) -> int:
     try:
         path = (payload.get("tool_input") or {}).get("file_path", "")
-        if not path or Path(path).name != "SKILL.md" and "/evals/" not in path.replace(os.sep, "/"):
+        if not path or (Path(path).name != "SKILL.md" and "/evals/" not in path.replace(os.sep, "/")):
             return 0
         sdir = skill_dir_for(path)
         if not sdir:

@@ -25,3 +25,6 @@ build-backend = "hatchling.build"
 # `validate_plugins` so it can be exposed as the `validate-plugins` script.
 only-include = ["tests/validate_plugins.py"]
 sources = ["tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
