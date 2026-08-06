@@ -65,6 +65,9 @@ The deliverable is a **competitive analysis brief** with these sections (see
 5. **Positioning Recommendation** — the recommended competitive positioning, the
    1–3 differentiators to lead with, segments to target or avoid, and the top
    competitive threats to monitor over the next 12–18 months.
+6. **Sources** — a table listing every external source consulted (review sites,
+   pricing pages, analyst reports, press releases), with type, year, URL or
+   citation, and the competitor or claim each source supports.
 
 Format: prose + one comparison matrix. Length: ~1–2 pages. Direct competitors are
 distinguished from adjacent alternatives; no strength/weakness is asserted without
@@ -113,7 +116,8 @@ Before returning, confirm:
 - [ ] There is a **comparison matrix** letting a reader contrast the set at a glance.
 - [ ] Differentiation opportunities (3–5) are **specific and evidence-tied**, drawn from the pattern of gaps across the set — not generic "be better/cheaper".
 - [ ] The positioning recommendation names **1–3 differentiators** to lead with and the threats to monitor.
-- [ ] If the brief is written to a file, it follows `template.md` — all 5 sections present, in order, headings matching (a skill-scoped hook re-checks this on write).
+- [ ] A **Sources table** is present listing every external source used (type, year, URL/citation, and which competitor or claim it backs).
+- [ ] If the brief is written to a file, it follows `template.md` — all 6 sections present, in order, headings matching (a skill-scoped hook re-checks this on write).
 
 ## Validation & Eval
 Scenario cards in `evals/`:

@@ -42,3 +42,8 @@
 - **Differentiators to lead with:** <1–3>
 - **Segments to target / avoid:** <...>
 - **Threats to monitor (12–18 mo):** <...>
+
+## Sources
+| # | Source | Type | Year | URL / Reference | Used for |
+|---|--------|------|------|-----------------|----------|
+| 1 | <name / publication> | <review · pricing page · analyst report · press release · internal> | <year> | <URL or citation> | <which competitor / claim it supports> |
