@@ -49,7 +49,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | porters-five-forces | IMPORT | P3 | done |
 | ansoff-matrix | IMPORT | P3 | done |
 | strategy-red-team | IMPORT | P3 | done |
-| business-health-diagnostic | GENERATE | P3 | todo |
+| business-health-diagnostic | GENERATE | P3 | done |
 | build-vs-buy | GENERATE | P3 | todo |
 | market-landscape-scan | GENERATE | P3 | todo |
 | pestel-delta-monitor | GENERATE | P3 | todo |
