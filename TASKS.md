@@ -44,7 +44,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | finance-metrics-quickref | GENERATE | P2 | done |
 | finance-based-pricing-advisor | GENERATE | P2 | done |
 | startup-canvas | IMPORT | P3 | done |
-| swot-analysis | IMPORT | P3 | todo |
+| swot-analysis | IMPORT | P3 | done |
 | pestle-analysis | IMPORT | P3 | todo |
 | porters-five-forces | IMPORT | P3 | todo |
 | ansoff-matrix | IMPORT | P3 | todo |
