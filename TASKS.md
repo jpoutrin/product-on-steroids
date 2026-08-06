@@ -63,7 +63,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | summarize-interview | IMPORT | P1 | done |
 | opportunity-solution-tree | IMPORT | P1 | done |
 | user-personas | IMPORT | P1 | done |
-| customer-journey-map | IMPORT | P1 | todo |
+| customer-journey-map | IMPORT | P1 | done |
 | jobs-to-be-done | GENERATE | P1 | todo |
 | problem-statement | GENERATE | P1 | todo |
 | discovery-process | GENERATE | P1 | todo |
