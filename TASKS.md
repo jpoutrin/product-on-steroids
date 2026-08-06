@@ -20,7 +20,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 |-------|-------------|----------|--------|
 | market-sizing | IMPORT | P1 | done |
 | product-vision | IMPORT | P1 | done |
-| product-strategy-canvas | IMPORT | P1 | todo |
+| product-strategy-canvas | IMPORT | P1 | done |
 | outcome-roadmap | IMPORT | P1 | todo |
 | prioritize-features | IMPORT | P1 | todo |
 | north-star-metric | IMPORT | P1 | todo |
