@@ -16,7 +16,7 @@ wired from a skill's frontmatter:
 
 The argument is THIS skill's own template.md, so each skill validates against its own
 structure. Reads the PostToolUse JSON on stdin, and if the written file looks like the
-skill's deliverable (already contains >= half the template's `##` headings) but is
+skill's deliverable (already contains >= half the template's `##`/`###` headings) but is
 missing some, exits 2 — the stderr message is fed back to Claude so it revises the file.
 
 Fail-open everywhere: any unexpected condition returns 0 so authoring is never blocked.
@@ -29,8 +29,12 @@ from pathlib import Path
 
 
 def headings(md: str) -> list[str]:
-    """The text of every level-2 (`## `) heading, in order."""
-    return [h.strip() for h in re.findall(r"(?m)^##\s+(.+?)\s*$", md)]
+    """The text of every level-2 (`## `) and level-3 (`### `) heading, in order.
+
+    Level-3 is included so templates that group sections under `##` buckets with
+    the real sections as `###` (e.g. a 9-block canvas) are enforced fully.
+    """
+    return [h.strip() for h in re.findall(r"(?m)^#{2,3}\s+(.+?)\s*$", md)]
 
 
 def evaluate(payload: dict, template_path: str) -> tuple[int, str]:

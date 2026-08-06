@@ -28,6 +28,13 @@ def test_fewer_headings_than_contract_warns(tmp_path):
     assert not r.errors
     assert any("Output Contract" in w for w in r.warnings)
 
+def test_level3_headings_count_toward_sections(tmp_path):
+    # 2 items in the contract; template groups them as `###` under one `##` bucket.
+    # h2 + h3 = 3 headings >= 2 items, so it must NOT warn.
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE, template_md="# T\n## Bucket\n### A\n### B\n")
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert not r.errors and not r.warnings
+
 def test_no_template_reference_is_silent(tmp_path):
     skill = "---\nname: x\n---\n## Output Contract\nAdvisory only.\n## Validation & Eval\n"
     d = _mk(tmp_path, skill, template_md=None)

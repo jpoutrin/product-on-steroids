@@ -247,10 +247,13 @@ def validate_template(skill_dir: str, content: str) -> ValidationResult:
         r.error("body references template.md but it is missing or empty")
         return r
     if references and exists and body:
-        headings = len(re.findall(r"(?m)^##\s", body))
+        # Count level-2 AND level-3 headings: a template may group Output Contract
+        # sections under `##` value-flow buckets with the real sections as `###`
+        # (e.g. a 9-block canvas), which still mirrors the contract.
+        headings = len(re.findall(r"(?m)^#{2,3}\s", body))
         items = _output_contract_item_count(content)
         if items and headings < items:
-            r.warn(f"template.md has {headings} '##' headings but the Output "
+            r.warn(f"template.md has {headings} '##'/'###' headings but the Output "
                    f"Contract lists {items} sections — headings should mirror them")
     return r
 

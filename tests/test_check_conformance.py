@@ -62,3 +62,30 @@ def test_non_write_tool_ignored(tmp_path):
 
 def test_headings_helper():
     assert checker.headings(TEMPLATE) == ["Market Definition", "TAM", "SAM", "SOM"]
+
+
+def test_headings_helper_captures_level3():
+    md = "# T\n## Create Value\n### Key Partnerships\n### Key Activities\n#### too-deep\n"
+    # h2 + h3 captured, in order; h1 and h4 ignored.
+    assert checker.headings(md) == ["Create Value", "Key Partnerships", "Key Activities"]
+
+
+def test_grouped_canvas_artifact_is_silent(tmp_path):
+    # Template groups sections as `###` under `##` buckets; a conformant artifact
+    # containing all of them (h2 + h3) must stay silent.
+    tmpl = _write(tmp_path, "template.md",
+                  "## Create Value\n### Key Partnerships\n### Key Activities\n")
+    art = _write(tmp_path, "canvas.md",
+                 "## Create Value\n### Key Partnerships\n### Key Activities\n")
+    code, msg = checker.evaluate(_payload(art), tmpl)
+    assert code == 0 and msg == ""
+
+
+def test_grouped_canvas_missing_level3_is_flagged(tmp_path):
+    # Artifact has the bucket + one block but drops a `###` block -> flagged.
+    tmpl = _write(tmp_path, "template.md",
+                  "## Create Value\n### Key Partnerships\n### Key Activities\n")
+    art = _write(tmp_path, "canvas.md", "## Create Value\n### Key Partnerships\n")
+    code, msg = checker.evaluate(_payload(art), tmpl)
+    assert code == 2
+    assert "Key Activities" in msg
