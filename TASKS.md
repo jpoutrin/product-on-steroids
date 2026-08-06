@@ -168,12 +168,12 @@ Build-heavy: almost nothing importable, highest originality. See
 
 | Agent | Plugin | Status |
 |-------|--------|--------|
-| cpo | pm-strategy | stub |
-| product-discovery-specialist | pm-discovery | stub |
-| gtm-strategist | pm-gtm | stub |
-| delivery-lead | pm-execution | stub |
-| product-influence-partner | pm-influence | stub |
-| pm-orchestrator (router) | core | stub |
+| cpo | pm-strategy | seeded |
+| product-discovery-specialist | pm-discovery | seeded |
+| gtm-strategist | pm-gtm | seeded |
+| delivery-lead | pm-execution | seeded |
+| product-influence-partner | pm-influence | seeded |
+| pm-orchestrator (router) | pm-strategy (cross-cutting) | seeded |
 
 ---
 
