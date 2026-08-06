@@ -12,6 +12,12 @@ import shutil
 import sys
 from pathlib import Path
 
+try:
+    from validate_plugins import validate_skill
+except ImportError:  # in-tree fallback when not installed as a module
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tests"))
+    from validate_plugins import validate_skill
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TASKS_PATH = REPO_ROOT / "TASKS.md"
 TEMPLATE_DIR = REPO_ROOT / "docs" / "skill-template"
@@ -204,7 +210,61 @@ def cmd_context(args: list[str]) -> int:
     return 0
 
 
-COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold, "context": cmd_context}
+def set_status(text: str, skill: str, status: str) -> str:
+    lines = text.splitlines(keepends=True)
+    for task in load_tasks(text):
+        if task["skill"] != skill:
+            continue
+        i = task["line_no"]
+        eol = "\n" if lines[i].endswith("\n") else ""
+        m = _ROW.match(lines[i].rstrip("\n"))
+        cells = [c.strip() for c in m.group(1).split("|")]
+        cells[-1] = status
+        lines[i] = "| " + " | ".join(cells) + " |" + eol
+        return "".join(lines)
+    raise KeyError(skill)
+
+
+def cmd_wip(args: list[str]) -> int:
+    if not args:
+        print("usage: skillkit.py wip <skill>", file=sys.stderr)
+        return 2
+    skill = args[0]
+    text = TASKS_PATH.read_text(encoding="utf-8")
+    try:
+        TASKS_PATH.write_text(set_status(text, skill, "wip"), encoding="utf-8")
+    except KeyError:
+        print(f"error: '{skill}' not found in TASKS.md", file=sys.stderr)
+        return 1
+    print(f"{skill} -> wip")
+    return 0
+
+
+def cmd_done(args: list[str]) -> int:
+    if not args:
+        print("usage: skillkit.py done <skill>", file=sys.stderr)
+        return 2
+    skill = args[0]
+    text = TASKS_PATH.read_text(encoding="utf-8")
+    try:
+        task = find_task(load_tasks(text), skill)
+    except KeyError:
+        print(f"error: '{skill}' not found in TASKS.md", file=sys.stderr)
+        return 1
+    skill_dir = REPO_ROOT / task["plugin"] / "skills" / skill
+    result = validate_skill(str(skill_dir))
+    if result.errors:
+        print(f"error: '{skill}' not done — linter found {len(result.errors)} error(s):",
+              file=sys.stderr)
+        for e in result.errors:
+            print(f"  - {e}", file=sys.stderr)
+        return 1
+    TASKS_PATH.write_text(set_status(text, skill, "done"), encoding="utf-8")
+    print(f"{skill} -> done")
+    return 0
+
+
+COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold, "context": cmd_context, "wip": cmd_wip, "done": cmd_done}
 
 
 def main(argv: list[str]) -> int:
