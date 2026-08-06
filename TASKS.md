@@ -41,7 +41,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | press-release | GENERATE | P2 | done |
 | saas-revenue-growth-metrics | GENERATE | P2 | done |
 | saas-economics-efficiency-metrics | GENERATE | P2 | done |
-| finance-metrics-quickref | GENERATE | P2 | todo |
+| finance-metrics-quickref | GENERATE | P2 | done |
 | finance-based-pricing-advisor | GENERATE | P2 | todo |
 | startup-canvas | IMPORT | P3 | todo |
 | swot-analysis | IMPORT | P3 | todo |
