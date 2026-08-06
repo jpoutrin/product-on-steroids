@@ -48,7 +48,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | pestle-analysis | IMPORT | P3 | done |
 | porters-five-forces | IMPORT | P3 | done |
 | ansoff-matrix | IMPORT | P3 | done |
-| strategy-red-team | IMPORT | P3 | todo |
+| strategy-red-team | IMPORT | P3 | done |
 | business-health-diagnostic | GENERATE | P3 | todo |
 | build-vs-buy | GENERATE | P3 | todo |
 | market-landscape-scan | GENERATE | P3 | todo |
