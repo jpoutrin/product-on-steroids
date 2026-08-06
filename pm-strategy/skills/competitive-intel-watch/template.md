@@ -22,3 +22,8 @@
 
 ## Watch This Next
 - <leading indicator or *unconfirmed* rumor to verify next cycle>
+
+## Sources
+| # | Competitor | Source | Type | Date checked | URL / Reference |
+|---|-----------|--------|------|--------------|-----------------|
+| 1 | <Comp A> | <e.g. pricing page> | <product page · pricing · job board · press · analyst> | <YYYY-MM-DD> | <URL or citation> |

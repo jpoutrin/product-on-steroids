@@ -67,6 +67,9 @@ The deliverable is a **competitive watch digest** with these sections (see
    any additions/removals, so the next run can diff against it.
 5. **Watch This Next** — leading indicators or unconfirmed rumors to confirm on
    the next cycle.
+6. **Sources** — a table of every signal source checked this cycle: competitor,
+   source name, type (product page / pricing / job board / press / analyst),
+   date checked, and URL or reference. Gives an audit trail of coverage.
 
 Format: prose header + one Moves table + short triage/action lines. Length:
 ~1 page. Every move cites a **source and date**; unverified items are labeled
@@ -115,7 +118,10 @@ Before returning, confirm:
       forward so the next run can diff against it.
 - [ ] The digest stays scoped to **monitoring** — it does not turn into a
       one-time deep teardown or a market-discovery survey.
-- [ ] If the digest is written to a file, it follows `template.md` — all 5
+- [ ] A **Sources table** is present listing every signal source checked this
+      cycle (competitor, source name, type, date checked, URL/reference) — so
+      coverage is auditable.
+- [ ] If the digest is written to a file, it follows `template.md` — all 6
       sections present, in order, headings matching (a skill-scoped hook
       re-checks this on write).
 
