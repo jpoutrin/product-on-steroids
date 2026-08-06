@@ -23,6 +23,10 @@ TASKS_PATH = REPO_ROOT / "TASKS.md"
 TEMPLATE_DIR = REPO_ROOT / "docs" / "skill-template"
 BRIEF_PATH = REPO_ROOT / "docs" / "SKILL-BRIEF.md"
 PHURYN_ROOT = REPO_ROOT / "work" / "phuryn-pm-skills"
+# Canonical output-conformance hook script, copied into each plugin's scripts/ dir
+# so the skill-scoped hook resolves it via ${CLAUDE_PLUGIN_ROOT}/scripts/ once installed.
+CHECKER_SRC = REPO_ROOT / "scripts" / "skel" / "check_output_conformance.py"
+CHECKER_REL = Path("scripts") / "check_output_conformance.py"
 
 PHURYN_SHA = "18468a9"
 SOURCE_ALIAS = {"product-strategy-canvas": "product-strategy"}
@@ -147,7 +151,15 @@ def cmd_scaffold(args: list[str]) -> int:
     text = re.sub(r"(?m)^name:\s*skill-name$", f"name: {skill}", text)
     text = re.sub(r"(?m)^source:\s*original$",
                   f"source: {import_source(task['disposition'], skill)}", text)
+    # Point the skill-scoped conformance hook at THIS skill's own template.md.
+    text = text.replace("skills/skill-name/template.md", f"skills/{skill}/template.md")
     skill_md.write_text(text, encoding="utf-8")
+
+    # Ensure the plugin ships the conformance checker the frontmatter hook references.
+    checker_dst = REPO_ROOT / task["plugin"] / CHECKER_REL
+    if not checker_dst.exists() and CHECKER_SRC.is_file():
+        checker_dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(CHECKER_SRC, checker_dst)
 
     # Expand the single example eval card into happy/edge/adversarial
     example = dest / "evals" / "example.md"

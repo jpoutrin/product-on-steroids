@@ -37,6 +37,39 @@ def test_scaffold_creates_filled_skill(tmp_path, monkeypatch):
     assert "skill: product-vision" in happy
     assert not (dest / "evals" / "example.md").exists()
 
+def test_scaffold_wires_conformance_hook(tmp_path, monkeypatch):
+    monkeypatch.setattr(skillkit, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(skillkit, "TASKS_PATH", tmp_path / "TASKS.md")
+    tmpl = tmp_path / "docs" / "skill-template"
+    monkeypatch.setattr(skillkit, "TEMPLATE_DIR", tmpl)
+    checker_src = tmp_path / "skel" / "check_output_conformance.py"
+    checker_src.parent.mkdir(parents=True)
+    checker_src.write_text("# checker\n")
+    monkeypatch.setattr(skillkit, "CHECKER_SRC", checker_src)
+    (tmpl / "evals").mkdir(parents=True)
+    (tmpl / "SKILL.md").write_text(
+        "---\nname: skill-name\nversion: 0.1.0\ntype: component\nsource: original\n"
+        "hooks:\n  PostToolUse:\n    - matcher: \"Write|Edit\"\n      hooks:\n"
+        "        - type: command\n          command: python3\n          args:\n"
+        "            - ${CLAUDE_PLUGIN_ROOT}/scripts/check_output_conformance.py\n"
+        "            - ${CLAUDE_PLUGIN_ROOT}/skills/skill-name/template.md\n---\n# T\n")
+    (tmpl / "template.md").write_text("# <Artifact Title>\n## <Section 1>\n")
+    (tmpl / "evals" / "example.md").write_text(
+        "---\nid: skill-name-happy\nskill: skill-name\n---\nnote\n")
+    (tmp_path / "TASKS.md").write_text(
+        "## pm-strategy — X\n\n| Skill | Disposition | Priority | Status |\n"
+        "|--|--|--|--|\n| product-vision | IMPORT | P1 | todo |\n")
+
+    assert skillkit.cmd_scaffold(["product-vision"]) == 0
+    dest = tmp_path / "pm-strategy" / "skills" / "product-vision"
+    skill_md = (dest / "SKILL.md").read_text()
+    # Hook now points at THIS skill's template, not the placeholder.
+    assert "skills/product-vision/template.md" in skill_md
+    assert "skills/skill-name/template.md" not in skill_md
+    # The plugin ships the checker the hook references.
+    assert (tmp_path / "pm-strategy" / "scripts" / "check_output_conformance.py").is_file()
+
+
 def test_scaffold_refuses_existing(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(skillkit, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(skillkit, "TASKS_PATH", tmp_path / "TASKS.md")

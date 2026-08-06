@@ -6,6 +6,15 @@ description: >
 version: 0.1.0
 type: component
 source: original
+hooks:
+  PostToolUse:
+    - matcher: "Write|Edit"
+      hooks:
+        - type: command
+          command: python3
+          args:
+            - ${CLAUDE_PLUGIN_ROOT}/scripts/check_output_conformance.py
+            - ${CLAUDE_PLUGIN_ROOT}/skills/skill-name/template.md
 ---
 
 # <Human Title of the Skill>
@@ -44,6 +53,7 @@ Before returning, confirm:
 - [ ] <checkable statement 1>
 - [ ] <checkable statement 2>
 - [ ] <checkable statement 3>
+- [ ] If the output is written to a file, it follows `template.md` (a skill-scoped hook re-checks this on write).
 
 ## Validation & Eval
 Scenario cards live in `evals/`. Ship with ≥ 3 (happy + edge + adversarial).

@@ -8,6 +8,15 @@ description: >
 version: 0.1.0
 type: component
 source: import:phuryn/pm-skills@18468a9
+hooks:
+  PostToolUse:
+    - matcher: "Write|Edit"
+      hooks:
+        - type: command
+          command: python3
+          args:
+            - ${CLAUDE_PLUGIN_ROOT}/scripts/check_output_conformance.py
+            - ${CLAUDE_PLUGIN_ROOT}/skills/market-sizing/template.md
 ---
 
 # Estimate Market Size (TAM, SAM, SOM)
@@ -76,6 +85,7 @@ Before returning, confirm:
 - [ ] SOM is a **defensible fraction** of SAM tied to competitive position / GTM capacity — not a round guess.
 - [ ] Key assumptions are **numbered** with confidence levels and validation steps.
 - [ ] A 2–3-year projection is included alongside current figures.
+- [ ] If the memo is written to a file, it follows `template.md` — all 7 sections present, in order, headings matching (a skill-scoped hook re-checks this on write).
 
 ## Validation & Eval
 Scenario cards in `evals/`:
