@@ -31,7 +31,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | value-proposition | IMPORT | P2 | done |
 | business-model | IMPORT | P2 | done |
 | lean-canvas | IMPORT | P2 | done |
-| monetization-strategy | IMPORT | P2 | todo |
+| monetization-strategy | IMPORT | P2 | done |
 | pricing-strategy | IMPORT | P2 | todo |
 | metrics-dashboard | IMPORT | P2 | todo |
 | prioritization-frameworks | IMPORT | P2 | todo |
