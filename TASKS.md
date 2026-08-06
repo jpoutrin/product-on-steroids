@@ -134,7 +134,7 @@ Forge owns PRD **lifecycle** + QA; here we own PRD/story **content**. See
 | user-story-mapping | GENERATE | P2 | done |
 | user-story-splitting | GENERATE | P2 | todo |
 | epic-hypothesis | GENERATE | P2 | done |
-| epic-breakdown-advisor | GENERATE | P3 | todo |
+| epic-breakdown-advisor | GENERATE | P3 | done |
 
 ## pm-influence — Influencing People
 
