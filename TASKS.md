@@ -84,7 +84,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | problem-framing-canvas | GENERATE | P2 | done |
 | lean-ux-canvas | GENERATE | P2 | done |
 | voice-of-customer-miner | GENERATE | P2 | done |
-| discovery-interview-prep | GENERATE | P2 | todo |
+| discovery-interview-prep | GENERATE | P2 | done |
 | pol-probe | GENERATE | P3 | todo |
 | storyboard | GENERATE | P3 | todo |
 | derisk-measurement-advisor | GENERATE | P3 | todo |
