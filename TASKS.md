@@ -105,7 +105,7 @@ Build order: **pm-strategy → pm-discovery → pm-gtm → pm-execution → pm-i
 | product-name | IMPORT | P2 | done |
 | marketing-ideas | IMPORT | P2 | done |
 | positioning-workshop | GENERATE | P2 | done |
-| competitive-research-snapshot | GENERATE | P2 | todo |
+| competitive-research-snapshot | GENERATE | P2 | done |
 | acquisition-channel-advisor | GENERATE | P2 | todo |
 | organic-growth-advisor | GENERATE | P3 | todo |
 | pricing-packaging-tracker | GENERATE | P3 | todo |
