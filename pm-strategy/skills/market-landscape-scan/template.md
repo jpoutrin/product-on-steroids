@@ -42,3 +42,8 @@ Low <X> ---------+--------- High <X>
 
 ## Orientation & Next Step
 <2–3 sentences answering the orientation question>. **Deeper follow-up:** <named skill / corner to probe next, e.g. `competitor-analysis` on the challenger category>.
+
+## Sources
+| # | Source | Type | Year | URL / Reference | Used for |
+|---|--------|------|------|-----------------|----------|
+| 1 | <name / publication> | <report · article · company site · analyst · database> | <year> | <URL or citation> | <player claim · trend · white space it supports> |

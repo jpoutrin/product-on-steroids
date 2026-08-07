@@ -67,6 +67,9 @@ The deliverable is a **landscape-scan brief** with these sections (see
    renders without images, plus one line on what the empty quadrant implies.
 6. **Orientation & next step** — 2–3 sentences answering the orientation question
    and naming the single deeper follow-up (which skill / which corner to probe).
+7. **Sources** — a table of every external source consulted (reports, analyst
+   publications, news, company sites), with type, year, URL or citation, and
+   which player claim, trend, or white space it supports.
 
 Format: prose + one category table + one text-rendered map. Length: ~1–2 pages.
 Breadth over depth — categories and hypotheses, not verdicts. Every player claim
@@ -113,7 +116,8 @@ Before returning, confirm:
 - [ ] The map positions **categories** (not individual companies) on two named axes, renders as text, and the empty quadrant is interpreted.
 - [ ] The brief ends with an **orientation answer + one named deeper follow-up** (e.g. `competitor-analysis`, `market-sizing`).
 - [ ] Every player claim is **cited or labeled an observation**; the scan stays broad, not deep.
-- [ ] If written to a file, it follows `template.md` — all 6 sections present, in order (a skill-scoped hook re-checks this on write).
+- [ ] A **Sources table** is present listing every external source consulted (type, year, URL/citation, and what claim/trend/white space it supports).
+- [ ] If written to a file, it follows `template.md` — all 7 sections present, in order (a skill-scoped hook re-checks this on write).
 
 ## Validation & Eval
 Scenario cards live in `evals/`:
