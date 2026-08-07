@@ -62,16 +62,16 @@ The deliverable is a **landscape-scan brief** with these sections (see
 4. **White spaces** — 2–4 under-served or unclaimed areas the scan surfaced, each
    tied to the category/trend that reveals it and flagged as a hypothesis to
    validate (not a proven gap).
-5. **Category map** — a 2×2 (or simple axis) positioning the player *categories*
-   (not individual companies) on two named axes, described in text/ASCII so it
-   renders without images, plus one line on what the empty quadrant implies.
+5. **Category map** — a 2×2 positioning the player *categories* (not individual
+   companies) on two named axes, rendered as a Mermaid `quadrantChart` block,
+   plus one line on what the empty quadrant implies.
 6. **Orientation & next step** — 2–3 sentences answering the orientation question
    and naming the single deeper follow-up (which skill / which corner to probe).
 7. **Sources** — a table of every external source consulted (reports, analyst
    publications, news, company sites), with type, year, URL or citation, and
    which player claim, trend, or white space it supports.
 
-Format: prose + one category table + one text-rendered map. Length: ~1–2 pages.
+Format: prose + one category table + one Mermaid quadrant map. Length: ~1–2 pages.
 Breadth over depth — categories and hypotheses, not verdicts. Every player claim
 is cited or labeled an observation; white spaces are explicitly hypotheses.
 
@@ -113,7 +113,7 @@ Before returning, confirm:
 - [ ] Players are grouped into **3–6 categories** with roles — not a flat list and not a per-rival teardown.
 - [ ] Trends carry a **direction** and a one-line "so what" for a new entrant.
 - [ ] White spaces are framed as **hypotheses to validate**, each tied to a category/trend — never asserted as proven gaps.
-- [ ] The map positions **categories** (not individual companies) on two named axes, renders as text, and the empty quadrant is interpreted.
+- [ ] The map positions **categories** (not individual companies) on two named axes as a Mermaid `quadrantChart`, and the empty quadrant is interpreted.
 - [ ] The brief ends with an **orientation answer + one named deeper follow-up** (e.g. `competitor-analysis`, `market-sizing`).
 - [ ] Every player claim is **cited or labeled an observation**; the scan stays broad, not deep.
 - [ ] A **Sources table** is present listing every external source consulted (type, year, URL/citation, and what claim/trend/white space it supports).

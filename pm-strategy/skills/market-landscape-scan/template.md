@@ -24,18 +24,16 @@
 2. <under-served / unclaimed area> — revealed by: <category / trend> — **hypothesis, validate by:** <method>
 
 ## Category Map
-Axes: X = <named axis>, Y = <named axis>
 
-```
-            High <Y-axis>
-                 |
-   <category>    |    <category>
-                 |
-Low <X> ---------+--------- High <X>
-                 |
-   <category>    |    <empty / <category>>
-                 |
-            Low <Y-axis>
+```mermaid
+quadrantChart
+    title <Market> Category Map
+    x-axis Low <X-axis label> --> High <X-axis label>
+    y-axis Low <Y-axis label> --> High <Y-axis label>
+    quadrant-1 <top-right category>
+    quadrant-2 <top-left category>
+    quadrant-3 <bottom-left category>
+    quadrant-4 <bottom-right / empty — opportunity>
 ```
 
 - **Empty quadrant implies:** <what the unoccupied corner suggests>
