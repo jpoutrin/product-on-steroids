@@ -1,6 +1,6 @@
 # Job Stories: <Product / Feature>
 
-## <Outcome Title 1>
+## <Outcome Title 1> <!--#outcome-title-1-->
 
 **Job Story:** When <situation>, I want to <motivation>, so I can <outcome>.
 
@@ -13,7 +13,7 @@
 4. <outcome-focused, testable criterion>
 5. <outcome-focused, testable criterion>
 
-## <Outcome Title 2>
+## <Outcome Title 2> <!--#outcome-title-2-->
 
 **Job Story:** When <situation>, I want to <motivation>, so I can <outcome>.
 
@@ -26,7 +26,7 @@
 4. <outcome-focused, testable criterion>
 5. <outcome-focused, testable criterion>
 
-## <Outcome Title 3>
+## <Outcome Title 3> <!--#outcome-title-3-->
 
 **Job Story:** When <situation>, I want to <motivation>, so I can <outcome>.
 
@@ -39,7 +39,7 @@
 4. <outcome-focused, testable criterion>
 5. <outcome-focused, testable criterion>
 
-## <Outcome Title 4>
+## <Outcome Title 4> <!--#outcome-title-4-->
 
 **Job Story:** When <situation>, I want to <motivation>, so I can <outcome>.
 
