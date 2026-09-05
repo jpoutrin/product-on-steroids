@@ -1,6 +1,6 @@
 # A/B Test Results: <Test Name>
 
-## Experiment Overview
+## Experiment Overview <!--#experiment-overview-->
 - **Hypothesis:** <What we expected to happen and why>
 - **What Changed:** <Description of the variant>
 - **Primary Metric:** <KPI being tested>
@@ -8,13 +8,13 @@
 - **Duration:** <X days> | **Traffic Split:** <% control / % variant>
 - **Sample Sizes:** <N control> / <N variant>
 
-## Test Validation
+## Test Validation <!--#test-validation-->
 - **Power Analysis:** <Sample size adequate for effect size? Flag if underpowered (<80% power)>
 - **Test Duration:** <Did it run ≥ 1–2 business cycles? Any novelty/primacy effect window?>
 - **Randomization Health:** <SRM check — any sample ratio mismatch?>
 - **Status:** <All clear / Flag noted (explain)>
 
-## Statistical Results
+## Statistical Results <!--#statistical-results-->
 
 | Metric | Control | Variant | Lift | 95% CI | p-value | Significant? |
 |--------|---------|---------|------|--------|---------|--------------|
@@ -26,13 +26,13 @@
 **Confidence Interval:** <95% CI interpretation — does zero fall within it?>  
 **Statistical Significance:** <p-value < 0.05 → yes; explain in context>
 
-## Guardrail Check
+## Guardrail Check <!--#guardrail-check-->
 - **Revenue/Engagement:** <No change / degraded by <X%> — investigate>
 - **Page Load / Performance:** <No change / improved / degraded>
 - **Churn / Retention:** <No change / flagged>
 - **Conclusion:** <All guardrails green / Trade-off analysis / Showstopper>
 
-## Segment Breakdown (if applicable)
+## Segment Breakdown (if applicable) <!--#segment-breakdown-if-applicable-->
 | Segment | Control | Variant | Lift | Direction |
 |---------|---------|---------|------|-----------|
 | <e.g., New Users> | <X%> | <Y%> | <+Z%> | ↑ or ↓ or — |
@@ -40,14 +40,14 @@
 
 **Inversions:** <Note if metric direction differs by segment>
 
-## Recommendation
+## Recommendation <!--#recommendation-->
 **Decision:** Ship / Extend / Stop / Investigate
 
 **Reasoning:** <Tie the recommendation to quantitative thresholds: statistical significance, practical significance (business lift bar), guardrail status, power, novelty effect timing>
 
 **Business Impact:** <If shipping: expected lift in absolute terms over 30 days, revenue impact, etc.>
 
-## Next Steps
+## Next Steps <!--#next-steps-->
 - **If Shipping:** <Rollout plan, monitoring guardrails post-launch, segment-specific rollout strategy if needed>
 - **If Extending:** <Additional data needed, revised sample size, suggested duration>
 - **If Stopping:** <Why the result doesn't justify continuation, alternative hypotheses to test>

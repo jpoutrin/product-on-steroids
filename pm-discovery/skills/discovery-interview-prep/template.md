@@ -2,24 +2,24 @@
 
 <!-- Fill in each section before entering the interview. Delete these comment blocks in the final version. -->
 
-## Interview Goal
+## Interview Goal <!--#interview-goal-->
 <!-- One sentence: the specific learning objective for this session, expressed as an answerable question. -->
 <What question does this interview need to answer?>
 
-## Participant Context
+## Participant Context <!--#participant-context-->
 <!-- Who they are, what is already known, and why this person now. -->
 **Role / Segment:** <role, company or segment>
 **Recruited via:** <source — referral, user research panel, CSM, cold outreach, etc.>
 **What we already know:** <prior interactions, inferred pain points, company context — leave blank if none>
 **Why this person, now:** <one sentence on what makes this participant relevant to the current learning objective>
 
-## Hypotheses to Test
+## Hypotheses to Test <!--#hypotheses-to-test-->
 <!-- 2–3 specific, falsifiable claims. Format: "We believe [persona] experiences [pain/behaviour] because [reason]." -->
 **H1:** <We believe …>
 **H2:** <We believe …>
 **H3 (optional):** <We believe …>
 
-## Key Questions
+## Key Questions <!--#key-questions-->
 <!-- Top 5 open-ended questions, each mapped to a hypothesis. Ordered for conversational flow. -->
 <!-- Anchor questions in past behaviour ("Tell me about a time…", "Walk me through…"). No leading questions. -->
 
@@ -29,7 +29,7 @@
 4. **Q4 (→ H<n>):** <open-ended question>
 5. **Q5 (→ H<n>):** <open-ended question — often an open close: "What else should I know?">
 
-## Listening Cues
+## Listening Cues <!--#listening-cues-->
 <!-- For each hypothesis, 2–3 observable signals to listen for during the interview. -->
 <!-- Format: "Listen for … — this would suggest …" -->
 
@@ -45,7 +45,7 @@
 - Listen for <signal> — suggests <interpretation>
 - Listen for <signal> — suggests <interpretation>
 
-## Forbidden Frames
+## Forbidden Frames <!--#forbidden-frames-->
 <!-- 3–5 question types or framings to avoid in this session. Always include the first three. -->
 - **Leading questions** — e.g. "Don't you find it frustrating when…?" — plants the answer.
 - **Solution-pitching** — e.g. "What do you think of our idea to…?" — shifts to evaluation mode; not discovery.
@@ -53,7 +53,7 @@
 - <Additional forbidden frame specific to this session>
 - <Additional forbidden frame specific to this session>
 
-## Logistics
+## Logistics <!--#logistics-->
 | Field | Value |
 |---|---|
 | Duration | <e.g. 45 min> |

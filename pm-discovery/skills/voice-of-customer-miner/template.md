@@ -3,12 +3,12 @@
 <!-- Fill in each section. Keep verbatim quotes exactly as written by customers.
      Delete guidance comments before delivering. -->
 
-## Summary
+## Summary <!--#summary-->
 
 <!-- One paragraph: corpus size, dominant sentiment direction, most urgent theme. -->
 <Synthesized from [n] sources (~[N] customer mentions). Overall sentiment is [Positive / Negative / Mixed]. The dominant theme is "[theme name]", appearing across [x] sources and driving [pain / delight]. The single most urgent signal for the product team is [one sentence].>
 
-## Theme Breakdown
+## Theme Breakdown <!--#theme-breakdown-->
 
 <!-- One row per theme (top 5, max 10). Verbatim quotes only — no paraphrases.
      Sentiment: Positive | Negative | Mixed
@@ -25,7 +25,7 @@
 <!-- For themes with more than one exemplar quote, add extra rows with the same
      theme name in column 1 and leave other cells blank. -->
 
-## Notable Gaps
+## Notable Gaps <!--#notable-gaps-->
 
 <!-- What are customers NOT saying that you might expect? At least two gaps.
      Hypothesize why each gap exists. -->
@@ -34,7 +34,7 @@
 - **<Gap 2>:** <No mention of X across any source. This may indicate low salience or that the problem is not yet surfaced.>
 - **<Gap 3 (optional)>:** <…>
 
-## JTBD Signals
+## JTBD Signals <!--#jtbd-signals-->
 
 <!-- Jobs-to-be-Done inferred from language patterns. One bullet per job.
      Format: "When [situation], I want to [job], so I can [outcome]."
@@ -48,7 +48,7 @@
 
 - **Job 3 (optional):** …
 
-## Recommended Actions
+## Recommended Actions <!--#recommended-actions-->
 
 <!-- 3–5 prioritized actions for the product team. Tie each action to a named
      theme or gap. Order: highest frequency × highest sentiment severity first. -->

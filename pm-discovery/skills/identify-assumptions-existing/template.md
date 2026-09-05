@@ -1,10 +1,10 @@
 # Feature Assumption Analysis: <Feature Name>
 
-## Feature Context
+## Feature Context <!--#feature-context-->
 <!-- 1–3 sentences: feature name, goal, target segment, problem it solves -->
 <Feature description>
 
-## Desirability Assumptions
+## Desirability Assumptions <!--#desirability-assumptions-->
 <!-- Will users adopt it? Is it a real pain point?
      Format: numbered list; each with category, assumption, confidence (High/Medium/Low), validation step -->
 
@@ -16,7 +16,7 @@
    - **Confidence:** <...>
    - **Test:** <...>
 
-## Viability Assumptions
+## Viability Assumptions <!--#viability-assumptions-->
 <!-- Does it make business sense? (revenue, GTM, legal, support, operations)
      Same format -->
 
@@ -28,7 +28,7 @@
    - **Confidence:** <...>
    - **Test:** <...>
 
-## Feasibility Assumptions
+## Feasibility Assumptions <!--#feasibility-assumptions-->
 <!-- Can it be built? (technical, integrations, performance, dependencies)
      Same format -->
 
@@ -40,7 +40,7 @@
    - **Confidence:** <...>
    - **Test:** <...>
 
-## Risk Ranking (Top 3–5)
+## Risk Ranking (Top 3–5) <!--#risk-ranking-top-3-5-->
 <!-- Rank by uncertainty × impact; each with mitigation or next step -->
 
 | Rank | Assumption | Uncertainty | Impact | Mitigation / Next Step |
@@ -49,6 +49,6 @@
 | 2    | <...> | <...> | <...> | <...> |
 | 3    | <...> | <...> | <...> | <...> |
 
-## Summary
+## Summary <!--#summary-->
 <!-- 1–2 sentences on go/no-go readiness based on the assumption landscape -->
 <Readiness assessment>

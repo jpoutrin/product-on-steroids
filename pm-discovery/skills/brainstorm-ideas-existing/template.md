@@ -1,35 +1,35 @@
 # Product Ideas for [Product Name]
 
-## Opportunity & Context
+## Opportunity & Context <!--#opportunity-context-->
 - **Product:** <name and brief current state>
 - **Objective:** <the opportunity or goal to address>
 - **Target segment:** <customer segment, role, or use case>
 - **Key constraints / discoveries:** <budget, timeline, platform, pain points, or research insights>
 
-## Ideas from Product Manager Perspective
+## Ideas from Product Manager Perspective <!--#ideas-from-product-manager-perspective-->
 1. **<Idea Name>** — <one-sentence description focused on business value and strategic fit>
 2. **<Idea Name>** — <...>
 3. **<Idea Name>** — <...>
 4. **<Idea Name>** — <...>
 5. **<Idea Name>** — <...>
 
-## Ideas from Designer Perspective
+## Ideas from Designer Perspective <!--#ideas-from-designer-perspective-->
 1. **<Idea Name>** — <one-sentence description focused on UX, usability, or delight>
 2. **<Idea Name>** — <...>
 3. **<Idea Name>** — <...>
 4. **<Idea Name>** — <...>
 5. **<Idea Name>** — <...>
 
-## Ideas from Engineer Perspective
+## Ideas from Engineer Perspective <!--#ideas-from-engineer-perspective-->
 1. **<Idea Name>** — <one-sentence description focused on technical feasibility, data leverage, or scalability>
 2. **<Idea Name>** — <...>
 3. **<Idea Name>** — <...>
 4. **<Idea Name>** — <...>
 5. **<Idea Name>** — <...>
 
-## Top 5 Prioritized Ideas
+## Top 5 Prioritized Ideas <!--#top-5-prioritized-ideas-->
 
-### 1. <Idea Name>
+### 1. <Idea Name> <!--#1-idea-name-->
 - **Description:** <one-sentence summary>
 - **From perspective:** <PM / Designer / Engineer>
 - **Why selected:** <reasoning: feasibility-to-impact ratio, strategic fit, team capability>
@@ -39,7 +39,7 @@
 - **Feasibility tags:** <e.g., backend-only, 2–3 weeks, leverages existing <subsystem>>
 - **Impact tags:** <e.g., retention, new user cohort, revenue per user, NPS>
 
-### 2. <Idea Name>
+### 2. <Idea Name> <!--#2-idea-name-->
 - **Description:** <one-sentence summary>
 - **From perspective:** <PM / Designer / Engineer>
 - **Why selected:** <...>
@@ -49,7 +49,7 @@
 - **Feasibility tags:** <...>
 - **Impact tags:** <...>
 
-### 3. <Idea Name>
+### 3. <Idea Name> <!--#3-idea-name-->
 - **Description:** <one-sentence summary>
 - **From perspective:** <PM / Designer / Engineer>
 - **Why selected:** <...>
@@ -59,7 +59,7 @@
 - **Feasibility tags:** <...>
 - **Impact tags:** <...>
 
-### 4. <Idea Name>
+### 4. <Idea Name> <!--#4-idea-name-->
 - **Description:** <one-sentence summary>
 - **From perspective:** <PM / Designer / Engineer>
 - **Why selected:** <...>
@@ -69,7 +69,7 @@
 - **Feasibility tags:** <...>
 - **Impact tags:** <...>
 
-### 5. <Idea Name>
+### 5. <Idea Name> <!--#5-idea-name-->
 - **Description:** <one-sentence summary>
 - **From perspective:** <PM / Designer / Engineer>
 - **Why selected:** <...>
