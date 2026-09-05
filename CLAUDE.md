@@ -26,15 +26,16 @@ Tooling is managed with [`uv`](https://docs.astral.sh/uv/) and run via [`just`](
 
 ```bash
 just setup            # uv sync — create the venv, install deps
-just test             # run the structural linter (blocking; non-zero exit on any error)
+just test             # run pytest + the structural linter (blocking; non-zero exit on any error)
 
 uv run validate-plugins          # the linter directly (equivalent to `just test`)
 uv run python tests/validate_plugins.py [path]   # run without the installed console script
 ```
 
 There is no build step and no runtime app. `just test` is the only gate; run it before every
-commit. It scans every directory containing `.claude-plugin/` and validates manifests, `SKILL.md`
-frontmatter/body, and eval cards. Warnings are advisory; **errors fail** (exit 1).
+commit. It runs the `tests/` unit suite, then the structural linter, which scans every directory
+containing `.claude-plugin/` and validates manifests, `SKILL.md` frontmatter/body, and eval cards.
+Warnings are advisory; **errors fail** (exit 1).
 
 ## Authoring a skill (the core workflow)
 

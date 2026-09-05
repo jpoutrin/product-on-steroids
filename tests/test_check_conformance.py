@@ -89,3 +89,93 @@ def test_grouped_canvas_missing_level3_is_flagged(tmp_path):
     code, msg = checker.evaluate(_payload(art), tmpl)
     assert code == 2
     assert "Key Activities" in msg
+
+
+ANCHORED = ("# T\n"
+            "## Market Definition <!--#market-definition-->\nx\n"
+            "## TAM <!--#tam-->\ny\n"
+            "## SAM <!--#sam-->\nz\n"
+            "## SOM <!--#som-->\nw\n")
+
+
+def _anchored_tmpl(tmp_path):
+    return _write(tmp_path, "template.md", ANCHORED)
+
+
+def test_parse_headings_splits_anchor_from_text():
+    assert checker.parse_headings(ANCHORED) == [
+        ("market-definition", "Market Definition"),
+        ("tam", "TAM"),
+        ("sam", "SAM"),
+        ("som", "SOM"),
+    ]
+
+
+def test_parse_headings_without_anchors_yields_empty_anchor():
+    assert checker.parse_headings(TEMPLATE) == [
+        ("", "Market Definition"), ("", "TAM"), ("", "SAM"), ("", "SOM")]
+
+
+def test_headings_helper_strips_anchors():
+    assert checker.headings(ANCHORED) == ["Market Definition", "TAM", "SAM", "SOM"]
+
+
+def test_french_artifact_with_all_anchors_is_silent(tmp_path):
+    art = _write(tmp_path, "memo.md",
+                 "## Definition du marche <!--#market-definition-->\n"
+                 "## TAM <!--#tam-->\n"
+                 "## SAM <!--#sam-->\n"
+                 "## SOM <!--#som-->\n")
+    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
+    assert code == 0 and msg == ""
+
+
+def test_french_artifact_missing_anchors_is_flagged_with_english_names(tmp_path):
+    # Two of four anchors present -> passes the half threshold -> is the deliverable.
+    art = _write(tmp_path, "memo.md",
+                 "## Definition du marche <!--#market-definition-->\n"
+                 "## TAM <!--#tam-->\n")
+    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
+    assert code == 2
+    # Names the ENGLISH heading text, not the slug, so the feedback is readable.
+    assert "SAM" in msg and "SOM" in msg
+    assert "#sam" not in msg
+    # Tells the model to keep the anchors it just learned about.
+    assert "anchor" in msg.lower()
+
+
+def test_french_unrelated_file_stays_silent_in_anchor_mode(tmp_path):
+    art = _write(tmp_path, "notes.md", "# Notes diverses\nrien de structure ici\n")
+    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
+    assert code == 0 and msg == ""
+
+
+def test_anchor_mode_ignores_english_headings_without_anchors(tmp_path):
+    # An English artifact that dropped the anchors is NOT recognised: in anchor
+    # mode the anchor is the handle, and only one of four is present.
+    art = _write(tmp_path, "memo.md",
+                 "## Market Definition\n## TAM\n## SAM <!--#sam-->\n")
+    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
+    assert code == 0 and msg == ""
+
+
+def test_partially_anchored_template_falls_back_per_heading(tmp_path):
+    # Template has one anchored and one bare heading -> anchor mode is on, but the
+    # bare heading still matches on its text.
+    tmpl = _write(tmp_path, "template.md",
+                  "## Market Definition <!--#market-definition-->\n## Sources\n")
+    art = _write(tmp_path, "memo.md",
+                 "## Definition du marche <!--#market-definition-->\n## Sources\n")
+    code, msg = checker.evaluate(_payload(art), tmpl)
+    assert code == 0 and msg == ""
+
+
+def test_unanchored_template_uses_text_mode(tmp_path):
+    # Regression guard: a template that has not been migrated behaves exactly as
+    # it does today — a French artifact is unrecognised, not flagged.
+    art = _write(tmp_path, "memo.md",
+                 "## Definition du marche\n## TAM\n## SAM\n## SOM\n")
+    code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
+    # "TAM"/"SAM"/"SOM" happen to be untranslated, so 3 of 4 match -> flagged on
+    # the one missing English heading. No anchors are involved.
+    assert code == 2 and "Market Definition" in msg

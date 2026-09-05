@@ -9,8 +9,9 @@ default:
 setup:
     uv sync
 
-# Run the structural skill linter (blocking; exits non-zero on any error)
+# Run the full gate: unit tests + the structural skill linter (blocking)
 test:
+    uv run pytest -q
     uv run validate-plugins
 
 # ── Skill authoring (token-lean helpers; see docs/SKILL-BRIEF.md) ──
