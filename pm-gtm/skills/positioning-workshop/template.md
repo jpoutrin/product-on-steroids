@@ -7,7 +7,7 @@
 
 ---
 
-## Exercise 1 — Competitive Alternatives
+## Exercise 1 — Competitive Alternatives <!--#exercise-1-competitive-alternatives-->
 
 <!-- What would customers use if this product did not exist?
      List each alternative with a one-line rationale. Include "do nothing."
@@ -23,7 +23,7 @@
 
 ---
 
-## Exercise 2 — Unique Attributes
+## Exercise 2 — Unique Attributes <!--#exercise-2-unique-attributes-->
 
 <!-- What does this product do uniquely well vs. every alternative above?
      Each attribute must be specific and falsifiable — no vague superlatives. -->
@@ -36,7 +36,7 @@
 
 ---
 
-## Exercise 3 — Value Enabled
+## Exercise 3 — Value Enabled <!--#exercise-3-value-enabled-->
 
 <!-- For each unique attribute, what customer outcome does it enable?
      Translate feature → outcome the customer gains. -->
@@ -51,7 +51,7 @@
 
 ---
 
-## Exercise 4 — Target Customers
+## Exercise 4 — Target Customers <!--#exercise-4-target-customers-->
 
 <!-- Who cares most about the value identified in Exercise 3?
      Name the segment and state at least one reason why they are the best-fit buyer. -->
@@ -68,7 +68,7 @@
 
 ---
 
-## Exercise 5 — Market Frame of Reference
+## Exercise 5 — Market Frame of Reference <!--#exercise-5-market-frame-of-reference-->
 
 <!-- What category or context best helps the target customer understand this product?
      Candidate frames considered and the chosen frame with rationale. -->
@@ -86,7 +86,7 @@
 
 ---
 
-## Exercise 6 — Positioning Statement Draft
+## Exercise 6 — Positioning Statement Draft <!--#exercise-6-positioning-statement-draft-->
 
 <!-- Synthesise Exercises 1–5 into the canonical April Dunford positioning form.
      Format: For [target customers] who [need/want], [product] is a [market frame]
@@ -103,7 +103,7 @@
 
 ---
 
-## Session Summary
+## Session Summary <!--#session-summary-->
 
 **Endorsed by participants:** <yes / no — if no, list open items>
 

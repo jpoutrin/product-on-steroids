@@ -1,6 +1,6 @@
 # Organic Growth Playbook — <Product Name>
 
-## Organic Growth Context
+## Organic Growth Context <!--#organic-growth-context-->
 <!--
 1–2 sentences: what the product is, who it serves (ICP), current stage, time
 horizon, any existing organic baseline, and key constraints (team size, budget).
@@ -15,7 +15,7 @@ effects (SEO, community, word-of-mouth) build slowly and are not a substitute fo
 short-term acquisition. This playbook sequences for durable, self-reinforcing
 growth — not a 30-day traffic spike.
 
-## Recommended Tactics
+## Recommended Tactics <!--#recommended-tactics-->
 
 | Tactic | Channel Type | Effort | Time-to-Impact | Primary Metric |
 |--------|-------------|--------|----------------|----------------|
@@ -36,9 +36,9 @@ product hooks.
 - **<Tactic 2>:** <Why it fits.>
 - **<Tactic 3>:** <Why it fits.>
 
-## Sequencing
+## Sequencing <!--#sequencing-->
 
-### Phase 1 — Months 1–3: Foundations
+### Phase 1 — Months 1–3: Foundations <!--#phase-1-months-1-3-foundations-->
 <!--
 Tactics that must come first because later phases depend on them.
 Typically: content infrastructure, SEO keyword research, community seed channel,
@@ -47,14 +47,14 @@ referral or invite hook instrumentation.
 - <Tactic A> — <what to build/do and why it unblocks Phase 2>
 - <Tactic B> — <...>
 
-### Phase 2 — Months 4–6: Acceleration
+### Phase 2 — Months 4–6: Acceleration <!--#phase-2-months-4-6-acceleration-->
 <!--
 Tactics that build on Phase 1 outputs. Requires foundations to be in place.
 -->
 - <Tactic C> — <depends on: Tactic A output>
 - <Tactic D> — <...>
 
-### Phase 3 — Months 7–12: Scale What Works
+### Phase 3 — Months 7–12: Scale What Works <!--#phase-3-months-7-12-scale-what-works-->
 <!--
 Double down on channels showing early signal. Cut or deprioritize those that
 did not move after Phase 2. Introduce longer-lead bets that need the audience
@@ -63,9 +63,9 @@ built in Phases 1–2.
 - <Tactic E> — <what signal from Phase 2 justifies scaling>
 - <Tactic F> — <...>
 
-## Quick Wins vs Long-Term Bets
+## Quick Wins vs Long-Term Bets <!--#quick-wins-vs-long-term-bets-->
 
-### Quick Wins (signal within 90 days)
+### Quick Wins (signal within 90 days) <!--#quick-wins-signal-within-90-days-->
 <!--
 Only include tactics where measurable signal (not necessarily revenue) appears
 within 90 days. If none qualify, state: "No true organic quick wins for this
@@ -75,12 +75,12 @@ ICP/stage — see Phase 1 foundations for earliest signals at month 4."
 |--------|-------------------------------------|--------|
 | <tactic> | <e.g. 50 community members, 5 inbound links, 10 referrals> | S/M/L |
 
-### Long-Term Bets (compound over 6–18 months)
+### Long-Term Bets (compound over 6–18 months) <!--#long-term-bets-compound-over-6-18-months-->
 | Tactic | Why it compounds | Expected inflection point |
 |--------|-----------------|--------------------------|
 | <tactic> | <flywheel / authority / network effect> | <month range> |
 
-## Measurement Plan
+## Measurement Plan <!--#measurement-plan-->
 
 | Tactic | Leading Indicator (weeks 1–4) | Lagging Indicator (months 3–12) | Suggested Tooling | Review Cadence |
 |--------|------------------------------|----------------------------------|-------------------|----------------|

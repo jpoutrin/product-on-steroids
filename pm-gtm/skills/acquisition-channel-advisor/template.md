@@ -3,7 +3,7 @@
 <!-- Fill in each section below. Replace <angle-bracket placeholders> with real content.
      Delete instructional comments before delivering to the user. -->
 
-## Context & Constraints
+## Context & Constraints <!--#context-constraints-->
 
 <!-- One short paragraph: product type, ICP summary, stage, monthly budget ceiling,
      and any hard constraints (geography, CAC target, channels already ruled out). -->
@@ -14,7 +14,7 @@
 **Budget:** <monthly acquisition budget or "zero / bootstrapped">
 **Constraints:** <geography, language, CAC target, or "none">
 
-## Channel Evaluation
+## Channel Evaluation <!--#channel-evaluation-->
 
 <!-- Score each channel on the four dimensions using H (High=3), M (Medium=2), L (Low=1).
      Include at least 8 channels from the Traction 19. Add a "Justification" column
@@ -34,7 +34,7 @@
 
 *Scoring formula: Reach × 0.2 + Conversion × 0.3 + Cost × 0.2 + ICP Fit × 0.3 (H=3, M=2, L=1)*
 
-## Top 3 Recommended Channels
+## Top 3 Recommended Channels <!--#top-3-recommended-channels-->
 
 <!-- One short paragraph per channel: why it ranks here, what makes it the right
      bet for this ICP and stage, and one key assumption to validate early.
@@ -51,7 +51,7 @@
 
 **Why not #4 (<Channel Name>):** <one sentence explaining why the fourth-ranked channel did not make the cut>
 
-## Test Protocol (Channel 1)
+## Test Protocol (Channel 1) <!--#test-protocol-channel-1-->
 
 <!-- A concrete 30-day experiment for the top-ranked channel.
      Be specific: numbers, not adjectives. -->
@@ -66,7 +66,7 @@
 **Next step if success:** <what to do when the threshold is hit>
 **Next step if failure:** <which channel to pivot to and why>
 
-## Next Review Trigger
+## Next Review Trigger <!--#next-review-trigger-->
 
 <!-- Specify the concrete signal or date that should prompt re-evaluation of the
      channel mix. Use a data milestone (not just a calendar date) where possible. -->
