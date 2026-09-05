@@ -1,14 +1,14 @@
 # Monetization Options: <Product / Feature>
 
-## Context & Constraints
+## Context & Constraints <!--#context-constraints-->
 - **Value proposition:** <the core value the product delivers>
 - **Who pays vs who uses:** <buyer> pays; <user> uses
 - **Target segment(s):** <B2B/B2C, segment>
 - **Company priority:** <revenue / user growth / profitability>
 
-## Model Options
+## Model Options <!--#model-options-->
 
-### Option A — <Model name (e.g. Subscription)>
+### Option A — <Model name (e.g. Subscription)> <!--#option-a-model-name-e-g-subscription-->
 - **How it works:** <who pays, for what, cadence>
 - **Value metric:** <unit charged on> — <why it tracks delivered value and keeps margin sane>
 - **Audience fit:** <H/M/L> — <why this segment accepts it>
@@ -16,7 +16,7 @@
 - **Top risks:** <1–2 risks>
 - **Validation experiment:** <method> → success: <metric>; go/no-go: <rule>
 
-### Option B — <Model name>
+### Option B — <Model name> <!--#option-b-model-name-->
 - **How it works:** <...>
 - **Value metric:** <...> — <why>
 - **Audience fit:** <H/M/L> — <...>
@@ -24,7 +24,7 @@
 - **Top risks:** <...>
 - **Validation experiment:** <method> → success: <metric>; go/no-go: <rule>
 
-### Option C — <Model name>
+### Option C — <Model name> <!--#option-c-model-name-->
 - **How it works:** <...>
 - **Value metric:** <...> — <why>
 - **Audience fit:** <H/M/L> — <...>
@@ -32,7 +32,7 @@
 - **Top risks:** <...>
 - **Validation experiment:** <method> → success: <metric>; go/no-go: <rule>
 
-## Comparison
+## Comparison <!--#comparison-->
 
 | Option | Value metric | Audience fit | Revenue predictability | Top risk | Test cost |
 |--------|--------------|--------------|------------------------|----------|-----------|
@@ -40,17 +40,17 @@
 | B      | <...>        | H/M/L        | H/M/L                  | <...>    | Low/Med/High |
 | C      | <...>        | H/M/L        | H/M/L                  | <...>    | Low/Med/High |
 
-## Recommendation
+## Recommendation <!--#recommendation-->
 - **Test first:** <1–2 models> — <why: fit × ease × learning value>
 - **Hybrid?** <whether/which models combine, e.g. freemium + seat, or "no">
 
-## Packaging Sketch
+## Packaging Sketch <!--#packaging-sketch-->
 - **Model:** <recommended model>
 - **Tier shape:** <free / entry / pro / enterprise, or usage bands>
 - **Gates per tier:** <what unlocks each tier>
 - **Scaling metric:** <the value metric that scales price across tiers>
 - *(Price levels intentionally out of scope — see `pricing-strategy`.)*
 
-## Test Roadmap
+## Test Roadmap <!--#test-roadmap-->
 1. <experiment> — go/no-go: <criterion>
 2. <experiment> — go/no-go: <criterion>

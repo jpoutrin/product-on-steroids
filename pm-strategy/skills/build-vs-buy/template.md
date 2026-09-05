@@ -1,23 +1,23 @@
 # Build vs Buy vs Partner: <Capability>
 
-## Capability & Decision Framing
+## Capability & Decision Framing <!--#capability-decision-framing-->
 - **Capability needed:** <what it must do, for whom>
 - **Why now:** <the trigger / deadline / pressure>
 - **Options on the table:** Build / Buy / Partner — <drop any that are N/A and say why>
 
-## Core-Differentiation Test
+## Core-Differentiation Test <!--#core-differentiation-test-->
 - **Verdict:** <Differentiator | Commodity / context>
 - **Reasoning:** <do customers choose us for this? does it compound our advantage?>
 - **Prior it sets:** <differentiator → lean Build · commodity → lean Buy/Partner>
 
-## Option Analysis
+## Option Analysis <!--#option-analysis-->
 | Option | TCO (<horizon>) | Time-to-Value | Switching / Lock-in Risk | Opportunity Cost |
 |--------|-----------------|---------------|--------------------------|------------------|
 | Build  | build + maintenance = <...> | <...> | <...> | <what the team can't build meanwhile> |
 | Buy    | license + integration + admin = <...> | <...> | <...> | <...> |
 | Partner| <...> | <...> | <...> | <...> |
 
-## Weighted Scorecard
+## Weighted Scorecard <!--#weighted-scorecard-->
 | Criterion | Weight | Build | Buy | Partner |
 |-----------|-------:|:-----:|:---:|:-------:|
 | Strategic fit / control | <w> | <1-5> | <1-5> | <1-5> |
@@ -27,11 +27,11 @@
 | Opportunity cost        | <w> | <1-5> | <1-5> | <1-5> |
 | **Weighted total**      | 1.0 | **<n>** | **<n>** | **<n>** |
 
-## Recommendation
+## Recommendation <!--#recommendation-->
 - **Call:** <Build | Buy | Partner>
 - **Why it wins:** <2-3 reasons, consistent with the scorecard>
 - **Flip conditions:** <the specific facts that would reverse this recommendation>
 
-## Key Assumptions & Risks
+## Key Assumptions & Risks <!--#key-assumptions-risks-->
 1. <assumption — esp. cost/timeline> — confidence: <high/med/low> — validate by: <method>
 2. <assumption> — confidence: <high/med/low> — validate by: <method>

@@ -1,11 +1,11 @@
 # PESTEL Delta Report: <Product / Strategy Area>
 
-## Baseline & Window
+## Baseline & Window <!--#baseline-window-->
 - **Baseline referenced:** <name of prior scan> (dated <YYYY-MM-DD>)
 - **Review window:** <baseline date> → <current date>
 - **Signals diffed in:** <count + one line on the sources: news, regulation, economic data, analyst notes, internal telemetry>
 
-## Per-Factor Deltas
+## Per-Factor Deltas <!--#per-factor-deltas-->
 | Factor | Prior state → Current state | Direction | Magnitude | Signal / Source |
 |--------|-----------------------------|-----------|-----------|-----------------|
 | Political     | <prior> → <current> | <↑ / ↓ / → / ⤨> | <minor / moderate / major> | <signal ref> |
@@ -17,18 +17,18 @@
 
 <!-- Factors with no material change: mark Direction "→" and Current state "stable" — do not omit the row. -->
 
-## New & Retired Factors
+## New & Retired Factors <!--#new-retired-factors-->
 - **New:** <factor that appeared since the baseline> — why it now matters: <...>
 - **Retired:** <baseline factor that no longer binds> — why: <...>
 
-## Impact / Likelihood Shifts
+## Impact / Likelihood Shifts <!--#impact-likelihood-shifts-->
 1. **<Factor / shift>** — impact <before> → <after>; likelihood <before> → <after>.
 2. **<Factor / shift>** — impact <before> → <after>; likelihood <before> → <after>.
 
-## Decisions to Revisit
+## Decisions to Revisit <!--#decisions-to-revisit-->
 | Material shift | Decision it affects | Action | Owner / Trigger |
 |----------------|---------------------|--------|-----------------|
 | <shift> | <roadmap / pricing / GTM / market bet> | <hold / monitor / re-examine / act now> | <owner or trigger condition> |
 
-## Watch List
+## Watch List <!--#watch-list-->
 - **<Sub-threshold signal>** — moving but not yet material; becomes material when <threshold>.
