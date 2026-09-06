@@ -12,6 +12,8 @@ PLUGINS = ["pm-strategy", "pm-discovery", "pm-gtm", "pm-execution", "pm-influenc
 # canonical file in scripts/skel/  ->  its path inside each plugin
 COPIES = {
     "check_output_conformance.py": "scripts/check_output_conformance.py",
+    "output_language.py": "hooks/output_language.py",
+    "hooks.json": "hooks/hooks.json",
 }
 
 

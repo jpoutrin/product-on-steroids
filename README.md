@@ -35,6 +35,20 @@ Or add the remote once published:
 - Every skill follows [`docs/SKILL-STANDARD.md`](docs/SKILL-STANDARD.md): an explicit **Output Contract**, a self-check **Quality Bar**, and `evals/` scenario cards.
 - Skills ship **one commit at a time**. Progress is tracked in [`TASKS.md`](TASKS.md).
 
+## Output language
+
+Skills are authored in English; the documents they produce follow your project's
+language. Declare it once at your project root:
+
+```yaml
+# .config/pm-skills.yaml
+language: fr
+```
+
+Established PM terms (TAM/SAM/SOM, RICE, JTBD, NPS, ICP, OKR) stay untranslated.
+No file, or `language: en`, means English. See
+[`docs/output-language.md`](docs/output-language.md).
+
 ## Quality gates
 
 Tooling is managed with [`uv`](https://docs.astral.sh/uv/) and run via
@@ -58,6 +72,7 @@ pm-<quadrant>/
   .claude-plugin/plugin.json
   skills/<skill>/SKILL.md          # + template.md + evals/*.md
   agents/<anchor-agent>.md
+  hooks/hooks.json                 # SessionStart output-language hook
 docs/SKILL-STANDARD.md             # house authoring standard + skill-template/
 tests/validate_plugins.py          # structural linter
 TASKS.md                           # skill-by-skill ledger
