@@ -11,6 +11,7 @@ Checks:
     * type in {component, interactive, workflow}
     * source is "original" or "import:<repo>@<sha>"
 - SKILL.md body: required sections "## Output Contract" and "## Validation & Eval".
+- template.md: every '##'/'###' heading carries a unique '<!--#slug-->' anchor.
 - evals/: at least 3 scenario cards; each card has id, skill (== skill name),
     a non-empty `expected` list, and a non-empty `rubric` map.
 
@@ -255,6 +256,18 @@ def validate_template(skill_dir: str, content: str) -> ValidationResult:
         if items and headings < items:
             r.warn(f"template.md has {headings} '##'/'###' headings but the Output "
                    f"Contract lists {items} sections — headings should mirror them")
+        # Anchors are what make the output-conformance hook language-independent:
+        # it matches `<!--#slug-->`, not English heading text, so a deliverable
+        # written in the project's language is still structurally enforced.
+        anchors = re.findall(r"(?m)^#{2,3}\s+.*<!--#([a-z0-9-]+)-->\s*$", body)
+        if len(anchors) < headings:
+            r.error(f"template.md: {headings - len(anchors)} of {headings} "
+                    f"'##'/'###' headings lack a '<!--#slug-->' anchor "
+                    f"(fix: just anchors)")
+        dupes = sorted({a for a in anchors if anchors.count(a) > 1})
+        if dupes:
+            r.error("template.md: duplicate anchor(s): "
+                    + ", ".join(f"#{d}" for d in dupes))
     return r
 
 
