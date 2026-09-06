@@ -106,3 +106,68 @@ def test_real_template_parses(tmp_path):
     assert len(out) == 8
     assert out[0].depth == 2
     assert any(b.startswith("table:") for s in out for b in s.blocks)
+
+
+def test_collapse_keeps_a_non_repeating_template_intact():
+    secs = ms.parse_sections("## A\n## B\n## C\n")
+    assert ms.collapse_repeats(secs) == secs
+
+
+def test_collapse_reduces_a_numbered_family_to_one():
+    md = "## Frame 1 — <Title>\n## Frame 2 — <Title>\n## Frame 3 — <Title>\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [s.text for s in out] == ["Frame 1 — <Title>"]
+
+
+def test_collapse_carries_nested_children_with_the_family_head():
+    md = ("## Frame 1 — <T>\n### Scene\n### Action\n"
+          "## Frame 2 — <T>\n### Scene\n### Action\n"
+          "## Takeaways\n")
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [(s.depth, s.text) for s in out] == [
+        (2, "Frame 1 — <T>"), (3, "Scene"), (3, "Action"), (2, "Takeaways")]
+
+
+def test_collapse_needs_three_in_a_row_is_false_two_is_enough():
+    md = "## Segment 1: <Name>\n## Segment 2: <Name>\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [s.text for s in out] == ["Segment 1: <Name>"]
+
+
+def test_collapse_ignores_headings_that_differ_by_more_than_digits():
+    md = "## Frame 1 — <T>\n## Summary\n## Frame 2 — <T>\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert len(out) == 3
+
+
+def test_collapse_requires_matching_child_shape():
+    # Same normalised head, but the second unit has a different child depth
+    # sequence — not a repeat of the first.
+    md = "## Step 1\n### Detail\n## Step 2\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [s.text for s in out] == ["Step 1", "Detail", "Step 2"]
+
+
+def test_collapse_reaches_repeats_nested_inside_a_unit():
+    # The second repeat shape: one `##` bucket whose `###` children repeat.
+    # Only the recursion inside collapse_repeats sees these.
+    md = "## Themes\n### <Theme 1>\n- a\n### <Theme 2>\n- a\n### <Theme 3>\n- a\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [(s.depth, s.text) for s in out] == [(2, "Themes"), (3, "<Theme 1>")]
+
+
+def test_collapse_strips_an_inline_anchor_from_the_heading_name():
+    # Anchors still exist until Task 6; they must not leak into a section's name.
+    md = "## Priority 1: <Theme> <!--#priority-1-theme-->\n- a\n"
+    assert ms.parse_sections(md)[0].text == "Priority 1: <Theme>"
+
+
+def test_collapse_on_the_real_storyboard_template():
+    md = (ROOT / "pm-discovery" / "skills" / "storyboard" / "template.md"
+          ).read_text(encoding="utf-8")
+    full = ms.parse_sections(md)
+    out = ms.collapse_repeats(full)
+    # 5 frames × (1 head + 4 children) + 1 takeaways = 26 -> 1 frame unit + takeaways
+    assert len(full) == 26
+    assert len(out) == 6
+    assert [s.depth for s in out] == [2, 3, 3, 3, 3, 2]

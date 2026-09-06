@@ -182,3 +182,62 @@ def parse_sections(md: str) -> list[Section]:
     if depth is not None:
         out.append(Section(depth, text, tuple(blocks)))
     return out
+
+
+_DIGITS = re.compile(r"\d+")
+
+
+def _units(sections: list[Section]) -> list[list[Section]]:
+    """Group sections into units: each head plus every deeper section after it."""
+    units: list[list[Section]] = []
+    for s in sections:
+        if not units or s.depth <= units[-1][0].depth:
+            units.append([s])
+        else:
+            units[-1].append(s)
+    return units
+
+
+def _signature(unit: list[Section]) -> tuple:
+    """What makes two units the same repeated thing: the head's text with digit
+    runs normalised away, plus the depth sequence of its children."""
+    return (_DIGITS.sub("N", unit[0].text), tuple(s.depth for s in unit[1:]))
+
+
+def collapse_repeats(sections: list[Section]) -> list[Section]:
+    """Drop the 2nd and later members of each repeat family, at every depth.
+
+    A template draws a repeated block a fixed number of times — five storyboard
+    frames, three retro themes — but a real document has as many as it needs.
+    Consecutive units whose headings differ only by a number, and whose children
+    have the same depth sequence, are one requirement, not N.
+
+    Repeats come in two shapes and both must be caught:
+
+      ## Frame 1        <- repeated units, deduped at this level
+      ### Scene
+      ## Frame 2
+      ### Scene
+
+      ## Themes         <- one unit whose CHILDREN repeat; only the recursion
+      ### <Theme 1>        below sees these
+      ### <Theme 2>
+
+    Hence recursing into each unit's children before comparing units: seven
+    templates in the corpus are the second shape and would otherwise keep
+    enforcing an exact count.
+
+    Collapsing to the first member makes the floor 1 and imposes no ceiling,
+    because unmatched *document* sections are never reported as errors. This
+    mirrors OpenSpec, whose cardinality rules are always `>= 1` and never exact.
+    """
+    units = [[u[0]] + collapse_repeats(u[1:]) for u in _units(sections)]
+    out: list[Section] = []
+    prev_sig = None
+    for unit in units:
+        sig = _signature(unit)
+        if sig == prev_sig:
+            continue          # a further member of the family already emitted
+        out.extend(unit)
+        prev_sig = sig
+    return out
