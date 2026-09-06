@@ -57,6 +57,9 @@ markdown — the accepted cost of keeping the structural gate.
 
 Anchors are generated, never hand-written: `just anchors [plugin]`. The linter
 rejects a template whose headings lack anchors or whose anchors collide.
+Renaming a heading keeps its existing anchor — the slug is an opaque identifier,
+and regenerating it would orphan every document already produced from that
+template.
 
 ## What stays English
 
@@ -71,3 +74,18 @@ rejects a template whose headings lack anchors or whose anchors collide.
 - With all five plugins installed, a non-English project gets the directive five
   times (~4 lines each). The hooks are separate processes racing at startup, so
   there is no clean dedupe.
+- A deliverable that translates its headings **and** drops every anchor is
+  indistinguishable from an unrelated file, and passes silently. This is
+  unavoidable: the hook only speaks up once a file matches at least half the
+  template, and with no anchors and no English headings nothing matches. It is
+  mitigated, not closed — the injected directive says to preserve anchors, the
+  hook repeats that instruction whenever it fires, and `market-sizing`'s French
+  eval card asserts the anchors survive. A document that keeps its English
+  headings *is* caught: heading text still counts toward the recognition
+  threshold, so the missing anchors are reported and restored on the next edit.
+- The directive is carried by the `SessionStart` hook, which fires only for a
+  language declared in `.config/pm-skills.yaml`. Asking for a language in the
+  prompt (resolution rule 1) inside an English-configured project therefore
+  translates the deliverable with **no** preserve-anchors instruction — straight
+  into the fail-open above. Declare the language in `.config/pm-skills.yaml` for
+  the reliable path.

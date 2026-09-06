@@ -16,10 +16,9 @@ wired from a skill's frontmatter:
 
 The argument is THIS skill's own template.md, so each skill validates against its own
 structure. Reads the PostToolUse JSON on stdin, and if the written file looks like the
-skill's deliverable (already matches >= half the template's sections — by
-`<!--#anchor-->` comment when the template carries them, else by heading text) but
-is missing some, exits 2 — the stderr message is fed back to Claude so it revises
-the file.
+skill's deliverable (already matches >= half the template's sections, by
+`<!--#anchor-->` comment OR by heading text) but is missing some, exits 2 — the
+stderr message is fed back to Claude so it revises the file.
 
 Fail-open everywhere: any unexpected condition returns 0 so authoring is never blocked.
 Stdlib only, plain `python3` (no uv) so it runs on an end user's machine.
@@ -84,7 +83,13 @@ def evaluate(payload: dict, template_path: str) -> tuple[int, str]:
             return f"<!--#{anchor}-->" in content
         return text in content
 
-    present = sum(1 for anchor, text in want if found(anchor, text))
+    # Recognition is deliberately wider than enforcement: a section counts toward the
+    # threshold by anchor OR by heading text, but only the anchor satisfies it. So a
+    # document produced before the template gained anchors (all English headings, no
+    # anchors) is still recognised as the deliverable, flagged for every section, and
+    # told below to copy the anchors — it self-migrates on the next edit instead of
+    # silently dropping out of enforcement.
+    present = sum(1 for anchor, text in want if found(anchor, text) or text in content)
     # Only treat this file as the skill's deliverable if it already matches at least
     # half the template's sections — otherwise it's an unrelated file; stay silent.
     if present * 2 < len(want):

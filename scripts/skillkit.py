@@ -45,6 +45,34 @@ _ROW = re.compile(r"^\|(.+)\|\s*$")
 
 _HEADING_LINE = re.compile(r"(?m)^(#{2,3})\s+(.+?)[ \t]*$")
 _ANCHOR = re.compile(r"<!--#([a-z0-9-]+)-->")
+_FENCE_LINE = re.compile(r"^(```+|~~~+)")
+
+
+def _fence_mask(lines: list[str]) -> list[bool]:
+    """`True` for every line inside — or delimiting — a ``` / ~~~ fenced block.
+
+    A `## heading` shown inside a code example is illustrative content, not a
+    section: anchoring it would corrupt the example. Info strings (```mermaid)
+    are handled; indented fences and nested fences of differing lengths are not
+    (deliberately out of scope).
+
+    Duplicated in tests/validate_plugins.py on purpose: this module ships inside
+    installed plugins and must stay self-contained.
+    """
+    mask: list[bool] = []
+    fence: str | None = None
+    for line in lines:
+        m = _FENCE_LINE.match(line)
+        if m:
+            tok = m.group(1)[0]
+            if fence is None:
+                fence = tok
+            elif fence == tok:
+                fence = None
+            mask.append(True)
+            continue
+        mask.append(fence is not None)
+    return mask
 
 
 def slugify(text: str) -> str:
@@ -57,7 +85,8 @@ def anchor_template(text: str) -> str:
 
     Idempotent: headings that already carry an anchor are returned untouched, and
     their slugs are reserved so a newly generated one never collides with them.
-    Duplicate headings within one template get `-2`, `-3`, ... appended.
+    Duplicate headings within one template get `-2`, `-3`, ... appended. Lines
+    inside fenced code blocks are left alone — they are examples, not sections.
     """
     used = {m.group(1) for m in _ANCHOR.finditer(text)}
 
@@ -73,7 +102,9 @@ def anchor_template(text: str) -> str:
         used.add(slug)
         return f"{hashes} {body} <!--#{slug}-->"
 
-    return _HEADING_LINE.sub(repl, text)
+    lines = text.split("\n")
+    return "\n".join(line if in_code else _HEADING_LINE.sub(repl, line)
+                     for line, in_code in zip(lines, _fence_mask(lines)))
 
 
 def load_tasks(text: str) -> list[dict]:

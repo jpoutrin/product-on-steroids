@@ -91,3 +91,29 @@ def test_skeleton_template_ships_anchors():
     body = (Path(skillkit.TEMPLATE_DIR) / "template.md").read_text(encoding="utf-8")
     assert skillkit.anchor_template(body) == body, \
         "docs/skill-template/template.md must already carry anchors"
+
+
+def test_anchor_template_skips_headings_inside_fences():
+    src = ("## Real Section\n"
+           "```markdown\n"
+           "## Example Heading\n"
+           "```\n"
+           "### Another Real\n")
+    assert skillkit.anchor_template(src) == (
+        "## Real Section <!--#real-section-->\n"
+        "```markdown\n"
+        "## Example Heading\n"
+        "```\n"
+        "### Another Real <!--#another-real-->\n")
+
+
+def test_anchor_template_handles_tilde_fences():
+    src = "~~~\n## Inside\n~~~\n## Outside\n"
+    assert skillkit.anchor_template(src) == (
+        "~~~\n## Inside\n~~~\n## Outside <!--#outside-->\n")
+
+
+def test_anchor_template_tilde_inside_backtick_fence_does_not_close_it():
+    src = "```\n~~~\n## Inside\n```\n## Outside\n"
+    assert skillkit.anchor_template(src) == (
+        "```\n~~~\n## Inside\n```\n## Outside <!--#outside-->\n")

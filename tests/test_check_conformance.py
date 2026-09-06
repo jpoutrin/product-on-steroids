@@ -150,13 +150,30 @@ def test_french_unrelated_file_stays_silent_in_anchor_mode(tmp_path):
     assert code == 0 and msg == ""
 
 
-def test_anchor_mode_ignores_english_headings_without_anchors(tmp_path):
-    # An English artifact that dropped the anchors is NOT recognised: in anchor
-    # mode the anchor is the handle, and only one of four is present.
+def test_anchor_mode_flags_english_headings_without_anchors(tmp_path):
+    # An English artifact that dropped the anchors IS recognised — the threshold
+    # counts a section by anchor or by heading text — and every anchorless section
+    # is reported, so the next edit restores the anchors.
     art = _write(tmp_path, "memo.md",
                  "## Market Definition\n## TAM\n## SAM <!--#sam-->\n")
     code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 0 and msg == ""
+    assert code == 2
+    assert "Market Definition" in msg and "TAM" in msg and "SOM" in msg
+    assert "anchor" in msg.lower()
+
+
+def test_legacy_english_deliverable_without_anchors_is_flagged(tmp_path):
+    # A document produced before the template gained anchors: every English heading
+    # matches textually, none carries an anchor. It must not fall silently out of
+    # enforcement — it is recognised and told to copy every anchor.
+    art = _write(tmp_path, "memo.md",
+                 "# Memo\n## Market Definition\nx\n## TAM\ny\n"
+                 "## SAM\nz\n## SOM\nw\n")
+    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
+    assert code == 2
+    for section in ("Market Definition", "TAM", "SAM", "SOM"):
+        assert section in msg
+    assert "anchor" in msg.lower()
 
 
 def test_partially_anchored_template_falls_back_per_heading(tmp_path):

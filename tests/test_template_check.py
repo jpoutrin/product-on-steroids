@@ -86,3 +86,30 @@ def test_unreferenced_template_is_not_anchor_checked(tmp_path):
     d = _mk(tmp_path, skill, template_md="# T\n## A\n")
     r = vp.validate_template(d, skill)
     assert not r.errors
+
+
+def test_heading_inside_fence_is_not_counted_or_anchored(tmp_path):
+    # A fenced markdown example containing `## ...` is illustrative content. It
+    # must not be counted as a heading, so it must not be demanded an anchor.
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE,
+            template_md=("# T\n## A <!--#a-->\n## B <!--#b-->\n"
+                         "```markdown\n## Example Heading\n```\n"))
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert not r.errors and not r.warnings
+
+
+def test_duplicate_anchor_inside_fence_is_not_flagged(tmp_path):
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE,
+            template_md=("# T\n## A <!--#a-->\n## B <!--#b-->\n"
+                         "~~~\n## A <!--#a-->\n~~~\n"))
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert not r.errors and not r.warnings
+
+
+def test_unanchored_heading_outside_fences_is_still_an_error(tmp_path):
+    # Guard the guard: fence-awareness must not disable the anchor rule itself.
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE,
+            template_md=("# T\n## A <!--#a-->\n## B\n"
+                         "```markdown\n## Example Heading\n```\n"))
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert any("anchor" in e for e in r.errors)
