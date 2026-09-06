@@ -1,6 +1,6 @@
 # Measurement Advisory: <Assumption Under Test — one line>
 
-## Assumption Under Test <!--#assumption-under-test-->
+## Assumption Under Test
 <!-- Restate the assumption in its falsifiable form. -->
 **Assumption:** <falsifiable statement, e.g., "At least 5 % of free users will
 upgrade to a paid plan within 14 days when shown the new pricing modal.">
@@ -9,7 +9,7 @@ upgrade to a paid plan within 14 days when shown the new pricing modal.">
 wrong, e.g., "Upgrade rate remains below 5 % or is indistinguishable from the
 control.">
 
-## Primary Metric <!--#primary-metric-->
+## Primary Metric
 <!-- The one number that signals pass or fail. -->
 **Metric:** <name and definition>
 **Unit:** <%, count, median time, etc.>
@@ -18,7 +18,7 @@ Stripe; server-side event "subscription.created" within 14 days of
 account_created>
 **Measurement window:** <e.g., 14 days post-exposure>
 
-## Leading Indicators <!--#leading-indicators-->
+## Leading Indicators
 <!-- 2–4 early signals readable before the primary metric is conclusive.
      For each: signal name, earliest readable time point, what it tells you. -->
 
@@ -28,7 +28,7 @@ account_created>
 | <indicator>       | <e.g., day 5>    | <early confirmation or warning> |
 | <indicator>       | <e.g., day 7>    | <early confirmation or warning> |
 
-## Guardrail Metrics <!--#guardrail-metrics-->
+## Guardrail Metrics
 <!-- 2–3 metrics that must NOT degrade. Each needs an explicit floor or ceiling. -->
 
 | Guardrail Metric | Acceptable floor/ceiling | Rationale |
@@ -37,7 +37,7 @@ account_created>
 | <metric>         | <e.g., < 2 % refund rate> | <why this matters> |
 | <metric>         | <e.g., NPS ≥ 35>           | <why this matters> |
 
-## Baseline & Target <!--#baseline-target-->
+## Baseline & Target
 <!-- Current measured (or estimated) state → success threshold. -->
 
 | | Current baseline | Success threshold | Minimum detectable effect |
@@ -49,7 +49,7 @@ account_created>
 **Threshold justification:** <one to two sentences explaining why this number
 represents meaningful de-risking — business impact or unit-economics logic.>
 
-## Sample Size / Duration <!--#sample-size-duration-->
+## Sample Size / Duration
 <!-- For quantitative assumptions: show the key inputs. -->
 **Statistical approach:** <e.g., two-sample proportions test, two-tailed>
 **Power:** <e.g., 80 %> | **α:** <e.g., 0.05>
@@ -64,7 +64,7 @@ represents meaningful de-risking — business impact or unit-economics logic.>
      sessions; stop when 2 consecutive sessions yield no new themes.>
      **Confidence level at saturation:** <low/medium/high — explain.> -->
 
-## Inconclusive Protocol <!--#inconclusive-protocol-->
+## Inconclusive Protocol
 <!-- What the team does if results fall between pass and fail after the full
      test window. Cover all three branches: extend, pivot, or accept. -->
 

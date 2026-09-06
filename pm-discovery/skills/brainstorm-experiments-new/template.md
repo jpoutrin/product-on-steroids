@@ -1,20 +1,20 @@
 # Experiment Portfolio: <Product Name / Market Entry>
 
-## Core Hypothesis <!--#core-hypothesis-->
+## Core Hypothesis
 At least <X>% of <target customer segment> will <behavior>, indicating <assumption being tested>.
 
 *Example: At least 20% of mid-market SaaS founders will complete a pre-order, indicating strong demand.*
 
-## Riskiest Assumptions <!--#riskiest-assumptions-->
+## Riskiest Assumptions
 | Rank | Assumption | Impact | Experiment |
 |------|-----------|--------|-----------|
 | 1 | <assumption>: <why critical> | go/no-go | <which exp> |
 | 2 | <assumption>: <why critical> | go/no-go or priority | <which exp> |
 | 3 | <assumption>: <why critical> | priority | <which exp> |
 
-## Experiment Portfolio <!--#experiment-portfolio-->
+## Experiment Portfolio
 
-### Experiment 1: <Method Name> <!--#experiment-1-method-name-->
+### Experiment 1: <Method Name>
 - **Hypothesis tested:** <the specific assumption>
 - **Method:** <how you'll test it (landing page, concierge MVP, wizard-of-oz, video, pre-order, etc.)>
 - **Key principle:** <skin-in-the-game / YODA / behavioral measure>
@@ -23,7 +23,7 @@ At least <X>% of <target customer segment> will <behavior>, indicating <assumpti
 - **Effort:** <rough story points or days>
 - **Timeline:** <days / weeks to run>
 
-### Experiment 2: <Method Name> <!--#experiment-2-method-name-->
+### Experiment 2: <Method Name>
 - **Hypothesis tested:** <the specific assumption>
 - **Method:** <...>
 - **Key principle:** <...>
@@ -32,7 +32,7 @@ At least <X>% of <target customer segment> will <behavior>, indicating <assumpti
 - **Effort:** <...>
 - **Timeline:** <...>
 
-### Experiment 3: <Method Name> <!--#experiment-3-method-name-->
+### Experiment 3: <Method Name>
 - **Hypothesis tested:** <...>
 - **Method:** <...>
 - **Key principle:** <...>
@@ -41,12 +41,12 @@ At least <X>% of <target customer segment> will <behavior>, indicating <assumpti
 - **Effort:** <...>
 - **Timeline:** <...>
 
-## Key Principles Baked In <!--#key-principles-baked-in-->
+## Key Principles Baked In
 - **Skin-in-the-Game:** At least one experiment (e.g., pre-order, paid beta) measures real commitment, not just interest.
 - **YODA (Your Own Data):** Experiments collect your own validated data, not relying on market reports or analogies.
 - **Behavioral Measures:** Metrics capture actual behavior (sign-ups, purchases, attendance), not stated opinions or interest.
 
-## Next Steps <!--#next-steps-->
+## Next Steps
 1. Run Experiment 1 first; if it clears the success threshold, proceed to Experiment 2.
 2. If any go/no-go assumption fails, pause and reassess the concept.
 3. After 2–3 experiments, decide: pursue the concept, pivot, or kill it.

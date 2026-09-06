@@ -1,6 +1,6 @@
 # SQL Query: <Business Question / Metric Name>
 
-## SQL Query <!--#sql-query-->
+## SQL Query
 
 ```sql
 -- <One-line summary of what this query answers>
@@ -10,7 +10,7 @@
 <query here with inline comments explaining each logical block>
 ```
 
-## Plain-English Interpretation <!--#plain-english-interpretation-->
+## Plain-English Interpretation
 
 <Describe what the query returns and what each column means. 1–2 paragraphs.
 Example:
@@ -20,13 +20,13 @@ the number of days between signup and the user's first interaction with
 the feature, or NULL if they never used it. To find the funnel conversion rate, 
 count rows where days_to_first_use IS NOT NULL and divide by the total row count.">
 
-## Safety Notes <!--#safety-notes-->
+## Safety Notes
 
 - **Read-only:** This query contains only SELECT; it does not modify the database.
 - **Data volume:** <Note any large table scans, missing WHERE filters, or performance considerations.>
 - **Schema assumptions:** <List any assumptions (e.g., "assumes created_at is indexed").>
 
-## Test / Validation Suggestion <!--#test-validation-suggestion-->
+## Test / Validation Suggestion
 
 <Describe a quick sanity check. Example:
 "Compare the total user count in the result against users created in the date range 

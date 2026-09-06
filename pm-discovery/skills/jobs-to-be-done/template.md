@@ -5,7 +5,7 @@ Fill in each section. Replace <angle-bracket placeholders> with real content.
 Delete inline guidance comments before delivering the final artifact.
 -->
 
-## Situation & Context <!--#situation-context-->
+## Situation & Context
 
 **Customer:** <who — role, segment, or type; e.g. "freelance graphic designer
 taking on their first corporate client">
@@ -25,7 +25,7 @@ follow-up email has already been sent">
 
 ---
 
-## Functional Job <!--#functional-job-->
+## Functional Job
 
 **Primary job:** <verb + object — the literal task they are trying to complete;
 e.g. "collect payment from a non-responsive client without damaging the
@@ -37,7 +37,7 @@ relationship">
 
 ---
 
-## Emotional Job <!--#emotional-job-->
+## Emotional Job
 
 <How the customer wants to feel — or avoid feeling — while doing the job.
 One sentence per emotional dimension.>
@@ -49,7 +49,7 @@ One sentence per emotional dimension.>
 
 ---
 
-## Social Job <!--#social-job-->
+## Social Job
 
 <How the customer wants to be perceived by others as a result of doing the job.
 One sentence per social dimension.>
@@ -59,7 +59,7 @@ One sentence per social dimension.>
 
 ---
 
-## Job Statements <!--#job-statements-->
+## Job Statements
 
 > **Functional:** "When [situation], I want to [motivation], so I can
 > [expected outcome]."
@@ -80,7 +80,7 @@ One sentence per social dimension.>
 
 ---
 
-## Metrics of Success <!--#metrics-of-success-->
+## Metrics of Success
 
 <The criteria the customer uses to judge whether the job was done well.
 Express as observable or measurable outcomes — NOT product features or UI
@@ -94,7 +94,7 @@ attributes.>
 
 ---
 
-## Discovery Signals <!--#discovery-signals-->
+## Discovery Signals
 
 <Phrases, quotes, or observations from interviews or research that confirm or
 challenge this job analysis. Flag any statement above that is a hypothesis not

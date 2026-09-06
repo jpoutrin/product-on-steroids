@@ -2,7 +2,7 @@
 
 <!-- Fill in every section. Delete placeholder comments before sharing. -->
 
-## Discovery Goal <!--#discovery-goal-->
+## Discovery Goal
 
 **We need to understand:** <the core question this effort will answer — one
 sentence, starting with "We need to understand …">
@@ -25,7 +25,7 @@ have a draft OST branch to evaluate">
 
 ---
 
-## Methods & Rationale <!--#methods-rationale-->
+## Methods & Rationale
 
 | Method | Purpose | pm-discovery Skill | Why this over alternatives |
 |--------|---------|--------------------|---------------------------|
@@ -36,11 +36,11 @@ have a draft OST branch to evaluate">
 
 ---
 
-## Phase Plan <!--#phase-plan-->
+## Phase Plan
 
 <!-- Sprint-scoped default: 4–6 weeks. Adjust durations if using a continuous cadence. -->
 
-### Phase 1 — Explore <!--#phase-1-explore-->
+### Phase 1 — Explore
 **Duration:** <e.g., Weeks 1–2>
 **Goal:** Wide and generative — understand the problem space without
 pre-judging solutions.
@@ -53,7 +53,7 @@ pre-judging solutions.
 **Exit criterion:** <what must be true to move to Validate — e.g., "Raw notes
 from ≥ 5 interviews reviewed; at least 2 recurring themes identified">
 
-### Phase 2 — Validate <!--#phase-2-validate-->
+### Phase 2 — Validate
 **Duration:** <e.g., Week 3>
 **Goal:** Focused and evaluative — test the leading hypothesis or opportunity
 frame that emerged from Explore.
@@ -66,7 +66,7 @@ frame that emerged from Explore.
 **Exit criterion:** <e.g., "Top 3 assumptions rated and at least one invalidated
 or confirmed with participant data">
 
-### Phase 3 — Synthesize <!--#phase-3-synthesize-->
+### Phase 3 — Synthesize
 **Duration:** <e.g., Week 4>
 **Goal:** Convergent — turn raw findings into a shared model that feeds
 execution.
@@ -81,7 +81,7 @@ problem statement signed off">
 
 ---
 
-## Artifacts Checklist <!--#artifacts-checklist-->
+## Artifacts Checklist
 
 | Artifact | Phase | Skill | Status |
 |----------|-------|-------|--------|
@@ -94,7 +94,7 @@ problem statement signed off">
 
 ---
 
-## Risks & Mitigations <!--#risks-mitigations-->
+## Risks & Mitigations
 
 | # | Risk | Likelihood | Mitigation |
 |---|------|------------|------------|

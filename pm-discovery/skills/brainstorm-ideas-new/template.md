@@ -1,11 +1,11 @@
 # Brainstorm: Product Ideas (New Product)
 
-## Opportunity Framing <!--#opportunity-framing-->
+## Opportunity Framing
 - **Target segment:** <who are we designing for? (role, company size/type, geography)>
 - **User problem or market gap:** <what pain point, unmet need, or market shift are we addressing?>
 - **Desired business outcome:** <what does success look like? (reduce churn, enter new market, increase ARPU, etc.)>
 
-## PM Perspective (5 Ideas) <!--#pm-perspective-5-ideas-->
+## PM Perspective (5 Ideas)
 Market fit, value creation, competitive advantage — feature ownership:
 
 1. **<Idea title>** — <1–2 sentence description focused on value and differentiation>
@@ -14,7 +14,7 @@ Market fit, value creation, competitive advantage — feature ownership:
 4. **<Idea title>** — <...>
 5. **<Idea title>** — <...>
 
-## Designer Perspective (5 Ideas) <!--#designer-perspective-5-ideas-->
+## Designer Perspective (5 Ideas)
 UX, onboarding, engagement — feature ownership:
 
 1. **<Idea title>** — <1–2 sentence description focused on user experience and adoption>
@@ -23,7 +23,7 @@ UX, onboarding, engagement — feature ownership:
 4. **<Idea title>** — <...>
 5. **<Idea title>** — <...>
 
-## Engineer Perspective (5 Ideas) <!--#engineer-perspective-5-ideas-->
+## Engineer Perspective (5 Ideas)
 Technical innovation, platform capabilities, integrations — feature ownership:
 
 1. **<Idea title>** — <1–2 sentence description focused on technical differentiation>
@@ -32,7 +32,7 @@ Technical innovation, platform capabilities, integrations — feature ownership:
 4. **<Idea title>** — <...>
 5. **<Idea title>** — <...>
 
-## Top 5 Prioritized Ideas <!--#top-5-prioritized-ideas-->
+## Top 5 Prioritized Ideas
 | Rank | Idea | Perspective | Core Value | Speed to Validate | Differentiation |
 |------|------|-------------|-----------|-------------------|-----------------|
 | 1 | <title> | <PM/Designer/Engineer> | <solves the primary problem?> | <how quickly can we test?> | <vs. competitors> |
@@ -41,7 +41,7 @@ Technical innovation, platform capabilities, integrations — feature ownership:
 | 4 | <title> | <PM/Designer/Engineer> | <...> | <...> | <...> |
 | 5 | <title> | <PM/Designer/Engineer> | <...> | <...> | <...> |
 
-## Per-Idea Detail <!--#per-idea-detail-->
+## Per-Idea Detail
 **Idea #1: <Title>**
 - *Reasoning:* <1–2 sentences explaining why this idea ranks here>
 - *Key Assumptions:* (a) <assumption>; (b) <assumption>; (c) <assumption>

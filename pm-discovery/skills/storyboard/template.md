@@ -11,84 +11,84 @@ Delete these HTML comments before delivering the storyboard.
 
 ---
 
-## Frame 1 — <Frame Title> <!--#frame-1-frame-title-->
+## Frame 1 — <Frame Title>
 
-### Scene <!--#scene-->
+### Scene
 <Describe the context: where the user is, what they see, what device or environment
 they are in. 2–4 sentences of prose.>
 
-### Action <!--#action-->
+### Action
 <One concrete action the user takes next.>
 
-### Emotion <!--#emotion-->
+### Emotion
 *<Emotion label>* — <One sentence explaining why they feel this way.>
 
-### Annotation <!--#annotation-->
+### Annotation
 **PM note:** <What this moment reveals about the design — a risk, assumption,
 design decision, or question that needs an answer.>
 
 ---
 
-## Frame 2 — <Frame Title> <!--#frame-2-frame-title-->
+## Frame 2 — <Frame Title>
 
-### Scene <!--#scene-2-->
+### Scene
 <context>
 
-### Action <!--#action-2-->
+### Action
 <action>
 
-### Emotion <!--#emotion-2-->
+### Emotion
 *<label>* — <explanation>
 
-### Annotation <!--#annotation-2-->
+### Annotation
 **PM note:** <insight>
 
 ---
 
-## Frame 3 — <Frame Title> <!--#frame-3-frame-title-->
+## Frame 3 — <Frame Title>
 
-### Scene <!--#scene-3-->
+### Scene
 <context>
 
-### Action <!--#action-3-->
+### Action
 <action>
 
-### Emotion <!--#emotion-3-->
+### Emotion
 *<label>* — <explanation>
 
-### Annotation <!--#annotation-3-->
+### Annotation
 **PM note:** <insight>
 
 ---
 
-## Frame 4 — <Frame Title> <!--#frame-4-frame-title-->
+## Frame 4 — <Frame Title>
 
-### Scene <!--#scene-4-->
+### Scene
 <context>
 
-### Action <!--#action-4-->
+### Action
 <action>
 
-### Emotion <!--#emotion-4-->
+### Emotion
 *<label>* — <explanation>
 
-### Annotation <!--#annotation-4-->
+### Annotation
 **PM note:** <insight>
 
 ---
 
-## Frame 5 — <Frame Title> <!--#frame-5-frame-title-->
+## Frame 5 — <Frame Title>
 
-### Scene <!--#scene-5-->
+### Scene
 <context>
 
-### Action <!--#action-5-->
+### Action
 <action>
 
-### Emotion <!--#emotion-5-->
+### Emotion
 *<label>* — <explanation>
 
-### Annotation <!--#annotation-5-->
+### Annotation
 **PM note:** <insight>
 
 ---
@@ -100,7 +100,7 @@ Target: 5–8 frames covering a complete arc.
 
 ---
 
-## Takeaways <!--#takeaways-->
+## Takeaways
 
 - <Friction point or delight moment grounded in a specific frame>
 - <Open design question surfaced by the arc>

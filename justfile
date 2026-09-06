@@ -32,12 +32,6 @@ scaffold skill:
 context skill:
     uv run python scripts/skillkit.py context {{skill}}
 
-# Add <!--#slug--> anchors to template.md headings (idempotent).
-# No argument = every template in the repo: just anchors
-# Or scope it:  just anchors pm-strategy
-anchors target="":
-    uv run python scripts/skillkit.py anchors {{target}}
-
 # Mark a skill in-progress in TASKS.md
 wip skill:
     uv run python scripts/skillkit.py wip {{skill}}

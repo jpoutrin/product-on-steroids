@@ -1,13 +1,13 @@
 # Roadmap Plan: <Team / Product> — <Horizon>
 
-## Planning Frame <!--#planning-frame-->
+## Planning Frame
 - **Horizon:** <period being planned, e.g., Q3 2026 / next half>
 - **Cadence:** planning every <interval> · review every <interval>
 - **Themes:**
   1. <Theme> → objective: <strategic objective it serves>
   2. <Theme> → objective: <...>
 
-## Capacity Allocation <!--#capacity-allocation-->
+## Capacity Allocation
 - **Raw capacity:** <squads/people> × <weeks> = <raw squad-weeks>
 - **Deductions:** −<KTLO> KTLO · −<on-call/leave> on-call/leave · −<hiring lag>
 - **Available capacity:** **<available>**
@@ -19,14 +19,14 @@
 | <Theme C>  | <n>        | <z>%           | <objective>   |
 | **Total**  | **<available>** | **100%**  |               |
 
-## Sequenced Plan <!--#sequenced-plan-->
+## Sequenced Plan
 | Period    | Work item        | Theme     | Sequencing rationale                    |
 |-----------|------------------|-----------|-----------------------------------------|
 | <Month 1> | <item>           | <theme>   | <dependency / risk-retirement / value>  |
 | <Month 2> | <item>           | <theme>   | <...>                                    |
 | <Month 3> | <item>           | <theme>   | <...>                                    |
 
-## Dependencies & Risks <!--#dependencies-risks-->
+## Dependencies & Risks
 **Dependencies**
 
 | Dependency             | Owner     | Needed by | Blocks              |
@@ -39,13 +39,13 @@
 |---------|------------|---------|------------------------------|--------------|
 | <risk>  | <H/M/L>    | <H/M/L> | <mitigation>                 | <period>     |
 
-## Stakeholder Inputs <!--#stakeholder-inputs-->
+## Stakeholder Inputs
 | Stakeholder   | Ask / trade-off raised | Resolution (accept/defer/decline) | Reason   |
 |---------------|------------------------|-----------------------------------|----------|
 | <Eng>         | <ask>                  | <resolution>                      | <reason> |
 | <Sales / GTM> | <ask>                  | <resolution>                      | <reason> |
 | <Leadership>  | <ask>                  | <resolution>                      | <reason> |
 
-## Review Rhythm <!--#review-rhythm-->
+## Review Rhythm
 - **Checkpoints:** <cadence> — attendees: <who> — can decide: <hold / re-sequence / re-scope>
 - **Off-cycle replan triggers:** <conditions that force an unscheduled replan, e.g., a dependency slips, a theme's assumption is invalidated, capacity drops >X%>

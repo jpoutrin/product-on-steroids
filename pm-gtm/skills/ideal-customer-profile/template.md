@@ -6,7 +6,7 @@ Delete comment blocks in the final version.
 Keep every criterion tagged: [validated], [hypothesis], or [assumption].
 -->
 
-## ICP Summary <!--#icp-summary-->
+## ICP Summary
 <!--
 One paragraph: who the ICP is, why they are the best fit, and the strategic
 implication (e.g., where to focus sales and marketing effort). Suitable for an
@@ -14,9 +14,9 @@ exec brief or the header of a sales enablement deck.
 -->
 <Strategic statement of the ICP segment and the rationale for this choice.>
 
-## Firmographic Profile (B2B) / Demographic & Behavioral Profile (B2C) <!--#firmographic-profile-b2b-demographic-behavioral-profile-b2c-->
+## Firmographic Profile (B2B) / Demographic & Behavioral Profile (B2C)
 
-### B2B — Firmographic Criteria <!--#b2b-firmographic-criteria-->
+### B2B — Firmographic Criteria
 | Dimension | Inclusion Criteria | Confidence |
 |---|---|---|
 | Company size | <e.g., 50–500 employees> | <validated / hypothesis / assumption> |
@@ -28,7 +28,7 @@ exec brief or the header of a sales enablement deck.
 | Department / buyer function | <e.g., VP Engineering, Head of RevOps> | <...> |
 | Budget profile | <e.g., $20K–$100K annual software budget for this category> | <...> |
 
-### B2C — Demographic & Behavioral Profile <!--#b2c-demographic-behavioral-profile-->
+### B2C — Demographic & Behavioral Profile
 <!--
 Remove this section if the product is B2B only. Otherwise replace with the
 relevant dimensions (age/life stage, platform, frequency of need, etc.).
@@ -40,7 +40,7 @@ relevant dimensions (age/life stage, platform, frequency of need, etc.).
 | Platform / channel behavior | <e.g., heavy mobile, discovers via peer recommendation> | <...> |
 | Frequency of need | <e.g., recurring monthly pain vs. one-time event> | <...> |
 
-## Trigger Events <!--#trigger-events-->
+## Trigger Events
 <!--
 List the conditions or moments that make an ICP customer ready to buy NOW.
 These are the signals to look for in outbound prospecting or inbound scoring.
@@ -51,7 +51,7 @@ These are the signals to look for in outbound prospecting or inbound scoring.
 | <e.g., Just closed Series A round> | <Crunchbase, press announcement> | <...> |
 | <e.g., Regulatory deadline approaching in their vertical> | <Industry news, compliance calendar> | <...> |
 
-## Buying Process <!--#buying-process-->
+## Buying Process
 <!--
 Document the typical decision journey for this segment.
 -->
@@ -63,7 +63,7 @@ Document the typical decision journey for this segment.
 - **Common objections:** <list top 2–3 objections and what resolves them>
 - **Key moment of commitment:** <what does "yes, we're buying" look like in practice>
 
-## Negative ICP <!--#negative-icp-->
+## Negative ICP
 <!--
 Explicit disqualifiers: who looks like the ICP but should NOT be pursued.
 These criteria enable sales to self-disqualify early and protect CAC efficiency.
@@ -74,7 +74,7 @@ These criteria enable sales to self-disqualify early and protect CAC efficiency.
 | <e.g., On-premise / air-gapped infrastructure requirement> | <Product is cloud-native; integration impossible> | <IT policy stated in discovery> |
 | <e.g., Requires custom contract / white-label> | <Outside current product and legal capacity> | <Request in first call> |
 
-## Evidence & Validation Notes <!--#evidence-validation-notes-->
+## Evidence & Validation Notes
 <!--
 Summarize the data sources and confidence level of the overall ICP.
 Flag which criteria most urgently need validation.

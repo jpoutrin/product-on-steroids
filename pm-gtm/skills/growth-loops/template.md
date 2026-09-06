@@ -1,6 +1,6 @@
 # Growth Loops Analysis: <Product Name>
 
-## Loop Inventory <!--#loop-inventory-->
+## Loop Inventory
 
 List each self-reinforcing cycle identified in the product. For each, provide:
 
@@ -9,17 +9,17 @@ List each self-reinforcing cycle identified in the product. For each, provide:
 | <name> | viral/usage/collab/referral/community/data | <how it starts> | <user does what> | <value created> | <how new user enters> | <constraint step> |
 | <name> | <type> | <...> | <...> | <...> | <...> | <...> |
 
-## Loop Diagrams <!--#loop-diagrams-->
+## Loop Diagrams
 
 Describe in prose how each loop compounds over time (cycle-by-cycle).
 
-### <Loop Name 1> — <Type> <!--#loop-name-1-type-->
+### <Loop Name 1> — <Type>
 <User A triggers action → creates output → shares/invites → User B discovers → signs up → loops back into the same action → User A gets reward/network effect.>
 
-### <Loop Name 2> — <Type> <!--#loop-name-2-type-->
+### <Loop Name 2> — <Type>
 <...>
 
-## Loop Coefficients <!--#loop-coefficients-->
+## Loop Coefficients
 
 For each loop, estimate the compounding rate:
 
@@ -30,21 +30,21 @@ For each loop, estimate the compounding rate:
 
 *Note: K-factor = (invites per user) × (conversion rate). K > 1 = viral; K < 1 = requires intervention.*
 
-## Bottleneck Analysis <!--#bottleneck-analysis-->
+## Bottleneck Analysis
 
 For each loop, the most critical constraint to remove:
 
 - **Loop 1 Bottleneck:** <step in the loop where drop-off or friction is highest> → *Impact: <what happens if removed>* → *Effort: <rough scope>*
 - **Loop 2 Bottleneck:** <...>
 
-## Prioritization & Roadmap <!--#prioritization-roadmap-->
+## Prioritization & Roadmap
 
 **Top-Priority Loop:** <Loop Name>
 - **Why:** <fastest compounding / easiest to activate / builds moat / ...>
 - **Current K-Factor:** <estimate>
 - **Target K-Factor (in 6 months):** <estimate>
 
-### 30-60-90 Day Roadmap <!--#30-60-90-day-roadmap-->
+### 30-60-90 Day Roadmap
 - **Month 1:** <what to build/measure to strengthen the loop>
 - **Month 2:** <iterate on Month 1 based on metrics>
 - **Month 3:** <scale or move to secondary loop>

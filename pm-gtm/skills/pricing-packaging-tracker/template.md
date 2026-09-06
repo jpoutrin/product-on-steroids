@@ -6,7 +6,7 @@ All price points MUST include a "Last verified" date.
 Competitors with no public pricing must be noted explicitly — do not omit them.
 -->
 
-## Tracker Summary <!--#tracker-summary-->
+## Tracker Summary
 
 **Product under research:** <your product name, or "market landscape" if no own product>
 **Competitors covered:** <Competitor A, Competitor B, … (3–7)>
@@ -19,7 +19,7 @@ Competitors with no public pricing must be noted explicitly — do not omit them
 
 ---
 
-## Pricing Comparison Table <!--#pricing-comparison-table-->
+## Pricing Comparison Table
 
 <!-- One row per competitor. Add rows as needed. -->
 
@@ -35,7 +35,7 @@ Competitors with no public pricing must be noted explicitly — do not omit them
 
 ---
 
-## Packaging Patterns <!--#packaging-patterns-->
+## Packaging Patterns
 
 <!-- 3–5 observations on feature-fencing patterns across the competitor set.
      Each observation must cite evidence from the table above. -->
@@ -48,24 +48,24 @@ Competitors with no public pricing must be noted explicitly — do not omit them
 
 ---
 
-## Value Metric Analysis <!--#value-metric-analysis-->
+## Value Metric Analysis
 
 <!-- For each distinct value metric found in the table, write a short paragraph.
      Cover: which competitors use it, the typical range seen, and what it signals
      about their monetisation approach. -->
 
-### Per-seat pricing <!--#per-seat-pricing-->
+### Per-seat pricing
 <Which competitors use this. Typical price-per-seat range. What it signals — e.g. "optimised for predictable revenue in team-centric workflows; upgrade trigger is headcount growth".>
 
-### Usage-based / consumption pricing <!--#usage-based-consumption-pricing-->
+### Usage-based / consumption pricing
 <Which competitors use this. Typical unit and range. What it signals — e.g. "aligns cost to value delivered; lowers barrier to entry but complicates revenue forecasting".>
 
-### <Other value metric found> <!--#other-value-metric-found-->
+### <Other value metric found>
 <Same structure.>
 
 ---
 
-## Pricing Gaps & Opportunities <!--#pricing-gaps-opportunities-->
+## Pricing Gaps & Opportunities
 
 <!-- Frame as observations, questions, or hypotheses — NOT as recommendations.
      This section surfaces what the competitive data suggests; pricing decisions

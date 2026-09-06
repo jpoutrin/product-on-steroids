@@ -1,41 +1,41 @@
 # Pre-Mortem Analysis: <Product Name>
 
-## Tigers (Real Risks) <!--#tigers-real-risks-->
+## Tigers (Real Risks)
 
-### Launch-Blocking <!--#launch-blocking-->
+### Launch-Blocking
 - **Risk:** <specific failure mode with evidence or logic>
   - **Mitigation:** <concrete action to resolve>
   - **Owner:** <function or person>
   - **Due:** <decision/completion date>
 
-### Fast-Follow (≤30 days post-launch) <!--#fast-follow-30-days-post-launch-->
+### Fast-Follow (≤30 days post-launch)
 - **Risk:** <specific failure mode>
   - **Mitigation:** <action plan>
   - **Owner:** <responsible party>
   - **Due:** <follow-up deadline>
 
-### Track (Monitor post-launch) <!--#track-monitor-post-launch-->
+### Track (Monitor post-launch)
 - **Risk:** <specific failure mode>
   - **Rationale:** <why it's lower priority but worth watching>
 
-## Paper Tigers (Overblown Concerns) <!--#paper-tigers-overblown-concerns-->
+## Paper Tigers (Overblown Concerns)
 
 - **Concern:** <surface worry>
   - **Why it's overblown:** <evidence, context, or data explaining why this isn't a true threat>
 
-## Elephants (Unspoken Worries) <!--#elephants-unspoken-worries-->
+## Elephants (Unspoken Worries)
 
 - **Assumption:** <uncertain or undiscussed assumption>
   - **Why it matters:** <potential impact if wrong>
   - **Investigation approach:** <how to validate before launch>
 
-## Action Plans for Launch-Blocking Tigers <!--#action-plans-for-launch-blocking-tigers-->
+## Action Plans for Launch-Blocking Tigers
 
 | Risk | Mitigation | Owner | Due Date |
 |------|-----------|-------|----------|
 | <...> | <...> | <...> | <...> |
 
-## Validation Plan <!--#validation-plan-->
+## Validation Plan
 
 - <most uncertain assumption> — validate by: <method>
 - <second-order risk> — validate by: <method>

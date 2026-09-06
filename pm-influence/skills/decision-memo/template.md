@@ -1,6 +1,6 @@
 # Decision Memo: <Subject — the decision as a question or choice>
 
-## Header <!--#header-->
+## Header
 
 | Field            | Value                              |
 |------------------|------------------------------------|
@@ -9,15 +9,15 @@
 | **Decision owner** | <name / role>                    |
 | **Response by**  | <date>                             |
 
-## Situation <!--#situation-->
+## Situation
 <Two to four sentences: what is true now, what context the reader needs to
 evaluate the options. No history lecture — only what is load-bearing.>
 
-## Complication <!--#complication-->
+## Complication
 <One to two sentences: the tension, constraint, or change that makes this a
 real decision rather than an obvious call.>
 
-## Options <!--#options-->
+## Options
 
 | Option | Description | Key Benefit | Key Cost / Risk | Data confidence |
 |--------|-------------|-------------|-----------------|-----------------|
@@ -25,7 +25,7 @@ real decision rather than an obvious call.>
 | B — <label> | <one-line description> | <primary upside> | <primary downside or risk> | High / Med / Low |
 | C — <label> (optional) | <one-line description> | <primary upside> | <primary downside or risk> | High / Med / Low |
 
-## Recommendation <!--#recommendation-->
+## Recommendation
 **Recommended: Option <X> — <label>**
 
 <Two to four sentences explaining why this option is preferred over the
@@ -35,13 +35,13 @@ the cost.>
 **Critical assumption:** <the one assumption whose failure would change this
 recommendation — and what would then be the fallback option.>
 
-## Decision Requested <!--#decision-requested-->
+## Decision Requested
 <Name the owner again.> Please approve, counter, or redirect by **<date>**.
 
 - **Approve:** <what approval looks like — a reply, a ticket, a calendar invite>
 - **Counter:** <what a counter-proposal should address>
 - **CC:** <who else is copied and why, if anyone>
 
-## If Deferred <!--#if-deferred-->
+## If Deferred
 <One sentence: what happens to cost, timeline, or scope if no decision is made
 by the deadline. Omit this section if deferral has no meaningful consequence.>

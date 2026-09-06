@@ -1,13 +1,13 @@
 # Product Names: <Product Name>
 
-## Naming Criteria <!--#naming-criteria-->
+## Naming Criteria
 - **Product / Opportunity:** <brief description of what the product does or solves>
 - **Core Value Proposition:** <key benefit or promise the name should reinforce>
 - **Target Audience:** <segment or demographic; e.g., "early-stage founders", "enterprise ops teams">
 - **Desired Brand Tone/Personality:** <e.g., "trustworthy and premium", "playful and accessible", "technical and precise">
 - **Differentiation Goals:** <what competitive landscape or customer needs this name must stand out in>
 
-## Name Candidates <!--#name-candidates-->
+## Name Candidates
 
 | Name | Style | Rationale | Memorability | Pronounceability | Distinctiveness | Domain Availability | Trademark Notes |
 |------|-------|-----------|--------------|------------------|-----------------|-------------------|-----------------|
@@ -16,18 +16,18 @@
 | <Name 3> | <...> | <...> | <...> | <...> | <...> | <...> | <...> |
 | <...continue for 8–12 names> |
 
-## Recommendation <!--#recommendation-->
+## Recommendation
 
-### Top Candidates <!--#top-candidates-->
+### Top Candidates
 1. **<Name 1>** — <brief why it's top choice: combines [criteria met], strong fit to positioning>
 2. **<Name 2>** — <brief why it's second choice: [reason]>
 3. **<Name 3>** — <brief why it's third choice: [reason]>
 
-### Why Not the Others <!--#why-not-the-others-->
+### Why Not the Others
 - <Name X> — <brief tradeoff or concern>
 - <Name Y> — <brief tradeoff or concern>
 
-## Legal & Compliance Note <!--#legal-compliance-note-->
+## Legal & Compliance Note
 **Before committing to any name:**
 - Conduct a formal trademark search with legal counsel — this skill flags availability and risk subjectively only.
 - Verify .com domain registration and reserve if acquired.

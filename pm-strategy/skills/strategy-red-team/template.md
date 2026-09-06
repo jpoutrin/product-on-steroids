@@ -1,14 +1,14 @@
 # Red-Team: <strategy in one line>
 
-## Strategy in One Line <!--#strategy-in-one-line-->
+## Strategy in One Line
 <the plan being attacked, restated neutrally so its author would agree it's fair>
 
-## Load-Bearing Assumptions <!--#load-bearing-assumptions-->
+## Load-Bearing Assumptions
 - <claim that, if false, kills the strategy>
 - <claim that, if false, kills the strategy>
 - _Cosmetic (not attacked):_ <claims whose failure wouldn't sink the strategy>
 
-## Top Kill-Assumptions (ranked) <!--#top-kill-assumptions-ranked-->
+## Top Kill-Assumptions (ranked)
 1. **Claim:** <the load-bearing assertion>
    - **Steelman:** <strongest case it's true>
    - **Fails if:** <concrete, falsifiable condition>
@@ -22,16 +22,16 @@
    - **Kill criterion:** <...>
    - **Cheapest test:** <...>
 
-## Competitor Counter-Moves <!--#competitor-counter-moves-->
+## Competitor Counter-Moves
 - **Move:** <most damaging response an incumbent/rival could make>
 - **Invalidates:** <which listed assumption it breaks>
 
-## Pre-Mortem <!--#pre-mortem-->
+## Pre-Mortem
 It's 12–18 months out and the strategy failed. The most likely narration of why:
 <one paragraph, traced back to a listed assumption>
 
-## What's Well-Reasoned <!--#what-s-well-reasoned-->
+## What's Well-Reasoned
 - <what holds up, and why — stated plainly, no manufactured doubt>
 
-## What I Couldn't Assess <!--#what-i-couldn-t-assess-->
+## What I Couldn't Assess
 - <gap where the strategy gave too little to judge>

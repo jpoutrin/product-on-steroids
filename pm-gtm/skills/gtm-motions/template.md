@@ -1,6 +1,6 @@
 # GTM Motions: <Product Name>
 
-## Product Profile <!--#product-profile-->
+## Product Profile
 - **ACV (Annual Contract Value):** <$X or range>
 - **Sales Cycle Length:** <X weeks/months>
 - **Buyer Type:** <individual/team/enterprise/mixed>
@@ -9,7 +9,7 @@
 - **Market Maturity:** <greenfield/emerging/mature>
 - **Team Size & GTM Experience:** <X people; GTM stage>
 
-## Motion Evaluation <!--#motion-evaluation-->
+## Motion Evaluation
 
 | Motion | Score (1–10) | Fit Rationale | Key Constraints |
 |--------|--------------|---------------|-----------------|
@@ -21,7 +21,7 @@
 | **ABM** | <X> | <why/why not for this product> | <e.g., target account concentration> |
 | **PLG** | <X> | <why/why not for this product> | <e.g., trial-ability & pricing> |
 
-## Recommended Motion Stack <!--#recommended-motion-stack-->
+## Recommended Motion Stack
 
 **Primary Motion(s):** <motion 1 (score)> [and <motion 2 (score)> if dual-primary]
 - **Rationale:** <why this motion is the best fit; how it aligns with ACV, cycle, buyer type, and product complexity>
@@ -34,27 +34,27 @@
 **Motions NOT Selected:**
 - <motion> — <concise reason for rejection given product constraints>
 
-## Buyer Journey Mapping <!--#buyer-journey-mapping-->
+## Buyer Journey Mapping
 
-### Awareness <!--#awareness-->
+### Awareness
 - **Primary Motion:** <how the primary motion generates awareness; e.g., "PLG: free trial signup flow">
 - **Secondary Motion:** <if applicable; e.g., "Community: organic reach via forums">
 
-### Consideration <!--#consideration-->
+### Consideration
 - <primary motion tactics for helping buyers evaluate>
 - <secondary motion tactics if applicable>
 
-### Decision <!--#decision-->
+### Decision
 - <primary motion tactics for reducing friction and closing>
 - <secondary motion tactics if applicable>
 
-### Retention & Expansion <!--#retention-expansion-->
+### Retention & Expansion
 - <primary motion tactics for reducing churn>
 - <secondary motion tactics for upsell>
 
-## 90-Day Activation Playbooks <!--#90-day-activation-playbooks-->
+## 90-Day Activation Playbooks
 
-### Primary Motion: <Name> <!--#primary-motion-name-->
+### Primary Motion: <Name>
 
 **Week 1–2: Foundation**
 - Quick wins: <e.g., "launch free trial landing page">
@@ -74,7 +74,7 @@
 - Team/tools required: <additional hires or tools>
 - Success gate: <e.g., "CAC ≤$X; payback ≤Y months">
 
-### Secondary Motion: <Name> [if applicable] <!--#secondary-motion-name-if-applicable-->
+### Secondary Motion: <Name> [if applicable]
 
 **Week 4–6: Launch**
 - Quick wins: <e.g., "50 community members recruited">
@@ -86,7 +86,7 @@
 - Focus: <retention and advocacy>
 - Success gate: <e.g., "referral rate ≥2% MoM">
 
-## Success Metrics & Measurement <!--#success-metrics-measurement-->
+## Success Metrics & Measurement
 
 | Motion | Metric | Target (90 days) | Leading Indicator |
 |--------|--------|------------------|-------------------|
@@ -98,7 +98,7 @@
 
 **Dashboard & Review Cadence:** <weekly/biweekly; tools and owners>
 
-## Key Assumptions & Risks <!--#key-assumptions-risks-->
+## Key Assumptions & Risks
 
 1. <Assumption> — confidence: <high/med/low> — validate by: <method; e.g., "cohort analysis of 50 free trial users">
 2. <Assumption> — confidence: <high/med/low> — validate by: <method>

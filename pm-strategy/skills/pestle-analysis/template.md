@@ -1,50 +1,50 @@
 # PESTLE Scan: <Product / Market>
 
-## Scope & As-Of Date <!--#scope-as-of-date-->
+## Scope & As-Of Date
 - **Product / business:** <what we are assessing>
 - **Market & geography:** <region(s) in scope>
 - **Sector / industry:** <sector>
 - **Driving question:** <market entry · strategy scoping · risk review>
 - **As of:** <YYYY-MM-DD — this is a point-in-time snapshot>
 
-## Political <!--#political-->
+## Political
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Economic <!--#economic-->
+## Economic
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Social <!--#social-->
+## Social
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Technological <!--#technological-->
+## Technological
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Legal <!--#legal-->
+## Legal
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Environmental <!--#environmental-->
+## Environmental
 | Factor | Impact (H/M/L) | Likelihood (H/M/L) | So what for our product |
 |--------|----------------|--------------------|--------------------------|
 | <factor + source or "estimate"> | <H/M/L> | <H/M/L> | <concrete implication> |
 
-## Priority Factors <!--#priority-factors-->
+## Priority Factors
 <High-impact × High/Med-likelihood factors pulled across all six lenses.>
 
 | Factor (lens) | Tag | Strategic response |
 |---------------|-----|--------------------|
 | <factor (lens)> | <Opportunity / Threat / Compliance> | <response> |
 
-## Assumptions & Watch-List <!--#assumptions-watch-list-->
+## Assumptions & Watch-List
 1. <assumption / unknown> — confidence: <high/med/low>
 2. <assumption / unknown> — confidence: <high/med/low>
 

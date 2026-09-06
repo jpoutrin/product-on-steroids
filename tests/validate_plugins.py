@@ -11,7 +11,6 @@ Checks:
     * type in {component, interactive, workflow}
     * source is "original" or "import:<repo>@<sha>"
 - SKILL.md body: required sections "## Output Contract" and "## Validation & Eval".
-- template.md: every '##'/'###' heading carries a unique '<!--#slug-->' anchor.
 - evals/: at least 3 scenario cards; each card has id, skill (== skill name),
     a non-empty `expected` list, and a non-empty `rubric` map.
 
@@ -238,48 +237,6 @@ def _output_contract_item_count(content: str) -> int:
     return len(re.findall(r"(?m)^\d+\.\s+\*\*", section))
 
 
-_FENCE_LINE = re.compile(r"^(```+|~~~+)")
-
-
-def strip_fenced_blocks(md: str) -> str:
-    """`md` with every fenced-code line blanked, so a `## heading` inside a
-    ``` example is not mistaken for a section.
-
-    Info strings (```mermaid) are handled; indented fences and nested fences of
-    differing lengths are not (deliberately out of scope).
-
-    A fence that never closes before end of file is not a fence: it is a
-    malformed template. The region from its opening delimiter onward is
-    reclassified as ordinary prose, so headings in it are still counted — the
-    safe failure direction is to over-report headings, not to silently exempt
-    them from the anchor check.
-
-    Duplicated in scripts/skillkit.py on purpose — this module is packaged
-    standalone, so the two must not import each other.
-    """
-    lines = md.split("\n")
-    out: list[str] = []
-    fence: str | None = None
-    fence_start: int | None = None
-    for i, line in enumerate(lines):
-        m = _FENCE_LINE.match(line)
-        if m:
-            tok = m.group(1)[0]
-            if fence is None:
-                fence = tok
-                fence_start = i
-            elif fence == tok:
-                fence = None
-                fence_start = None
-            out.append("")
-            continue
-        out.append("" if fence is not None else line)
-    if fence is not None:
-        for i in range(fence_start, len(lines)):
-            out[i] = lines[i]
-    return "\n".join(out)
-
-
 def validate_template(skill_dir: str, content: str) -> ValidationResult:
     r = ValidationResult()
     references = "template.md" in content
@@ -293,26 +250,11 @@ def validate_template(skill_dir: str, content: str) -> ValidationResult:
         # Count level-2 AND level-3 headings: a template may group Output Contract
         # sections under `##` value-flow buckets with the real sections as `###`
         # (e.g. a 9-block canvas), which still mirrors the contract.
-        # Fenced code blocks hold illustrative markdown, not sections: a `##` line
-        # inside one must neither be counted nor be told to grow an anchor.
-        prose = strip_fenced_blocks(body)
-        headings = len(re.findall(r"(?m)^#{2,3}\s", prose))
+        headings = len(re.findall(r"(?m)^#{2,3}\s", body))
         items = _output_contract_item_count(content)
         if items and headings < items:
             r.warn(f"template.md has {headings} '##'/'###' headings but the Output "
                    f"Contract lists {items} sections — headings should mirror them")
-        # Anchors are what make the output-conformance hook language-independent:
-        # it matches `<!--#slug-->`, not English heading text, so a deliverable
-        # written in the project's language is still structurally enforced.
-        anchors = re.findall(r"(?m)^#{2,3}\s+.*<!--#([a-z0-9-]+)-->\s*$", prose)
-        if len(anchors) < headings:
-            r.error(f"template.md: {headings - len(anchors)} of {headings} "
-                    f"'##'/'###' headings lack a '<!--#slug-->' anchor "
-                    f"(fix: just anchors)")
-        dupes = sorted({a for a in anchors if anchors.count(a) > 1})
-        if dupes:
-            r.error("template.md: duplicate anchor(s): "
-                    + ", ".join(f"#{d}" for d in dupes))
     return r
 
 

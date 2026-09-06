@@ -4,11 +4,11 @@
      Flag any inferred or uncertain element as [Low confidence — validate with: <source>].
      Delete this comment block when delivering the final brief. -->
 
-## Initiative Summary <!--#initiative-summary-->
+## Initiative Summary
 <2–4 sentences: what the initiative aims to achieve, the decision needed from
 stakeholders, and why it matters within the current time horizon.>
 
-## Political Map <!--#political-map-->
+## Political Map
 <Prose paragraph introducing the key dynamics, followed by the named roster table.>
 
 | Name / Role | Title | Power (H/M/L) | Stance | Rationale |
@@ -19,7 +19,7 @@ stakeholders, and why it matters within the current time horizon.>
 
 <Add rows as needed. Alliances and tensions not captured in the table go here as prose.>
 
-## Organizational Levers <!--#organizational-levers-->
+## Organizational Levers
 <Describe the approval chain from the PM's current position to final sign-off.
 Name the budget owner, identify veto holders, and note any committee or calendar
 cycle (planning sprint, QBR, board meeting) the decision must pass through and
@@ -33,7 +33,7 @@ when it next occurs.>
 
 **Next decision window:** <Date or event when the decision can realistically land>
 
-## Landscape Constraints <!--#landscape-constraints-->
+## Landscape Constraints
 <External forces that shape feasibility or urgency. Cover any relevant subset of:
 regulatory timelines, competitive moves, market timing, technology dependencies,
 board-level priorities. Prioritize forces with a concrete timeline within 12 months.>
@@ -41,7 +41,7 @@ board-level priorities. Prioritize forces with a concrete timeline within 12 mon
 - **<Force type>:** <Description and timeline>
 - **<Force type>:** <Description and timeline>
 
-## Risk Register <!--#risk-register-->
+## Risk Register
 <Top 3–5 political or organizational risks — not product risks. Each row is a
 named risk, not a generic category.>
 
@@ -51,7 +51,7 @@ named risk, not a generic category.>
 | 2 | <Specific named risk> | <H/M/L> | <H/M/L> | <Action the PM can take> |
 | 3 | <Specific named risk> | <H/M/L> | <H/M/L> | <Action the PM can take> |
 
-## Engagement Strategy <!--#engagement-strategy-->
+## Engagement Strategy
 <Sequenced list of stakeholder conversations — who to talk to, in what order,
 and why. Each step is tied to the Political Map or Risk Register.>
 

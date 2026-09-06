@@ -1,10 +1,10 @@
 # Experiment Designs: <Product/Feature>
 
-## Feature Idea & Assumptions <!--#feature-idea-assumptions-->
+## Feature Idea & Assumptions
 - **What we're testing:** <brief description of the feature or product change>
 - **Key assumptions:** <list of 2–4 testable beliefs we need to validate>
 
-## Experiments <!--#experiments-->
+## Experiments
 
 | Hypothesis | Experiment | Success Metric | Success Threshold | Cost Estimate | Timeline |
 |-----------|-----------|----------------|--------------------|--------------|----------|
@@ -12,10 +12,10 @@
 | | | | | | |
 | | | | | | |
 
-## Risk Mitigation <!--#risk-mitigation-->
+## Risk Mitigation
 <If A/B tests or production spikes are planned, name caps, rollback triggers, or time windows. Example: "Limit to 5% of free-tier users; rollback if error rate > 2%">
 
-## Prioritization Notes <!--#prioritization-notes-->
+## Prioritization Notes
 - **Highest risk to resolve:** <which assumption, if wrong, breaks the feature most>
 - **Fastest to test:** <which experiment runs quickest>
 - **Recommended order:** <sequence based on risk + learning value>

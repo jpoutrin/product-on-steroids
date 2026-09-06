@@ -1,12 +1,12 @@
 # Customer Journey Map: <Product / Persona>
 
-## Persona & Scope <!--#persona-scope-->
+## Persona & Scope
 - **Persona:** <role, segment, or archetype name>
 - **Job-to-be-done:** <what the customer is ultimately trying to accomplish>
 - **Stages in scope:** <list the stages covered, e.g. Awareness → Onboarding → Engagement>
 - **Research basis:** <evidence sources used, e.g. "12 user interviews, 200 NPS verbatims, Mixpanel funnel data">
 
-## Journey Stage Table <!--#journey-stage-table-->
+## Journey Stage Table
 
 | Stage | Touchpoints | User Actions | Thoughts & Questions | Emotion | Pain Points | Opportunities |
 |-------|-------------|--------------|----------------------|---------|-------------|---------------|
@@ -20,7 +20,7 @@
 
 > **Note:** Add, merge, or remove rows to match the product's actual journey. Label each Pain Point and Opportunity as [evidence] (grounded in research) or [inference] (hypothesis to validate).
 
-## Critical Moments <!--#critical-moments-->
+## Critical Moments
 
 **Aha Moment**
 > <Describe the specific moment when the customer first experiences the core value — what they do, what they see, and what shifts in their perception. Example: "User connects their first data source and sees the auto-generated dashboard — typically at ~8 min into onboarding.">
@@ -34,7 +34,7 @@
 - <Trigger 2> — Stage: <stage> — Evidence: [evidence/inference]
 - <Trigger 3> — Stage: <stage> — Evidence: [evidence/inference]
 
-## Prioritized Improvements <!--#prioritized-improvements-->
+## Prioritized Improvements
 
 | # | Opportunity | Stage | Impact | Effort | Label |
 |---|-------------|-------|--------|--------|-------|

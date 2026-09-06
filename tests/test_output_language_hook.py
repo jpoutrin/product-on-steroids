@@ -59,7 +59,6 @@ def test_directive_names_the_language_and_the_rules():
     d = hook.directive("fr")
     assert "**French**" in d
     assert "TAM/SAM/SOM" in d and "RICE" in d and "OKR" in d
-    assert "<!--#anchor-->" in d
     assert "stay English" in d
 
 

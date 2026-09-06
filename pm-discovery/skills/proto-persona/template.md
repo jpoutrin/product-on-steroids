@@ -5,13 +5,13 @@
 > this artifact as a substitute for validated user research. Run the Validation
 > Plan below before treating any claim here as fact.
 
-## Name & Role (Hypothesis) <!--#name-role-hypothesis-->
+## Name & Role (Hypothesis)
 
 **Name:** <Memorable first name, e.g. "Maya">
 **Role:** <Job title or life role, e.g. "Head of Sales Ops at a Series B SaaS startup">
 **Context:** <One sentence: where and when does this person encounter the problem this product addresses?>
 
-## Goals (Assumed) <!--#goals-assumed-->
+## Goals (Assumed)
 
 <!-- 3–5 bullet points: what is this person trying to achieve in the relevant context? -->
 
@@ -19,7 +19,7 @@
 - [ASSUMED] <Goal 2>
 - [ASSUMED] <Goal 3>
 
-## Frustrations (Assumed) <!--#frustrations-assumed-->
+## Frustrations (Assumed)
 
 <!-- 3–5 bullet points: what pain points or friction does this person face today? -->
 
@@ -27,7 +27,7 @@
 - [ASSUMED] <Frustration 2>
 - [ASSUMED] <Frustration 3>
 
-## Behaviors (Assumed) <!--#behaviors-assumed-->
+## Behaviors (Assumed)
 
 <!-- 3–5 bullet points: how does this person currently behave — tools used, workarounds, habits? -->
 
@@ -35,11 +35,11 @@
 - [ASSUMED] <Behavior 2>
 - [ASSUMED] <Behavior 3>
 
-## Quote (Invented) <!--#quote-invented-->
+## Quote (Invented)
 
 > [INVENTED] "<A plausible first-person quote that captures this persona's core frustration or aspiration.>"
 
-## Validation Plan <!--#validation-plan-->
+## Validation Plan
 
 <!-- 3–5 specific research actions tied to key assumptions. Each action should name the assumption it tests. -->
 

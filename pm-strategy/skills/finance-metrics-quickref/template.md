@@ -1,6 +1,6 @@
 # Finance & Business Metrics Quick-Reference
 
-## Quick-Reference Table <!--#quick-reference-table-->
+## Quick-Reference Table
 
 | Term | Definition | Formula | Why a PM cares |
 |------|-----------|---------|----------------|

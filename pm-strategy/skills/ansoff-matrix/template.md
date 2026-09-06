@@ -1,45 +1,45 @@
 # Ansoff Growth Matrix: <Product / Company>
 
-## Anchor <!--#anchor-->
+## Anchor
 - **Current product:** <what we sell today>
 - **Current market:** <customer type · segment · geography>
 
-## Matrix <!--#matrix-->
+## Matrix
 |                     | Current Market       | New Market          |
 |---------------------|----------------------|---------------------|
 | **Current Product** | Market Penetration   | Market Development  |
 | **New Product**     | Product Development   | Diversification     |
 
-## Quadrant Analysis <!--#quadrant-analysis-->
+## Quadrant Analysis
 
-### Market Penetration (current product / current market) — risk: Low <!--#market-penetration-current-product-current-market-risk-low-->
+### Market Penetration (current product / current market) — risk: Low
 <why low, one line>. Timeline: <indicative>.
 1. <concrete option for this product>
 2. <concrete option>
 3. <concrete option>
 
-### Market Development (current product / new market) — risk: Medium <!--#market-development-current-product-new-market-risk-medium-->
+### Market Development (current product / new market) — risk: Medium
 <why medium, one line>. Timeline: <indicative>.
 1. <concrete option>
 2. <concrete option>
 
-### Product Development (new product / current market) — risk: Medium <!--#product-development-new-product-current-market-risk-medium-->
+### Product Development (new product / current market) — risk: Medium
 <why medium, one line>. Timeline: <indicative>.
 1. <concrete option>
 2. <concrete option>
 
-### Diversification (new product / new market) — risk: High <!--#diversification-new-product-new-market-risk-high-->
+### Diversification (new product / new market) — risk: High
 <why high, one line>. Timeline: <indicative>.
 1. <concrete option>
 2. <concrete option>
 
-## Recommended Growth Path <!--#recommended-growth-path-->
+## Recommended Growth Path
 1. **<Quadrant>** — <why first; risk-reward + capability fit>. Advance trigger: <condition to move on>.
 2. **<Quadrant>** — <why next>. Advance trigger: <condition>.
 3. **<Quadrant>** — <why later / conditional>.
 
 > Do not pursue all four quadrants at once — <constraint that forces focus>.
 
-## Key Assumptions & Risks <!--#key-assumptions-risks-->
+## Key Assumptions & Risks
 1. <assumption> — confidence: <high/med/low> — validate by: <method>
 2. <assumption> — confidence: <high/med/low> — validate by: <method>

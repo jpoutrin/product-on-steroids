@@ -1,14 +1,14 @@
 # User Segmentation: <Product / Feature Area>
 
-## Executive Summary <!--#executive-summary-->
+## Executive Summary
 
 <1–2 sentences on the segmentation thesis: how many segments, on what behavioral/needs dimensions, and the key insight they enable.>
 
 Example: "This product base divides into 4 behavioral segments: workflow automators (users building complex multi-step automations), compliance-first teams (prioritizing audit trails and certifications), power users (exploring advanced features), and casual users (one-off task runners). The key insight: automation features are table-stakes for segments 1 & 2, but over-engineering them alienates segment 4."
 
-## Segment Profiles <!--#segment-profiles-->
+## Segment Profiles
 
-### Segment 1: <Segment Name> <!--#segment-1-segment-name-->
+### Segment 1: <Segment Name>
 
 **Overview**
 - **Estimated size:** <X>% of user base (<Y> feedback mentions)
@@ -44,7 +44,7 @@ Example: "This product base divides into 4 behavioral segments: workflow automat
 
 ---
 
-### Segment 2: <Segment Name> <!--#segment-2-segment-name-->
+### Segment 2: <Segment Name>
 
 **Overview**
 - **Estimated size:** <X>% of user base (<Y> feedback mentions)
@@ -73,13 +73,13 @@ Example: "This product base divides into 4 behavioral segments: workflow automat
 
 ---
 
-### Segment 3: <Segment Name> <!--#segment-3-segment-name-->
+### Segment 3: <Segment Name>
 
 <repeat structure as above>
 
 ---
 
-## Segment Prioritization Matrix <!--#segment-prioritization-matrix-->
+## Segment Prioritization Matrix
 
 | Segment | Strategic Importance | Implementation Difficulty | Recommendation |
 |---------|----------------------|---------------------------|-----------------|
@@ -87,7 +87,7 @@ Example: "This product base divides into 4 behavioral segments: workflow automat
 | <Segment 2> | ... | ... | ... |
 | <Segment 3> | ... | ... | ... |
 
-## Validation Notes <!--#validation-notes-->
+## Validation Notes
 
 - **Data sources:** <e.g., 15 customer interviews (Jan–Feb 2025), 120 support tickets (last 3 months), usage logs for 500 active users>
 - **Confidence levels:** <segment names> — high confidence (strong data), <segment names> — medium (inferred from limited feedback), <segment names> — low (needs follow-up research>

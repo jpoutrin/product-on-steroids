@@ -2,50 +2,50 @@
 
 > Type: <existing business — maps reality | proposed — inferred blocks labeled assumptions>
 
-## Create Value <!--#create-value-->
+## Create Value
 
-### Key Partnerships <!--#key-partnerships-->
+### Key Partnerships
 - <strategic partner / supplier> — provides <what>
 - <partnership or joint venture> — enables <which activity>
 
-### Key Activities <!--#key-activities-->
+### Key Activities
 - <critical activity> (<production | problem-solving | platform/network>)
 
-### Key Resources <!--#key-resources-->
+### Key Resources
 - <asset> (<physical | IP | human | financial>)
 
-## Deliver Value <!--#deliver-value-->
+## Deliver Value
 
-### Value Propositions <!--#value-propositions-->
+### Value Propositions
 - **<Segment A>:** <value delivered / problem solved> — <quantitative + qualitative>
 - **<Segment B>:** <value delivered / problem solved>
 
-### Customer Relationships <!--#customer-relationships-->
+### Customer Relationships
 - **<Segment A>:** <personal | self-service | automated | community | co-creation>
 - **<Segment B>:** <...>
 
-### Channels <!--#channels-->
+### Channels
 - **Awareness:** <how customers learn about us>
 - **Purchase:** <how they buy>
 - **Delivery:** <how value is delivered>
 - **After-sales:** <how we support> — (<direct/indirect · owned/partner>)
 
-### Customer Segments <!--#customer-segments-->
+### Customer Segments
 - **<Segment A>** (<mass | niche | segmented | multi-sided>) — <defining traits>
 - **<Segment B>** — <defining traits>
 
-## Capture Value <!--#capture-value-->
+## Capture Value
 
-### Revenue Streams <!--#revenue-streams-->
+### Revenue Streams
 - **<Segment A>:** <mechanism: transaction | subscription | licensing | usage> — <pricing logic>
 - **<Segment B>:** <mechanism> — <pricing logic>
 
-### Cost Structure <!--#cost-structure-->
+### Cost Structure
 - **Fixed:** <costs>
 - **Variable:** <costs> — driver: <scale | automation | labor | infrastructure>
 - Model type: <cost-driven | value-driven>
 
-## Coherence & Economics <!--#coherence-economics-->
+## Coherence & Economics
 - **How the blocks reinforce each other:** <create-side supports the value prop; delivery-side reaches the segments>
 - **Viability:** revenue <> cost at scale — <basis>; LTV <value> vs CAC <value> (target LTV > ~3x CAC)
 - **Key assumptions & risks:**

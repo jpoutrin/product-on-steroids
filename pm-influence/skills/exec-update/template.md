@@ -6,13 +6,13 @@
 
 ---
 
-## BLUF — <GREEN | AMBER | RED> <!--#bluf-green-amber-red-->
+## BLUF — <GREEN | AMBER | RED>
 <2–4 sentences: overall status signal, the single most important thing
 leadership needs to know, and the highest-priority ask or next action.>
 
 ---
 
-## Status <!--#status-->
+## Status
 **Completed this period:**
 - <one-sentence accomplishment>
 - <one-sentence accomplishment>
@@ -25,7 +25,7 @@ leadership needs to know, and the highest-priority ask or next action.>
 
 ---
 
-## Key Risks <!--#key-risks-->
+## Key Risks
 | # | Risk | Impact if unresolved | Owner |
 |---|------|----------------------|-------|
 | 1 | <risk name — one-sentence description> | <impact> | <name / team> |
@@ -36,7 +36,7 @@ leadership needs to know, and the highest-priority ask or next action.>
 
 ---
 
-## Asks <!--#asks-->
+## Asks
 1. <Verb> — <specific decision or action needed from leadership> by <date>.
 2. <Verb> — <specific decision or action needed from leadership> by <date>.
 
@@ -44,6 +44,6 @@ leadership needs to know, and the highest-priority ask or next action.>
 
 ---
 
-## Next Milestone <!--#next-milestone-->
+## Next Milestone
 <One to two sentences: what the next meaningful checkpoint is, its target
 date, and optionally what success looks like.>

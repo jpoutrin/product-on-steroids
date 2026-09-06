@@ -1,25 +1,25 @@
 # What We Are Shipping: <Sprint/Release Name>
 
-## Shipping Period <!--#shipping-period-->
+## Shipping Period
 - **Sprint/Release:** <sprint name, number, or version>
 - **Target dates:** <start date> to <end date>
 - **Teams involved:** <team(s) shipping this>
 - **Target audience/users:** <customer segment(s) or personas affected>
 
-## In Scope <!--#in-scope-->
+## In Scope
 Each feature listed ships in this sprint/release and is independently shippable:
 
 - **<Feature/Capability 1>:** <1–2 sentence description of what ships> [Link: Figma/GitHub/PRD/Jira]
 - **<Feature/Capability 2>:** <1–2 sentence description> [Link]
 - **<Feature/Capability 3>:** <1–2 sentence description> [Link]
 
-## Out of Scope <!--#out-of-scope-->
+## Out of Scope
 Major features or known requests explicitly *not* shipping this sprint/release:
 
 - **<Feature A>** — <reason: timeline/priority/dependency/risk> — scheduled for <target sprint/release>
 - **<Feature B>** — <reason>
 
-## Acceptance Criteria <!--#acceptance-criteria-->
+## Acceptance Criteria
 A feature/release is considered "shipped" when:
 - [ ] Code merged to main/production branch
 - [ ] All acceptance tests passing (unit + integration + regression)
@@ -29,7 +29,7 @@ A feature/release is considered "shipped" when:
 - [ ] Stakeholders (design, legal, marketing) notified and signed off
 - [ ] Release notes or announcement published
 
-## Key Dependencies <!--#key-dependencies-->
+## Key Dependencies
 Upstream/downstream work or external integrations this release depends on:
 
 | Dependency | Owner | Risk | Mitigation |
@@ -37,7 +37,7 @@ Upstream/downstream work or external integrations this release depends on:
 | <Dependency 1> | <Team/Person> | <Risk: blocked if not done> | <Mitigation: alt plan or timeline> |
 | <Dependency 2> | <Team/Person> | <Risk> | <Mitigation> |
 
-## Stakeholder Checklist <!--#stakeholder-checklist-->
+## Stakeholder Checklist
 Who needs to sign off, and who owns the communication:
 
 - [ ] **Design:** <name/team> — Verify visual designs finalized and handed to eng

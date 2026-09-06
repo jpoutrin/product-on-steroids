@@ -1,12 +1,12 @@
 # Metrics Dashboard Spec: <Product>
 
-## North Star Metric <!--#north-star-metric-->
+## North Star Metric
 - **NSM:** <metric name>
 - **Formula:** <numerator / denominator + time window>
 - **Why it captures value:** <the value moment it measures; why it leads business success>
 - **Target:** <goal value> (from <current baseline>)
 
-## Metric Tree <!--#metric-tree-->
+## Metric Tree
 ```
 NORTH STAR: <NSM> = <current> → <target>
    ├── Input 1: <metric> (<lifecycle stage>)   → drives NSM via <link>
@@ -16,7 +16,7 @@ NORTH STAR: <NSM> = <current> → <target>
 ```
 - **Link:** <the arithmetic or causal path from inputs up to the NSM>
 
-## Metric Definitions <!--#metric-definitions-->
+## Metric Definitions
 | Metric | Layer | Formula (numerator/denominator + window) | Cadence | Owner | Target | Alert Threshold |
 |--------|-------|------------------------------------------|---------|-------|--------|-----------------|
 | <NSM>   | North Star | <...> | <...> | <...> | <...> | <...> |
@@ -24,15 +24,15 @@ NORTH STAR: <NSM> = <current> → <target>
 | <guard> | Health     | <...> | <...> | <...> | <...> | <...> |
 | <biz>   | Business   | <...> | <...> | <...> | <...> | <...> |
 
-## Health Guardrails <!--#health-guardrails-->
+## Health Guardrails
 - **<metric>** — <what gaming/degradation it catches> — threshold: <value>
 - **<metric>** — <...> — threshold: <value>
 
-## Business Metrics <!--#business-metrics-->
+## Business Metrics
 - **<metric>** — <formula> — links the tree to <revenue/cost/unit economics>
 - **<metric>** — <...>
 
-## Review Cadence & Alerts <!--#review-cadence-alerts-->
+## Review Cadence & Alerts
 - **Daily:** <operational health metrics>
 - **Weekly:** <input metrics & engagement>
 - **Monthly:** <NSM, business metrics, OKR progress>

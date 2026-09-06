@@ -70,8 +70,7 @@ def directive(lang: str) -> str:
     name = LANGUAGE_NAMES.get(lang, lang)
     return (f"Deliverables produced by PM skills in this project are written in "
             f"**{name}**. Keep established PM terms (TAM/SAM/SOM, RICE, JTBD, NPS, "
-            f"ICP, OKR) untranslated, and preserve template `<!--#anchor-->` "
-            f"comments verbatim. Skill instructions and eval cards stay English.")
+            f"ICP, OKR) untranslated. Skill instructions and eval cards stay English.")
 
 
 def emit(text: str) -> None:

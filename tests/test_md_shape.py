@@ -156,9 +156,9 @@ def test_collapse_reaches_repeats_nested_inside_a_unit():
     assert [(s.depth, s.text) for s in out] == [(2, "Themes"), (3, "<Theme 1>")]
 
 
-def test_collapse_strips_an_inline_anchor_from_the_heading_name():
-    # Anchors still exist until Task 6; they must not leak into a section's name.
-    md = "## Priority 1: <Theme> <!--#priority-1-theme-->\n- a\n"
+def test_collapse_strips_an_inline_html_comment_from_the_heading_name():
+    # A trailing HTML comment on a heading line must not leak into its name.
+    md = "## Priority 1: <Theme> <!-- optional note -->\n- a\n"
     assert ms.parse_sections(md)[0].text == "Priority 1: <Theme>"
 
 

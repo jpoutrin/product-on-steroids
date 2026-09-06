@@ -1,16 +1,16 @@
 # Stakeholder Inventory: <Initiative Name>
 
-## Initiative Summary <!--#initiative-summary-->
+## Initiative Summary
 <One sentence: what this initiative does and what it changes, delivers, or decides. Confirms the lens used to identify stakeholders.>
 
-## Stakeholder Inventory <!--#stakeholder-inventory-->
+## Stakeholder Inventory
 
 | Role / Title | Function / Team | Why Included | Category |
 |---|---|---|---|
 | <Role> | <Team> | <One-line rationale> | <sponsor \| decision-maker \| contributor \| affected party \| gatekeeper \| external> |
 | <Role> | <Team> | <One-line rationale> | <category> |
 
-## Non-Obvious Stakeholders <!--#non-obvious-stakeholders-->
+## Non-Obvious Stakeholders
 
 The following stakeholders are commonly missed and warrant early outreach:
 
@@ -18,7 +18,7 @@ The following stakeholders are commonly missed and warrant early outreach:
 - **<Role / Function>** — <one-line rationale>
 - **<Role / Function>** — <one-line rationale>
 
-## Gaps & Uncertainties <!--#gaps-uncertainties-->
+## Gaps & Uncertainties
 
 - <Open question or unconfirmed role: e.g. "Unclear whether a Data Protection Officer exists in this org — validate before finalizing">
 - <Dependency not yet scoped>

@@ -1,6 +1,6 @@
 # Test Scenarios: <User Story Title>
 
-## Overview <!--#overview-->
+## Overview
 
 **User Story:** As a <role>, I want <goal>, so that <benefit>.
 
@@ -13,9 +13,9 @@
 
 ---
 
-## Test Scenarios <!--#test-scenarios-->
+## Test Scenarios
 
-### Scenario 1: <Scenario Name> <!--#scenario-1-scenario-name-->
+### Scenario 1: <Scenario Name>
 
 **Test Objective:** <What this scenario validates — one sentence tied to a specific acceptance criterion.>
 
@@ -39,7 +39,7 @@
 
 ---
 
-### Scenario 2: <Scenario Name> <!--#scenario-2-scenario-name-->
+### Scenario 2: <Scenario Name>
 
 **Test Objective:** <What this scenario validates.>
 
@@ -61,7 +61,7 @@
 
 ---
 
-### Scenario 3 (Edge Case): <Scenario Name> <!--#scenario-3-edge-case-scenario-name-->
+### Scenario 3 (Edge Case): <Scenario Name>
 
 **Test Objective:** <What edge or error condition is exercised.>
 
@@ -81,7 +81,7 @@
 
 ---
 
-## Coverage Summary <!--#coverage-summary-->
+## Coverage Summary
 
 | Acceptance Criterion | Scenario(s) | Gap |
 |----------------------|-------------|-----|
