@@ -113,3 +113,22 @@ def test_unanchored_heading_outside_fences_is_still_an_error(tmp_path):
                          "```markdown\n## Example Heading\n```\n"))
     r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
     assert any("anchor" in e for e in r.errors)
+
+
+def test_unterminated_backtick_fence_headings_are_still_counted(tmp_path):
+    # An unclosed ``` fence is a malformed template, not a real fence: a heading
+    # after it must still be counted (and demanded an anchor) rather than being
+    # silently swallowed into the "fenced" region for the rest of the file.
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE,
+            template_md=("# T\n## A <!--#a-->\n"
+                         "```\n## Inside unterminated fence\n## B\n"))
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert any("anchor" in e for e in r.errors)
+
+
+def test_unterminated_tilde_fence_headings_are_still_counted(tmp_path):
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE,
+            template_md=("# T\n## A <!--#a-->\n"
+                         "~~~\n## Inside unterminated fence\n## B\n"))
+    r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
+    assert any("anchor" in e for e in r.errors)

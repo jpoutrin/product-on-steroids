@@ -117,3 +117,30 @@ def test_anchor_template_tilde_inside_backtick_fence_does_not_close_it():
     src = "```\n~~~\n## Inside\n```\n## Outside\n"
     assert skillkit.anchor_template(src) == (
         "```\n~~~\n## Inside\n```\n## Outside <!--#outside-->\n")
+
+
+def test_anchor_template_unterminated_backtick_fence_is_treated_as_prose():
+    # An unclosed ``` fence is a malformed template, not a real fence: headings
+    # after it must still be anchored (fail safe by over-anchoring, not by
+    # silently exempting real headings).
+    src = ("## Real Before <!--#real-before-->\n"
+           "```\n"
+           "## Inside unterminated fence\n"
+           "## Real After\n")
+    assert skillkit.anchor_template(src) == (
+        "## Real Before <!--#real-before-->\n"
+        "```\n"
+        "## Inside unterminated fence <!--#inside-unterminated-fence-->\n"
+        "## Real After <!--#real-after-->\n")
+
+
+def test_anchor_template_unterminated_tilde_fence_is_treated_as_prose():
+    src = ("## Real Before <!--#real-before-->\n"
+           "~~~\n"
+           "## Inside unterminated fence\n"
+           "## Real After\n")
+    assert skillkit.anchor_template(src) == (
+        "## Real Before <!--#real-before-->\n"
+        "~~~\n"
+        "## Inside unterminated fence <!--#inside-unterminated-fence-->\n"
+        "## Real After <!--#real-after-->\n")

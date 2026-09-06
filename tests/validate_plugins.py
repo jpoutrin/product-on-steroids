@@ -246,23 +246,37 @@ def strip_fenced_blocks(md: str) -> str:
     ``` example is not mistaken for a section.
 
     Info strings (```mermaid) are handled; indented fences and nested fences of
-    differing lengths are not (deliberately out of scope). Duplicated in
-    scripts/skillkit.py on purpose — this module is packaged standalone, so the
-    two must not import each other.
+    differing lengths are not (deliberately out of scope).
+
+    A fence that never closes before end of file is not a fence: it is a
+    malformed template. The region from its opening delimiter onward is
+    reclassified as ordinary prose, so headings in it are still counted — the
+    safe failure direction is to over-report headings, not to silently exempt
+    them from the anchor check.
+
+    Duplicated in scripts/skillkit.py on purpose — this module is packaged
+    standalone, so the two must not import each other.
     """
+    lines = md.split("\n")
     out: list[str] = []
     fence: str | None = None
-    for line in md.split("\n"):
+    fence_start: int | None = None
+    for i, line in enumerate(lines):
         m = _FENCE_LINE.match(line)
         if m:
             tok = m.group(1)[0]
             if fence is None:
                 fence = tok
+                fence_start = i
             elif fence == tok:
                 fence = None
+                fence_start = None
             out.append("")
             continue
         out.append("" if fence is not None else line)
+    if fence is not None:
+        for i in range(fence_start, len(lines)):
+            out[i] = lines[i]
     return "\n".join(out)
 
 

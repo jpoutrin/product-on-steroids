@@ -56,22 +56,33 @@ def _fence_mask(lines: list[str]) -> list[bool]:
     are handled; indented fences and nested fences of differing lengths are not
     (deliberately out of scope).
 
+    A fence that never closes before end of file is not a fence: it is a
+    malformed template. The region from its opening delimiter onward is
+    reclassified as ordinary prose, so headings in it still get anchored — the
+    safe failure direction is to over-anchor, not to silently exempt headings.
+
     Duplicated in tests/validate_plugins.py on purpose: this module ships inside
     installed plugins and must stay self-contained.
     """
     mask: list[bool] = []
     fence: str | None = None
-    for line in lines:
+    fence_start: int | None = None
+    for i, line in enumerate(lines):
         m = _FENCE_LINE.match(line)
         if m:
             tok = m.group(1)[0]
             if fence is None:
                 fence = tok
+                fence_start = i
             elif fence == tok:
                 fence = None
+                fence_start = None
             mask.append(True)
             continue
         mask.append(fence is not None)
+    if fence is not None:
+        for i in range(fence_start, len(mask)):
+            mask[i] = False
     return mask
 
 
