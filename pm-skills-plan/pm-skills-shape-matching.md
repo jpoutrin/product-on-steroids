@@ -26,7 +26,7 @@ That works, and it is worse than it needs to be:
   anchors matches nothing, falls under the half-threshold, and is treated as an unrelated
   file. That is the exact fail-open the design set out to close, reached by another door.
 - **Repeats are enforced by exact count.** A template showing five storyboard frames makes
-  a three-frame storyboard fail. Twelve templates hardcode a repeating block. This is a
+  a three-frame storyboard fail. Twenty-one templates hardcode a repeating block. This is a
   regression the anchor migration introduced: under the old text matching, five identical
   `Scene` headings all tested `"Scene" in content` and were accidentally conflated, so
   cardinality was never enforced.
@@ -64,14 +64,16 @@ partner. The document needs no markers of any kind.
 A markdown document becomes an ordered list of one record per `##`/`###` heading:
 
 ```python
-Section = namedtuple("Section", "depth blocks")
-# depth  : 2 or 3
-# blocks : the kinds of content between this heading and the next, in order —
-#          "para", "list", "table:<n-columns>", "code", "quote"
+class Section(NamedTuple):
+    depth: int                  # 2 or 3
+    text: str                   # heading text — template side only, never compared
+    blocks: tuple[str, ...]     # content between this heading and the next, in order:
+                                # "para", "list", "table:<n>", "code", "quote"
 ```
 
-`## Summary` followed by a three-column table is `Section(2, ["table:3"])`. Deliberately
-coarse:
+`## Summary` followed by a three-column table is `Section(2, "Summary", ("table:3",))`.
+`text` is carried so the template side can group repeat families and name a missing section;
+it is never read on the document side. Deliberately coarse:
 
 - **List and paragraph counts are not recorded.** A template showing two example assumptions
   must not force a document to have exactly two.
@@ -90,27 +92,31 @@ Fence tracking lives inside the parser, so a `##` line inside a code block is no
 Consecutive same-depth template headings whose text is identical after replacing digit runs
 with `N` form a **repeat family** — `Frame 1 — <Frame Title>`, `Frame 2 — <Frame Title>`.
 The family's unit is the head record plus every deeper record before the next family member,
-so a storyboard frame's four `###` children travel with it.
+so a storyboard frame's four `###` children travel with it. The comparison recurses into
+each unit's children before comparing units, because repeats come in two shapes: repeated
+`##` units (storyboard's frames), and `###` siblings repeating inside one `##` bucket
+(retro's themes). Only the recursion sees the second.
 
 A family collapses to a single record with **`min_occurs = 1`**. Always one; no
 configuration. A three-frame storyboard passes, so does a nine-frame one. The hook's job is
 "did you forget a whole section", not "is this a good storyboard" — that judgment belongs to
 the eval cards.
 
-This heuristic was measured against the corpus and identified all twelve repeating templates
-(`storyboard`, `positioning-ideas`, `brainstorm-ideas-existing`, `job-stories`, `retro`,
-`user-segmentation`, `opportunity-solution-tree`, `user-story-mapping`, `user-story-splitting`,
-`value-prop-statements`, `brainstorm-experiments-new`, `shipping-artifacts`) with no false
-positives.
+Measured against the corpus by running the implementation over all 110 templates: **21
+collapse**, and every dropped heading is plainly a second instance (`Theme 2`, `Gap 2`,
+`Q2 / Phase 2`, `Priority 2`). No false positives. An earlier estimate of twelve came from a
+looser heuristic that counted only headings repeated three or more times, and missed both
+two-instance repeats and nested `###` siblings.
 
 ### 3. Alignment
 
 Needleman–Wunsch over the two record sequences. Scoring, concretely: `+2` when depths are
 equal and every block kind matches, `+1` when depths are equal and the block kinds overlap
-at all, `-1` when depths differ, and `-1` for a gap. A gap is therefore always cheaper than
-a depth mismatch, which is what stops one omitted section from dragging the rest of the
-sequence out of register. These four numbers are pinned by a test, not tuned by feel.
-Sequences are 8–30 records, so the O(n·m) table is free.
+at all, `0` when only the depths match, `-3` when the depths differ, and `-1` for a gap.
+Pairing two mismatched records must cost more than gapping both (`-2`), or the aligner
+prefers the mismatch and one omitted section drags the rest of the sequence out of register
+— which is why the mismatch penalty is `-3` and not `-1`. These five numbers are pinned by
+a test, not tuned by feel. Sequences are 8–30 records, so the O(n·m) table is free.
 
 A naive index-by-index comparison is the thing to avoid: one missing section shifts every
 later position and reports six failures instead of one.
