@@ -7,7 +7,7 @@ input:
 expected:
   - "The whole deliverable — headings, prose, table labels — is written in French"
   - "Keeps TAM, SAM and SOM untranslated as the section labels for the three figures"
-  - "Preserves every <!--#anchor--> comment from template.md verbatim on its heading line"
+  - "Preserves the template's section structure: same sections, same order, same heading levels"
   - "Still reports TAM, SAM and SOM as three distinct numbers with a top-down and a bottom-up TAM reconciled"
   - "States every key assumption explicitly with a source or a caveat and a confidence level"
 rubric:
@@ -20,8 +20,8 @@ weight: 1.0
 
 Language card: the project declares French, so the memo is French but its
 structure is unchanged. Guards against the two failure modes that matter — an
-English memo in a French project, and a French memo that drops the anchors (or
-translates TAM/SAM/SOM) and so escapes the output-conformance hook.
+English memo in a French project, and a French memo that reorganises or drops
+sections (or translates TAM/SAM/SOM) and so no longer matches the template.
 
 This is the pattern to copy for any skill whose output language is load-bearing;
 see docs/output-language.md.

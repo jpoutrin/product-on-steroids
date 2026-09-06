@@ -37,29 +37,37 @@ non-English language is declared, injects:
 
 > Deliverables produced by PM skills in this project are written in **French**.
 > Keep established PM terms (TAM/SAM/SOM, RICE, JTBD, NPS, ICP, OKR)
-> untranslated, and preserve template `<!--#anchor-->` comments verbatim. Skill
-> instructions and eval cards stay English.
+> untranslated. Skill instructions and eval cards stay English.
 
-## Why templates carry `<!--#anchor-->` comments
+## How a translated document is still checked
 
-Each `##`/`###` heading in a `template.md` ends with an anchor:
+A `PostToolUse` hook checks each produced document against its skill's template.
+It compares **structure**, not words: how many sections, at what heading level,
+in what order, holding what kinds of content — paragraphs, lists, tables and
+their column counts.
 
-```markdown
-## Market Definition <!--#market-definition-->
-```
+Structure survives translation; heading text does not. So a memo whose every
+heading is in French matches its English template exactly, and the document
+carries no markers, comments or frontmatter of any kind.
 
-The `PostToolUse` conformance hook checks a produced document against its
-skill's template. Matching on English heading text would silently pass any
-translated document; matching on the anchor works in any language. The anchor
-therefore has to survive into the deliverable. It is invisible in every rendered
-view (GitHub, Notion, Confluence, PDF) and visible only when reading raw
-markdown — the accepted cost of keeping the structural gate.
+When a section is missing, the hook names it from the template, in English, along
+with its neighbours so it can be located in a document written in another
+language:
 
-Anchors are generated, never hand-written: `just anchors [plugin]`. The linter
-rejects a template whose headings lack anchors or whose anchors collide.
-Renaming a heading keeps its existing anchor — the slug is an opaque identifier,
-and regenerating it would orphan every document already produced from that
-template.
+> Missing: "SAM — Serviceable Addressable Market" (a level-2 section, expected
+> between "TAM — Total Addressable Market" and "SOM — Serviceable Obtainable
+> Market").
+
+A section a template draws several times — Frame 1, Frame 2, … — is understood as
+a repeating block. A document may contain as many as it needs, and at least one.
+
+## Making a template your own
+
+Copy a skill's `template.md` to `.config/pm-skills/<skill>/template.md` in your
+project and the hook enforces that instead of the plugin's. Translate the
+headings, the bullet labels and the table column headers; drop sections you never
+fill in; add ones you need. It is the same markdown file — there is nothing new
+to learn, and nothing to keep in sync.
 
 ## What stays English
 
@@ -74,18 +82,11 @@ template.
 - With all five plugins installed, a non-English project gets the directive five
   times (~4 lines each). The hooks are separate processes racing at startup, so
   there is no clean dedupe.
-- A deliverable that translates its headings **and** drops every anchor is
-  indistinguishable from an unrelated file, and passes silently. This is
-  unavoidable: the hook only speaks up once a file matches at least half the
-  template, and with no anchors and no English headings nothing matches. It is
-  mitigated, not closed — the injected directive says to preserve anchors, the
-  hook repeats that instruction whenever it fires, and `market-sizing`'s French
-  eval card asserts the anchors survive. A document that keeps its English
-  headings *is* caught: heading text still counts toward the recognition
-  threshold, so the missing anchors are reported and restored on the next edit.
-- The directive is carried by the `SessionStart` hook, which fires only for a
-  language declared in `.config/pm-skills.yaml`. Asking for a language in the
-  prompt (resolution rule 1) inside an English-configured project therefore
-  translates the deliverable with **no** preserve-anchors instruction — straight
-  into the fail-open above. Declare the language in `.config/pm-skills.yaml` for
-  the reliable path.
+- A language asked for in the prompt (resolution rule 1) does not go through the
+  `SessionStart` hook, so it gets no directive — only the prose language changes,
+  and PM jargon may be translated when it should not be. Declaring the language
+  in `.config/pm-skills.yaml` is the reliable path.
+- Structural checking is deliberately coarse: it verifies that sections exist,
+  at the right level, containing the right kind of content. Whether a figure is
+  cited or an assumption carries a confidence level is a question of quality, and
+  belongs to each skill's eval cards.

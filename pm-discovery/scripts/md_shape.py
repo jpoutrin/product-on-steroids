@@ -169,8 +169,7 @@ def parse_sections(md: str) -> list[Section]:
                 if depth is not None:
                     out.append(Section(depth, text, tuple(blocks)))
                 # An inline HTML comment on a heading line is a marker, not part
-                # of the name. Stripping it keeps error messages clean while the
-                # old anchors are still present (they go in Task 6).
+                # of the section's name, so it is stripped from the heading text.
                 depth = d
                 text = _INLINE_COMMENT.sub("", m.group(2)).strip()
                 blocks = []

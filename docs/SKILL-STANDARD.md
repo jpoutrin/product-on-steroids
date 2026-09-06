@@ -112,8 +112,8 @@ skill must not fall for).
 per-language card. Where output language is genuinely load-bearing for a skill,
 add one card whose `input.context` declares a non-English project and whose
 `expected` traits assert the deliverable is in that language, that PM jargon is
-untranslated, and that template anchors survive. `market-sizing` carries the
-reference card (`evals/market-sizing-fr-project.md`); see
+untranslated, and that the section structure is unchanged. `market-sizing`
+carries the reference card (`evals/market-sizing-fr-project.md`); see
 [`docs/output-language.md`](output-language.md).
 
 ## 5. Definition of "done" for a skill
