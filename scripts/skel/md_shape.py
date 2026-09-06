@@ -275,6 +275,20 @@ def _similarity(a: Section, b: Section) -> int:
     return _SCORE_DEPTH_ONLY
 
 
+def is_exact_match(a: Section, b: Section) -> bool:
+    """Do these two records carry real evidence of being the same section?
+
+    True only for the top score: same depth *and* the same block kinds in the
+    same order. Anything weaker is not evidence — two same-depth records always
+    pair in `align`, because even a bare depth match (0) beats gapping both
+    (-2), so "these two were paired" says almost nothing on its own. A caller
+    that needs a pairing to *mean* something — deciding whether a file is the
+    expected document at all, rather than which of its sections went where —
+    must ask this instead of merely testing for a non-`None` partner.
+    """
+    return _similarity(a, b) == _SCORE_EXACT
+
+
 def align(want: list[Section], got: list[Section]) -> list[int | None]:
     """Needleman–Wunsch. For each `want` index, the `got` index it matched, or
     `None` when nothing partnered it.

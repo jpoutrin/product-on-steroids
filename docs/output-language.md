@@ -42,24 +42,48 @@ non-English language is declared, injects:
 ## How a translated document is still checked
 
 A `PostToolUse` hook checks each produced document against its skill's template.
-It compares **structure**, not words: how many sections, at what heading level,
-in what order, holding what kinds of content — paragraphs, lists, tables and
-their column counts.
+It compares **structure**, not words: it reports the sections the template has
+and the document does not, matching them by heading level and order. It also
+reads what kind of content each section holds — paragraph, list, table and its
+column count — but only to work out whether the file it is looking at is the
+skill's deliverable at all (see below); it never reports a section for holding
+the wrong kind of content.
 
 Structure survives translation; heading text does not. So a memo whose every
 heading is in French matches its English template exactly, and the document
 carries no markers, comments or frontmatter of any kind.
 
-When a section is missing, the hook names it from the template, in English, along
-with its neighbours so it can be located in a document written in another
-language:
+When a section is missing, the hook locates it by heading level and by its
+neighbours — which is what makes the message usable in a document written in
+another language — and offers the template's English heading as a candidate
+name:
 
-> Missing: "SAM — Serviceable Addressable Market" (a level-2 section, expected
-> between "TAM — Total Addressable Market" and "SOM — Serviceable Obtainable
-> Market").
+> A section is missing: a level-2 section between "TAM — Total Addressable
+> Market" and "SOM — Serviceable Obtainable Market" — probably "SAM —
+> Serviceable Addressable Market".
+
+The level and the neighbours are reliable. The name is a best guess and is worded
+as one: two sections with the same shape are interchangeable to a shape check, so
+when one of a pair of lookalikes is dropped the hook cannot always tell which.
+Over the whole corpus the *number* of missing sections is right every time and
+the name about three times in four.
 
 A section a template draws several times — Frame 1, Frame 2, … — is understood as
 a repeating block. A document may contain as many as it needs, and at least one.
+
+### When the hook decides to speak at all
+
+The hook runs on every markdown file you write while a PM skill is loaded, and
+most of them are not that skill's deliverable. So before reporting anything it
+asks whether this file *is* the deliverable, and it only says yes when **at least
+half the template's sections are already present with an exactly matching shape**
+— same heading level, and the same kinds of content in the same order. A README
+or a page of meeting notes does not clear that bar, whatever it is called and
+whatever language it is in, so nothing is reported for it.
+
+That is the one place content kinds are decisive. Once a file is recognised, a
+section counts as present on a much weaker match, so a wrong table width or a
+list where the template shows a paragraph is not reported as an error.
 
 ## Making a template your own
 
@@ -86,7 +110,11 @@ to learn, and nothing to keep in sync.
   `SessionStart` hook, so it gets no directive — only the prose language changes,
   and PM jargon may be translated when it should not be. Declaring the language
   in `.config/pm-skills.yaml` is the reliable path.
-- Structural checking is deliberately coarse: it verifies that sections exist,
-  at the right level, containing the right kind of content. Whether a figure is
+- Structural checking is deliberately coarse: it verifies that sections exist, at
+  the right level, in the right order. Content kinds decide only whether the file
+  is the deliverable at all — they never make a section count as missing, so a
+  section holding the wrong kind of content is not reported. Whether a figure is
   cited or an assumption carries a confidence level is a question of quality, and
   belongs to each skill's eval cards.
+- The reported *name* of a missing section is a candidate, not a finding: right
+  about three times in four. The count, the level and the neighbours are right.

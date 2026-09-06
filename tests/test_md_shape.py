@@ -261,3 +261,21 @@ def test_align_nested_depths_stay_paired():
     want = [S(2, "A"), S(3, "a1"), S(3, "a2"), S(2, "B")]
     got = [S(2, "x"), S(3, "x1"), S(3, "x2"), S(2, "y")]
     assert ms.align(want, got) == [0, 1, 2, 3]
+
+
+def test_is_exact_match_requires_the_same_block_kinds_in_the_same_order():
+    assert ms.is_exact_match(S(2, "A", ("list", "table:3")), S(2, "b", ("list", "table:3")))
+    assert not ms.is_exact_match(S(2, "A", ("list",)), S(2, "b", ("para",)))
+    assert not ms.is_exact_match(S(2, "A", ("list", "para")), S(2, "b", ("para", "list")))
+    assert not ms.is_exact_match(S(2, "A", ("table:3",)), S(2, "b", ("table:4",)))
+    assert not ms.is_exact_match(S(2, "A", ("list",)), S(3, "b", ("list",)))
+
+
+def test_is_exact_match_is_stricter_than_being_paired():
+    # The distinction the recognition threshold turns on: two bare same-depth
+    # records always pair (0 beats gapping both at -2), yet carry no evidence
+    # of being the same section.
+    want = [S(2, "A", ("list",))]
+    got = [S(2, "b", ("para",))]
+    assert ms.align(want, got) == [0]
+    assert not ms.is_exact_match(want[0], got[0])

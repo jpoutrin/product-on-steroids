@@ -51,20 +51,56 @@ def test_french_artifact_with_no_markers_is_silent(tmp_path):
     assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
 
 
-def test_missing_section_is_flagged_and_named_from_the_template(tmp_path):
+def test_missing_section_is_flagged_and_located_in_the_template(tmp_path):
     # The table section is gone; the other three still align by block kind.
     art = _write(tmp_path, "memo.md",
                  "## Définition du marché\n- a\n## Marché total\nprose\n"
                  "## Marché obtenable\n> q\n")
     code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
     assert code == 2
-    assert "SAM" in msg               # named in English, from the template
-    assert "TAM" in msg               # its neighbour, to locate it
-    assert "SOM" in msg               # its other neighbour
+    assert "level-2" in msg            # the level: reliable
+    assert "TAM" in msg                # a neighbour, to locate it: reliable
+    assert "SOM" in msg                # the other neighbour
+    assert 'probably "SAM"' in msg     # the name: a candidate, not an assertion
+
+
+def test_the_missing_section_name_is_offered_and_not_asserted(tmp_path):
+    # Four interchangeable sections — same depth, same single paragraph. The
+    # second is dropped, and a shape matcher cannot possibly know that: it
+    # reports the last. The count is right, the name is not, and the message
+    # must say so. Measured over the corpus: count right 750/750, name 537/750.
+    tmpl = _write(tmp_path, "template.md",
+                  "# T\n## Alpha\nprose\n## Beta\nprose\n"
+                  "## Gamma\nprose\n## Delta\nprose\n")
+    art = _write(tmp_path, "memo.md", "## Un\nprose\n## Deux\nprose\n## Trois\nprose\n")
+    code, msg = checker.evaluate(_payload(art), tmpl)
+    assert code == 2
+    assert "A section is missing" in msg      # singular: exactly one, correctly
+    assert msg.count("level-") == 1
+    assert 'probably "Delta"' in msg          # ... and it names the wrong one
+    assert "not a certainty" in msg           # which is why it hedges
 
 
 def test_unrelated_file_stays_silent(tmp_path):
-    art = _write(tmp_path, "notes.md", "# Random notes\nnothing structured here\n")
+    # A realistic multi-section document — a project README, not the skill's
+    # deliverable. It has as many `##` headings as the template, so a rule that
+    # counts any alignment pair recognises it and starts editing it. Only
+    # matching *content kinds* tell the two apart.
+    art = _write(tmp_path, "notes.md",
+                 "# Deploy runbook\n\n"
+                 "## Prerequisites\n"
+                 "You need VPN access and a current kubeconfig.\n\n"
+                 "## Rolling out\n"
+                 "- drain the node pool\n"
+                 "- apply the manifest\n"
+                 "- watch the rollout finish\n\n"
+                 "## Rolling back\n"
+                 "Run the previous revision. It has never taken more than a minute.\n\n"
+                 "## Who to page\n"
+                 "- platform on-call first\n"
+                 "- the service owner if the database is involved\n\n"
+                 "## Known issues\n"
+                 "The staging cluster still reports a stale metric after a rollback.\n")
     assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
 
 

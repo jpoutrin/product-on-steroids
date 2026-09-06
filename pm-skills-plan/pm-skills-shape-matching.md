@@ -77,8 +77,11 @@ it is never read on the document side. Deliberately coarse:
 
 - **List and paragraph counts are not recorded.** A template showing two example assumptions
   must not force a document to have exactly two.
-- **Table column count is recorded.** It is stable, meaningful, and a wrong column count is a
-  real defect.
+- **Table column count is recorded.** It is stable and meaningful. Note what it is *for*:
+  block kinds steer which document section a template record pairs with (§3) and gate whether
+  the file is recognised as the deliverable at all (§4). They never make a record unmatched,
+  so a wrong column count is not reported as a missing section. An earlier draft of this
+  paragraph called it "a real defect", implying enforcement that does not exist.
 - **The document's heading text is never read.** Not once. The *template's* heading text is
   read exactly twice, both times on the plugin side and never compared against the document:
   once to group repeat families (§2) and once to name a missing section in the message (§5).
@@ -128,34 +131,77 @@ not an error.
 ### 4. Is this file the deliverable?
 
 The existing half-threshold rule, computed on shape: if fewer than half the template's
-records find a partner, stay silent. "Records" means post-collapse (§2), so a repeat family
+records are present, stay silent. "Records" means post-collapse (§2), so a repeat family
 counts once however many times the template draws it — otherwise the five frames of a
 storyboard would dominate the threshold for a document that has three.
 
-**The threshold becomes reliable rather than a liability.** It was unsafe before because
-translation destroyed the signal it measured — a French document matched zero English
-headings and looked unrelated. Shape survives translation intact, so a translated
-deliverable now scores near 100% and only genuinely different files fall below the line.
+**"Present" must mean an exact block-kind match, not merely "the aligner paired it."**
+This is the correction that matters, and the original text of this section got it wrong:
+
+> ~~The threshold becomes reliable rather than a liability. It was unsafe before because
+> translation destroyed the signal it measured — a French document matched zero English
+> headings and looked unrelated. Shape survives translation intact, so a translated
+> deliverable now scores near 100% and only genuinely different files fall below the line.~~
+
+That argument only examined the **false-negative** direction — will a real deliverable still
+be recognised. The **false-positive** direction was never analysed, and measurement refuted
+the premise. Counting any non-`None` pair recognises almost everything: two same-depth
+records *always* pair, because a bare depth match scores 0 while gapping both costs −2, and
+66 of the 110 templates are entirely depth-2. The threshold degenerates into "does this `.md`
+file have roughly half as many `##` headings as the template". Measured over 110 templates ×
+5 unrelated repo documents (550 pairs):
+
+| criterion for "present" | recognised as the deliverable | spurious exit-2 blocks |
+|---|---|---|
+| any pair | 517 / 550 | 276 / 550 |
+| block kinds overlap (≥ +1) | 247 / 550 | 79 / 550 |
+| **block kinds identical (== +2)** | **7 / 550** | **0 / 550** |
+
+The hook is wired `matcher: "Write|Edit"` with no path filter, so it fires on every `.md`
+write while a PM skill is loaded. A false positive does not merely produce a noisy message:
+exit 2 feeds it back to the model, which is then told to add "TAM — Total Addressable Market"
+to the user's meeting notes. The harm is asymmetric — a false block corrupts a user's file, a
+false negative leaves one deliverable unchecked — so the criterion is the exact one, and the
+threshold is where the coarse block-kind data earns its keep. Against a harsh simulation of a
+real deliverable (all headings translated, one block kind rewritten in 34% of sections)
+recognition still holds for 91–103 of the 110 templates depending on which sections the
+simulation perturbs; a document that actually follows its template is recognised 110/110.
 
 **No frontmatter marker.** `schema: <name>` in the deliverable was considered at length and
-dropped: it re-introduces the leakage that shape matching removes, it is another thing a
-model must remember, and it earns nothing once the threshold is reliable. If strict
-identification is ever wanted, it can be added without changing anything here.
+dropped: it re-introduces the leakage that shape matching removes, and it is another thing a
+model must remember. The original reasoning added "and it earns nothing once the threshold is
+reliable" — that premise did not survive contact with the corpus, and the decision must not
+rest on it. It stands on the two remaining reasons, plus the measurement above: with the
+exact criterion the threshold is a working discriminator (0 false blocks in 550), so a marker
+would buy accuracy that is already there at a cost the design set out to remove. Should the
+false-negative rate ever become the binding problem — a project whose deliverables diverge
+structurally enough to fall under the line — a marker is the answer, and it can be added
+without changing anything here.
 
 ### 5. Messages
 
 The template holds English headings, and the hook holds the template, so a missing section
-is named without the document containing any marker:
+can be located without the document containing any marker:
 
 ```
 Output does not follow the skill's template.md.
-Missing: "SAM — Serviceable Addressable Market" (a level-2 section, expected between
-"TAM — Total Addressable Market" and "SOM — Serviceable Obtainable Market").
-Add it, or disregard if this file is not the skill's deliverable.
+A section is missing: a level-2 section between "TAM — Total Addressable Market" and
+"SOM — Serviceable Obtainable Market" — probably "SAM — Serviceable Addressable Market".
+The level and the neighbours are reliable; the quoted name is the template's best guess
+at which section was dropped, not a certainty — check before adding one, so you do not
+duplicate a section that is already there. ...
 ```
 
 Naming the neighbours is what makes the message actionable when the heading itself will be
 written in another language.
+
+**The name is hedged on purpose.** Measured over 750 single-deletion trials across all 110
+templates: the *count* of missing sections is right 750/750, but the section *named* is right
+only 537/750 (72%). Structurally identical sections are interchangeable to a shape matcher,
+so when one of a pair of lookalikes is dropped the aligner cannot tell which. Asserting the
+name flatly at 72% invites the worst repair available — adding a duplicate of a section that
+is already in the document. The level, the neighbours and the count are stated plainly; the
+name is offered as a candidate.
 
 ### 6. Project-owned templates
 
@@ -193,7 +239,12 @@ copied verbatim into five plugins and a second file doubles that overhead.
 are indistinguishable by shape. If a document omits one and the aligner pairs the survivor
 with the wrong template record, the reported *name* may be the neighbour's. The count is
 still right and the fix is still correct. Accepted: the alternative is reading text, which
-is the thing being removed.
+is the thing being removed. This was accepted qualitatively and later measured — 537/750,
+see §5 — which is why the message hedges the name instead of asserting it.
+
+Coarseness has a second consequence, which the original draft of §4 missed: it makes
+"the aligner paired these two" nearly meaningless as evidence, and so it constrains the
+recognition threshold as well as the message. See §4.
 
 **No enforcement gap during rollout.** The anchors keep working until shape matching is
 proven, and are deleted in the same branch. There is never a commit where nothing is
