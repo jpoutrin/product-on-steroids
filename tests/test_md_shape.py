@@ -82,6 +82,23 @@ def test_blank_lines_produce_no_blocks():
     assert ms.parse_sections("## A\n\n\n") == [ms.Section(2, "A", ())]
 
 
+def test_table_with_doubled_boundary_pipe_counts_empty_cell():
+    md = "## S\n|| B | C |\n"
+    assert ms.parse_sections(md)[0].blocks == ("table:3",)
+
+
+def test_table_with_escaped_pipe_does_not_add_a_column():
+    md = "## S\n| A | B\\| esc | C |\n"
+    assert ms.parse_sections(md)[0].blocks == ("table:3",)
+
+
+def test_unterminated_html_comment_does_not_swallow_a_heading():
+    # Same failure class as an unterminated fence: a stray `<!--` must not
+    # silently drop the rest of the document.
+    md = "## A\n<!-- never closes\n## B\n"
+    assert [s.text for s in ms.parse_sections(md)] == ["A", "B"]
+
+
 def test_real_template_parses(tmp_path):
     md = (ROOT / "pm-strategy" / "skills" / "market-sizing" / "template.md"
           ).read_text(encoding="utf-8")

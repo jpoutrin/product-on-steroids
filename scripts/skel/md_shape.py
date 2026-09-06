@@ -70,9 +70,56 @@ def _fence_mask(lines: list[str]) -> list[bool]:
     return mask
 
 
+def _comment_mask(lines: list[str], fenced: list[bool]) -> list[bool]:
+    """`True` for every line consumed by an HTML comment (`<!-- ... -->`).
+
+    Lines inside a fenced code block are not inspected — a `<!--` inside a code
+    sample is illustrative content, not a real comment marker, and fenced
+    lines are already handled by `_fence_mask`.
+
+    An HTML comment that opens and never closes before end of file is not a
+    comment — it is a malformed document. Same rule as `_fence_mask`: the
+    region from its opening marker onward is reclassified as ordinary prose,
+    so headings inside it are still seen rather than silently lost.
+    """
+    mask: list[bool] = []
+    in_comment = False
+    comment_start: int | None = None
+    for i, line in enumerate(lines):
+        if fenced[i]:
+            mask.append(False)
+            continue
+        s = line.strip()
+        if in_comment:
+            mask.append(True)
+            if "-->" in s:
+                in_comment = False
+            continue
+        if s.startswith("<!--"):
+            comment_start = i
+            in_comment = "-->" not in s
+            mask.append(True)
+            continue
+        mask.append(False)
+    if in_comment:
+        for i in range(comment_start, len(lines)):
+            mask[i] = False
+    return mask
+
+
 def _table_columns(line: str) -> int:
-    """Column count of a pipe-table row, tolerant of a missing trailing pipe."""
-    return len(line.strip().strip("|").split("|"))
+    """Column count of a pipe-table row, tolerant of a missing trailing pipe.
+
+    Strips at most one boundary pipe per side: `|| B | C |` is an empty first
+    cell, not a doubled delimiter. An escaped `\\|` is literal content, not a
+    separator, so it is neutralised before the split.
+    """
+    s = line.strip().replace(r"\|", "\0")
+    if s.startswith("|"):
+        s = s[1:]
+    if s.endswith("|"):
+        s = s[:-1]
+    return len(s.split("|"))
 
 
 def _kind(line: str) -> str:
@@ -95,11 +142,11 @@ def parse_sections(md: str) -> list[Section]:
     """
     lines = md.split("\n")
     fenced = _fence_mask(lines)
+    commented = _comment_mask(lines, fenced)
     out: list[Section] = []
     depth: int | None = None
     text = ""
     blocks: list[str] = []
-    in_comment = False
 
     def add(kind: str) -> None:
         if not blocks or blocks[-1] != kind:
@@ -110,13 +157,9 @@ def parse_sections(md: str) -> list[Section]:
             if depth is not None:
                 add("code")
             continue
+        if commented[i]:
+            continue
         s = line.strip()
-        if in_comment:
-            in_comment = "-->" not in s
-            continue
-        if s.startswith("<!--"):
-            in_comment = "-->" not in s
-            continue
         if not s:
             continue
         m = _HEADING.match(s)
