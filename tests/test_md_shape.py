@@ -198,3 +198,66 @@ def test_collapse_handles_the_and_so_on_placeholder_idiom():
           "## Release N — <Scope>\n- a\n")
     out = ms.collapse_repeats(ms.parse_sections(md))
     assert [s.text for s in out] == ["Release 1 — <Scope>"]
+
+
+def S(depth, text="x", blocks=()):
+    return ms.Section(depth, text, blocks)
+
+
+def test_align_identical_sequences_matches_pairwise():
+    want = [S(2, "A"), S(2, "B"), S(2, "C")]
+    assert ms.align(want, list(want)) == [0, 1, 2]
+
+
+def test_align_ignores_heading_text_entirely():
+    want = [S(2, "Market Definition"), S(2, "TAM")]
+    got = [S(2, "Définition du marché"), S(2, "Marché total")]
+    assert ms.align(want, got) == [0, 1]
+
+
+def test_align_reports_one_gap_not_a_cascade():
+    # The document dropped the middle section. Exactly one requirement is
+    # unmatched; the rest must not shift out of register. Block kinds differ per
+    # section so there is exactly one best alignment.
+    want = [S(2, "A", ("para",)), S(2, "B", ("list",)),
+            S(2, "C", ("table:2",)), S(2, "D", ("quote",))]
+    got = [S(2, "a", ("para",)), S(2, "c", ("table:2",)), S(2, "d", ("quote",))]
+    assert ms.align(want, got) == [0, None, 1, 2]
+
+
+def test_align_tolerates_extra_document_sections():
+    want = [S(2, "A", ("para",)), S(2, "B", ("list",))]
+    got = [S(2, "a", ("para",)), S(2, "extra", ("quote",)), S(2, "b", ("list",))]
+    assert ms.align(want, got) == [0, 2]
+
+
+def test_align_prefers_gaps_over_a_depth_mismatch():
+    # Pairing a level-2 requirement with a level-3 section scores -3; gapping
+    # both scores -2, so the aligner must choose the gaps.
+    want = [S(2, "A")]
+    got = [S(3, "b")]
+    assert ms.align(want, got) == [None]
+
+
+def test_align_uses_block_kinds_to_pick_the_right_partner():
+    # Two same-depth candidates; the block kinds decide which one the
+    # requirement pairs with, so the unrelated section is skipped rather than
+    # mismatched. Matching got[1] scores +2 at the cost of one gap (+1 net);
+    # matching got[0] scores 0 and then gaps (-1).
+    want = [S(2, "Summary", ("table:3",))]
+    got = [S(2, "intro", ("para",)), S(2, "tableau", ("table:3",))]
+    assert ms.align(want, got) == [1]
+
+
+def test_align_empty_document_matches_nothing():
+    assert ms.align([S(2, "A"), S(2, "B")], []) == [None, None]
+
+
+def test_align_empty_template_returns_empty():
+    assert ms.align([], [S(2, "a")]) == []
+
+
+def test_align_nested_depths_stay_paired():
+    want = [S(2, "A"), S(3, "a1"), S(3, "a2"), S(2, "B")]
+    got = [S(2, "x"), S(3, "x1"), S(3, "x2"), S(2, "y")]
+    assert ms.align(want, got) == [0, 1, 2, 3]

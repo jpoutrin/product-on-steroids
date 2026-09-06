@@ -254,3 +254,70 @@ def collapse_repeats(sections: list[Section]) -> list[Section]:
         out.extend(unit)
         prev_sig = sig
     return out
+
+
+# Alignment scores. A depth mismatch (-3) must stay worse than gapping both
+# records (-1 twice), or one omitted section drags the whole tail of the
+# sequence out of register — the failure a naive positional comparison makes.
+_SCORE_EXACT = 2       # same depth, identical block kinds
+_SCORE_OVERLAP = 1     # same depth, block kinds intersect
+_SCORE_DEPTH_ONLY = 0  # same depth, nothing else in common
+_SCORE_MISMATCH = -3   # different depth
+_SCORE_GAP = -1
+
+
+def _similarity(a: Section, b: Section) -> int:
+    if a.depth != b.depth:
+        return _SCORE_MISMATCH
+    if a.blocks == b.blocks:
+        return _SCORE_EXACT
+    if set(a.blocks) & set(b.blocks):
+        return _SCORE_OVERLAP
+    return _SCORE_DEPTH_ONLY
+
+
+def align(want: list[Section], got: list[Section]) -> list[int | None]:
+    """Needleman–Wunsch. For each `want` index, the `got` index it matched, or
+    `None` when nothing partnered it.
+
+    Heading text is never consulted: only depth and block kinds. That is what
+    makes a translated document align with its English template.
+
+    Sequences are 8–30 records, so the O(n·m) table costs nothing.
+    """
+    n, m = len(want), len(got)
+    # score[i][j] = best score aligning want[i:] with got[j:]
+    score = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        score[i][m] = score[i + 1][m] + _SCORE_GAP
+    for j in range(m - 1, -1, -1):
+        score[n][j] = score[n][j + 1] + _SCORE_GAP
+    for i in range(n - 1, -1, -1):
+        for j in range(m - 1, -1, -1):
+            score[i][j] = max(
+                _similarity(want[i], got[j]) + score[i + 1][j + 1],
+                _SCORE_GAP + score[i + 1][j],      # skip a requirement
+                _SCORE_GAP + score[i][j + 1],      # skip a document section
+            )
+
+    out: list[int | None] = []
+    i = j = 0
+    while i < n:
+        if j >= m:
+            out.append(None)
+            i += 1
+            continue
+        pair = _similarity(want[i], got[j]) + score[i + 1][j + 1]
+        skip_want = _SCORE_GAP + score[i + 1][j]
+        skip_got = _SCORE_GAP + score[i][j + 1]
+        best = max(pair, skip_want, skip_got)
+        if best == pair:
+            out.append(j)
+            i += 1
+            j += 1
+        elif best == skip_want:
+            out.append(None)
+            i += 1
+        else:
+            j += 1
+    return out
