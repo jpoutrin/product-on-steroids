@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """skillkit — token-lean helpers for authoring product-on-steroids skills.
 
-Subcommands: next | scaffold | context | wip | done | progress
+Subcommands: next | scaffold | context | anchors | wip | done | progress
 Run via `just <recipe>` or `uv run python scripts/skillkit.py <cmd> [skill]`.
 Stdlib only; reuses validate_plugins for linting.
 """
@@ -35,6 +35,87 @@ PRIORITY_ORDER = {"P1": 0, "P2": 1, "P3": 2}
 
 _PLUGIN_HEADING = re.compile(r"^##\s+(pm-[\w-]+)\b")
 _ROW = re.compile(r"^\|(.+)\|\s*$")
+
+
+# ─── Template anchors ────────────────────────────────────────────────────────
+# Deliverables are written in the consuming project's language, so the output
+# conformance hook cannot match sections on English heading text. Each template
+# heading carries a language-independent `<!--#slug-->` anchor instead; the
+# deliverable copies it, and the hook matches on that.
+
+_HEADING_LINE = re.compile(r"(?m)^(#{2,3})\s+(.+?)[ \t]*$")
+_ANCHOR = re.compile(r"<!--#([a-z0-9-]+)-->")
+_FENCE_LINE = re.compile(r"^(```+|~~~+)")
+
+
+def _fence_mask(lines: list[str]) -> list[bool]:
+    """`True` for every line inside — or delimiting — a ``` / ~~~ fenced block.
+
+    A `## heading` shown inside a code example is illustrative content, not a
+    section: anchoring it would corrupt the example. Info strings (```mermaid)
+    are handled; indented fences and nested fences of differing lengths are not
+    (deliberately out of scope).
+
+    A fence that never closes before end of file is not a fence: it is a
+    malformed template. The region from its opening delimiter onward is
+    reclassified as ordinary prose, so headings in it still get anchored — the
+    safe failure direction is to over-anchor, not to silently exempt headings.
+
+    Duplicated in tests/validate_plugins.py on purpose: this module ships inside
+    installed plugins and must stay self-contained.
+    """
+    mask: list[bool] = []
+    fence: str | None = None
+    fence_start: int | None = None
+    for i, line in enumerate(lines):
+        m = _FENCE_LINE.match(line)
+        if m:
+            tok = m.group(1)[0]
+            if fence is None:
+                fence = tok
+                fence_start = i
+            elif fence == tok:
+                fence = None
+                fence_start = None
+            mask.append(True)
+            continue
+        mask.append(fence is not None)
+    if fence is not None:
+        for i in range(fence_start, len(mask)):
+            mask[i] = False
+    return mask
+
+
+def slugify(text: str) -> str:
+    """`Market Definition` -> `market-definition`. May return "" (see anchor_template)."""
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def anchor_template(text: str) -> str:
+    """Append `<!--#slug-->` to every `##`/`###` heading that lacks one.
+
+    Idempotent: headings that already carry an anchor are returned untouched, and
+    their slugs are reserved so a newly generated one never collides with them.
+    Duplicate headings within one template get `-2`, `-3`, ... appended. Lines
+    inside fenced code blocks are left alone — they are examples, not sections.
+    """
+    used = {m.group(1) for m in _ANCHOR.finditer(text)}
+
+    def repl(m: re.Match) -> str:
+        hashes, body = m.group(1), m.group(2)
+        if _ANCHOR.search(body):
+            return m.group(0)
+        base = slugify(body) or "section"
+        slug, n = base, 2
+        while slug in used:
+            slug = f"{base}-{n}"
+            n += 1
+        used.add(slug)
+        return f"{hashes} {body} <!--#{slug}-->"
+
+    lines = text.split("\n")
+    return "\n".join(line if in_code else _HEADING_LINE.sub(repl, line)
+                     for line, in_code in zip(lines, _fence_mask(lines)))
 
 
 def load_tasks(text: str) -> list[dict]:
@@ -178,6 +259,38 @@ def cmd_scaffold(args: list[str]) -> int:
     return 0
 
 
+def cmd_anchors(args: list[str]) -> int:
+    """Add `<!--#slug-->` anchors to template.md headings. Idempotent.
+
+    usage: skillkit.py anchors [<plugin-dir>|<template.md> ...]
+    With no arguments, processes every pm-*/skills/*/template.md in the repo.
+    """
+    targets: list[Path] = []
+    if args:
+        for a in args:
+            p = Path(a)
+            if not p.is_absolute():
+                p = REPO_ROOT / a
+            if p.is_file():
+                targets.append(p)
+            elif p.is_dir():
+                targets.extend(sorted(p.glob("skills/*/template.md")))
+            else:
+                print(f"error: no such plugin dir or file: {a}", file=sys.stderr)
+                return 1
+    else:
+        targets = sorted(REPO_ROOT.glob("pm-*/skills/*/template.md"))
+    changed = 0
+    for t in targets:
+        old = t.read_text(encoding="utf-8")
+        new = anchor_template(old)
+        if new != old:
+            t.write_text(new, encoding="utf-8")
+            changed += 1
+    print(f"anchored {changed}/{len(targets)} template(s)")
+    return 0
+
+
 def phuryn_source_path(skill: str) -> Path | None:
     name = SOURCE_ALIAS.get(skill, skill)
     matches = sorted(PHURYN_ROOT.glob(f"*/skills/{name}/SKILL.md"))
@@ -276,7 +389,7 @@ def cmd_done(args: list[str]) -> int:
     return 0
 
 
-COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold, "context": cmd_context, "wip": cmd_wip, "done": cmd_done}
+COMMANDS = {"next": cmd_next, "progress": cmd_progress, "scaffold": cmd_scaffold, "context": cmd_context, "anchors": cmd_anchors, "wip": cmd_wip, "done": cmd_done}
 
 
 def main(argv: list[str]) -> int:

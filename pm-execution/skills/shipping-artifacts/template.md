@@ -5,13 +5,13 @@ reviewable before shipping. Five core documents describe architecture,
 permissions, flows, secrets, and test coverage. Additional conditional documents
 (emails, cron, SEO, automation) are added only if the capability exists.
 
-## architecture.md
+## architecture.md <!--#architecture-md-->
 
 **Root document.** Product overview, tech stack, auth/session flow end-to-end,
 trust boundaries, known risks with code evidence, and a "Related Documents"
 index.
 
-### Key sections:
+### Key sections: <!--#key-sections-->
 - **Product overview:** what the system does, who uses it, key constraints.
 - **Tech stack:** language, framework, database, external services.
 - **Auth/session flow:** how claims/roles/scopes flow from login to protected
@@ -22,13 +22,13 @@ index.
   not generic checklists.
 - **Related Documents:** index linking to all other docs.
 
-## flows.md
+## flows.md <!--#flows-md-->
 
 **Runtime view.** Each load-bearing user journey as actor → trigger →
 precondition → outcome, with step-by-step flow, authorization checks, side
 effects, and trust-boundary crossings at each step.
 
-### Key sections:
+### Key sections: <!--#key-sections-2-->
 - **Flow name:** (e.g., "User approves invoice")
 - **Actor:** which role/scope.
 - **Precondition:** entry state.
@@ -43,13 +43,13 @@ effects, and trust-boundary crossings at each step.
 Omit flows that touch only business logic without permissions, data integrity,
 external side effects, or operational safety.
 
-## permissions.md
+## permissions.md <!--#permissions-md-->
 
 **Access-control matrix.** Roles, claims, scopes, and resource × operation ×
 role table. Notes which tables have row-level security (RLS) and which rely on
 code-enforced checks.
 
-### Key sections:
+### Key sections: <!--#key-sections-3-->
 - **Roles & claims:** list of all roles (e.g., admin, member, viewer) and how
   they are derived (JWT claims, DB lookups, API keys).
 - **Scopes:** what fine-grained permissions exist (e.g., invoice:read,
@@ -60,14 +60,14 @@ code-enforced checks.
 - **RLS vs. code-enforced:** which tables enforce permissions via database
   policies, which via application code.
 
-## variables.md
+## variables.md <!--#variables-md-->
 
 **Secrets and configuration.** All environment variables, API keys, database
 credentials, and feature flags in a Name · used-by · scope · source · rotation
 · risk table. Confirms no secret is bundled client-side. Includes pre-go-live
 checklist.
 
-### Key sections:
+### Key sections: <!--#key-sections-4-->
 - **Configuration & secrets table:** Name · what uses it · scope (server/client)
   · where it comes from (env var, .env.local, secrets manager) · rotation
   frequency · risk level (low/medium/high).
@@ -76,14 +76,14 @@ checklist.
 - **Pre-go-live checklist:** (e.g., all production secrets in the right
   secrets manager, rotation schedules set, backups configured).
 
-## tests.md
+## tests.md <!--#tests-md-->
 
 **Verification map.** Which documented rules (from architecture, flows,
 permissions) are actually tested, which are proposed, and which are unverified.
 Derived from other docs and the existing test suite, not reverse-engineered
 from code.
 
-### Key sections (clearly separated so the map cannot read falsely green):
+### Key sections (clearly separated so the map cannot read falsely green): <!--#key-sections-clearly-separated-so-the-map-cannot-read-falsely-green-->
 
 - **Existing coverage:** tests in the repo today, each tied to the rule it pins.
 - **Proposed tests:** recommended cases not yet written, marked by type
@@ -93,24 +93,24 @@ from code.
 Each row: use-case → rule → expected behavior (including deny/negative case) →
 evidence source (doc + code file) → status (existing / proposed / none).
 
-## emails.md (conditional)
+## emails.md (conditional) <!--#emails-md-conditional-->
 
 **Include only if the app sends email.** Queue → processor → provider path,
 templates and variables, retry/backoff, and troubleshooting.
 
-## cron.md (conditional)
+## cron.md (conditional) <!--#cron-md-conditional-->
 
 **Include only if scheduled/background jobs exist.** Inventory table (job →
 schedule → function → secrets → limits → retry), idempotency, internal
 authentication, and monitoring.
 
-## seo.md (conditional)
+## seo.md (conditional) <!--#seo-md-conditional-->
 
 **Include only if there are public/indexable or bot-facing routes.** Preview
 approach (static meta, prerender, edge HTML), route → needs-SEO table, metadata
 sanitization, bot-vs-human routing.
 
-## automation.md (conditional)
+## automation.md (conditional) <!--#automation-md-conditional-->
 
 **Include only if the app embeds agents, LLM workflows, webhooks, or external
 automation.** Per automation: trigger · owner · approval gate · inputs · exact

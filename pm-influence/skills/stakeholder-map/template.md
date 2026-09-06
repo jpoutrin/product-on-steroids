@@ -1,44 +1,44 @@
 # Stakeholder Map: <Product / Initiative>
 
-## Stakeholder Roster
+## Stakeholder Roster <!--#stakeholder-roster-->
 | # | Stakeholder | Role | Power | Interest | Rationale |
 |---|-------------|------|-------|----------|-----------|
 | 1 | <Name>      | <Role> | High/Low | High/Low | <one sentence why> |
 | 2 | <Name>      | <Role> | High/Low | High/Low | <one sentence why> |
 
-## Power × Interest Grid
+## Power × Interest Grid <!--#power-interest-grid-->
 |                  | **High Interest**                        | **Low Interest**                         |
 |------------------|------------------------------------------|------------------------------------------|
 | **High Power**   | **Manage Closely:** <stakeholder names>  | **Keep Satisfied:** <stakeholder names>  |
 | **Low Power**    | **Keep Informed:** <stakeholder names>   | **Monitor:** <stakeholder names>         |
 
-## Engagement Strategy by Quadrant
+## Engagement Strategy by Quadrant <!--#engagement-strategy-by-quadrant-->
 
-### Manage Closely (High Power, High Interest)
+### Manage Closely (High Power, High Interest) <!--#manage-closely-high-power-high-interest-->
 - **Frequency:** <e.g., weekly>
 - **Channel(s):** <e.g., 1:1 meetings, shared Notion doc>
 - **Key messages:** <what they need to hear and how to frame it>
 - **Neglect risk:** <what goes wrong if this quadrant is ignored>
 
-### Keep Satisfied (High Power, Low Interest)
+### Keep Satisfied (High Power, Low Interest) <!--#keep-satisfied-high-power-low-interest-->
 - **Frequency:** <e.g., bi-weekly or monthly>
 - **Channel(s):** <e.g., executive summary email, steering committee>
 - **Key messages:** <milestone updates, escalations only when critical>
 - **Neglect risk:** <what goes wrong if this quadrant is ignored>
 
-### Keep Informed (Low Power, High Interest)
+### Keep Informed (Low Power, High Interest) <!--#keep-informed-low-power-high-interest-->
 - **Frequency:** <e.g., weekly or bi-weekly>
 - **Channel(s):** <e.g., Slack updates, sprint demos, changelog>
 - **Key messages:** <progress, how their feedback is incorporated>
 - **Neglect risk:** <what goes wrong if this quadrant is ignored>
 
-### Monitor (Low Power, Low Interest)
+### Monitor (Low Power, Low Interest) <!--#monitor-low-power-low-interest-->
 - **Frequency:** <e.g., monthly or on request>
 - **Channel(s):** <e.g., shared dashboard, release notes>
 - **Key messages:** <high-level status only>
 - **Neglect risk:** <what goes wrong if this quadrant is ignored>
 
-## Communication Plan Table
+## Communication Plan Table <!--#communication-plan-table-->
 | Stakeholder | Role | Quadrant | Frequency | Channel | Key Message |
 |-------------|------|----------|-----------|---------|-------------|
 | <Name>      | <Role> | Manage Closely | <freq> | <channel> | <message> |
@@ -46,7 +46,7 @@
 | <Name>      | <Role> | Keep Informed  | <freq> | <channel> | <message> |
 | <Name>      | <Role> | Monitor        | <freq> | <channel> | <message> |
 
-## Conflict Risks & Alignment Gaps
+## Conflict Risks & Alignment Gaps <!--#conflict-risks-alignment-gaps-->
 | Stakeholders in Tension | Nature of Conflict | Suggested Alignment Approach |
 |-------------------------|--------------------|------------------------------|
 | <Name A> vs <Name B>    | <description of competing interests> | <approach to resolve or manage> |

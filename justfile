@@ -9,8 +9,9 @@ default:
 setup:
     uv sync
 
-# Run the structural skill linter (blocking; exits non-zero on any error)
+# Run the full gate: unit tests + the structural skill linter (blocking)
 test:
+    uv run pytest -q
     uv run validate-plugins
 
 # ── Skill authoring (token-lean helpers; see docs/SKILL-BRIEF.md) ──
@@ -30,6 +31,12 @@ scaffold skill:
 # Print the one-shot build pack for a skill: just context market-sizing
 context skill:
     uv run python scripts/skillkit.py context {{skill}}
+
+# Add <!--#slug--> anchors to template.md headings (idempotent).
+# No argument = every template in the repo: just anchors
+# Or scope it:  just anchors pm-strategy
+anchors target="":
+    uv run python scripts/skillkit.py anchors {{target}}
 
 # Mark a skill in-progress in TASKS.md
 wip skill:

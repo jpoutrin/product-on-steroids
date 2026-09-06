@@ -507,7 +507,11 @@ Insert after the `_ROW` definition (line 37), before `load_tasks`:
 # heading carries a language-independent `<!--#slug-->` anchor instead; the
 # deliverable copies it, and the hook matches on that.
 
-_HEADING_LINE = re.compile(r"(?m)^(#{2,3})\s+(.+?)\s*$")
+# `[ \t]*$`, not `\s*$`: under re.sub, a greedy `\s*` swallows the trailing
+# newline of a heading that is the file's last line, because `$` also matches at
+# end-of-string. That would silently strip the final newline from every template
+# ending in a heading.
+_HEADING_LINE = re.compile(r"(?m)^(#{2,3})\s+(.+?)[ \t]*$")
 _ANCHOR = re.compile(r"<!--#([a-z0-9-]+)-->")
 
 

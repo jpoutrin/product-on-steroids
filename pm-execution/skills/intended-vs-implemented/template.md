@@ -1,6 +1,6 @@
 # Audit: Intended vs. Implemented — <System / Feature Name>
 
-## Audit Scope
+## Audit Scope <!--#audit-scope-->
 
 - **System / Feature audited:** <subsystem name and version>
 - **Source-of-truth documents:** <list docs and their locations, e.g., permissions.md (line 12–45), architecture.md (section 3.2), feature spec v2.1>
@@ -8,23 +8,23 @@
 - **Date of audit:** <date>
 - **Auditor:** <name>
 
-## Methodology
+## Methodology <!--#methodology-->
 
 - **How intent was established:** <e.g., extracted documented claims from permissions.md as numbered rules; treated all docs as claims to verify, not as proof>
 - **How implementation evidence was gathered:** <e.g., traced code paths from endpoint → guard → enforcement for each claim; cited file and line for every enforcement or absence>
 - **Verification approach:** <e.g., followed unauthenticated requests through the full stack to confirm guards apply on every path>
 - **Limitations and blind spots:** <e.g., did not test runtime behavior, only reviewed code; did not audit database-level constraints; did not test third-party library behavior>
 
-## Findings Summary
+## Findings Summary <!--#findings-summary-->
 
 | Documented Rule | Enforcement in Code | Status | Impact |
 |-----------------|---------------------|--------|--------|
 | <rule from docs> | <yes/no/partial + citation> | <enforced/gap/undocumented> | <none/cosmetic/boundary-crossing> |
 | <...> | <...> | <...> | <...> |
 
-## Detailed Gaps
+## Detailed Gaps <!--#detailed-gaps-->
 
-### Gap 1: <Short Title>
+### Gap 1: <Short Title> <!--#gap-1-short-title-->
 
 **Documented intent** (from `<file>`, line <N>):
 > <quote the exact requirement from the docs>
@@ -38,15 +38,15 @@
 
 ---
 
-### Gap 2: <Short Title>
+### Gap 2: <Short Title> <!--#gap-2-short-title-->
 
 ...
 
-## Undocumented-but-enforced Rules
+## Undocumented-but-enforced Rules <!--#undocumented-but-enforced-rules-->
 
 - <rule the code enforces that the docs are silent on — indicates stale docs>
 
-## Sign-off
+## Sign-off <!--#sign-off-->
 
 **Summary:** <N> findings identified:
 - <M> cross a boundary (access / data / tenant / cost) and require code changes.

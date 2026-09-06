@@ -1,16 +1,16 @@
 # Pricing Recommendation: <Product / Segment>
 
-## Pricing Approach
+## Pricing Approach <!--#pricing-approach-->
 - **Approach:** <value-based | competitive | cost-plus> — <why it fits this product & segment>
 - **Customer's alternative:** <incumbent / in-house / do nothing> at **<cost of alternative>**
 - **Quantified outcome value:** <time saved · revenue gained · cost cut> = **<value/period>**
 
-## Willingness-to-Pay
+## Willingness-to-Pay <!--#willingness-to-pay-->
 - **Method:** <Van Westendorp | value-share inference | competitor triangulation>
 - **Van Westendorp band (if survey):** cheap <PMC> — expensive <PME>, **Optimal Price Point <OPP>** (n = <responses>)
 - **Acceptable price range:** <low> – <high>
 
-## Recommended Price Point(s)
+## Recommended Price Point(s) <!--#recommended-price-point-s-->
 - **Price:** **<value>** per <value metric>
 - **Cost-floor check:** clears floor of <cost floor> (margin <X>%)
 - **Competitive position:** <premium | parity | discount> vs <competitor @ price> — <reason>
@@ -19,11 +19,11 @@
 |-------------|--------------|-------------------------|-----------|
 | <value>     | <metric>     | <premium/parity/disc.>  | <why>     |
 
-## Anchoring & Discounting
+## Anchoring & Discounting <!--#anchoring-discounting-->
 - **Reference anchor:** <decoy/high tier or reference price that makes the target feel obvious>
 - **Annual / volume discount:** <X>% (<annual-equivalent price>)
 - **Intro / launch pricing:** <price> until <end date/condition> — "none" if not applicable
 
-## Assumptions & Validation
+## Assumptions & Validation <!--#assumptions-validation-->
 1. <assumption> — confidence: <high/med/low> — validate by: <WTP survey / A/B price test / founder-led calls>
 2. <assumption> — confidence: <high/med/low> — validate by: <method>

@@ -3,7 +3,7 @@
 <!-- Fill in each section below. This template structures the output of prioritize-assumptions.
 Remove this comment block in your final output. -->
 
-## Priority Matrix
+## Priority Matrix <!--#priority-matrix-->
 
 <!-- Paste the 2×2 matrix or ranked-table version. Use one of these formats:
 
@@ -25,29 +25,29 @@ Or **Ranked Table Format** (recommended if >6 assumptions):
 | 3    | <assumption statement> | <High/Medium/Low> | <High/Medium/Low> | <method> | <timeline> |
 | ... | ... | ... | ... | ... | ... |
 
-## Quadrant Actions
+## Quadrant Actions <!--#quadrant-actions-->
 
-### High Impact, High Uncertainty
+### High Impact, High Uncertainty <!--#high-impact-high-uncertainty-->
 **Action:** Test immediately.
 - <list top-priority assumptions>
 - <rationale: why these are critical>
 
-### High Impact, Low Uncertainty
+### High Impact, Low Uncertainty <!--#high-impact-low-uncertainty-->
 **Action:** Proceed or defer (low risk, lower learning value).
 - <assumptions in this quadrant>
 - <note: if confidence is high, consider whether testing adds value or if you should move to implementation>
 
-### Low Impact, High Uncertainty
+### Low Impact, High Uncertainty <!--#low-impact-high-uncertainty-->
 **Action:** Test only if time permits.
 - <assumptions in this quadrant>
 - <note: learning value is moderate but impact is lower; deprioritize if time is constrained>
 
-### Low Impact, Low Uncertainty
+### Low Impact, Low Uncertainty <!--#low-impact-low-uncertainty-->
 **Action:** Deprioritize.
 - <assumptions in this quadrant>
 - <note: these are low-risk and low-learning; address after critical assumptions are validated>
 
-## Key Scoring Rationale
+## Key Scoring Rationale <!--#key-scoring-rationale-->
 
 <!-- Explain your impact and uncertainty scoring. Include:
 - The decision or go/no-go gate that each high-impact assumption affects.

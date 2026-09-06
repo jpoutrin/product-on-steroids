@@ -1,10 +1,10 @@
 # Business Health Diagnostic: <Product / Business Line> — <Period>
 
-## Verdict
+## Verdict <!--#verdict-->
 **Overall: <🟢 GREEN / 🟡 AMBER / 🔴 RED>** — <one line: the single most
 important reason for this color, including what a strong dimension may be masking>.
 
-## Scorecard
+## Scorecard <!--#scorecard-->
 | Dimension | Key metric (value) | Threshold applied | RAG | Trend |
 |-----------|--------------------|-------------------|-----|-------|
 | Growth | <metric = value> | <threshold> | <🟢/🟡/🔴> | <↑/→/↓> |
@@ -16,16 +16,16 @@ important reason for this color, including what a strong dimension may be maskin
 
 <Mark any dimension without data as ⚪ Grey / no data — do not guess.>
 
-## Top Risks
+## Top Risks <!--#top-risks-->
 1. **<risk>** — triggered by <metric = value> (<trend>); <why it matters in one line>.
 2. **<risk>** — triggered by <metric = value> (<trend>); <why it matters in one line>.
 3. **<risk>** — triggered by <metric = value> (<trend>); <why it matters in one line>.
 
-## Focus Areas
+## Focus Areas <!--#focus-areas-->
 - **<dimension>** — <where to look next, tied to which ranked risk>.
 - **<dimension>** — <where to look next, tied to which ranked risk>.
 
-## Scoring Notes
+## Scoring Notes <!--#scoring-notes-->
 - **Thresholds:** <customer benchmark / stated default — which and why>.
 - **Stage / motion:** <seed / growth / scale · B2B / B2C / PLG / sales-led>.
 - **No-data dimensions:** <list any Grey dimensions and what data would score them>.

@@ -6,7 +6,7 @@ This template mirrors the 8-section Output Contract in SKILL.md exactly.
 Delete this comment block in the final output.
 -->
 
-## Executive Snapshot
+## Executive Snapshot <!--#executive-snapshot-->
 
 **Role:** <VP of Product / CPO / CEO — scope, start date>
 **Background:** <prior role, company, known strengths and style>
@@ -15,7 +15,7 @@ Delete this comment block in the final output.
 
 ---
 
-## What NOT to Do in Week 1
+## What NOT to Do in Week 1 <!--#what-not-to-do-in-week-1-->
 
 - Do NOT share: <specific things to hold back — e.g., the ongoing Eng/Design roadmap dispute, the Q2 missed OKR, the customer escalation>
 - Do NOT ask for: <decisions that require context the executive doesn't yet have>
@@ -24,16 +24,16 @@ Delete this comment block in the final output.
 
 ---
 
-## Week 1: Orient and Listen
+## Week 1: Orient and Listen <!--#week-1-orient-and-listen-->
 
 **Goal:** Give the executive a stable mental model of the product and team, without triggering premature pattern-matching.
 
-### What to share
+### What to share <!--#what-to-share-->
 - Product north star (one sentence) and current stage (0→1 / growth / scaling)
 - Team roster — names, roles, tenure (one-pager, not an org chart with reporting lines)
 - Current-state snapshot: 3 slides max — what we shipped last quarter, what we're building now, what's blocked
 
-### Listening-tour meetings (PM to facilitate)
+### Listening-tour meetings (PM to facilitate) <!--#listening-tour-meetings-pm-to-facilitate-->
 | Meeting | Attendees | Goal |
 |---------|-----------|------|
 | Welcome 1:1 | PM + Executive | Understand their working style, communication preferences, what a great PM looks like to them |
@@ -42,61 +42,61 @@ Delete this comment block in the final output.
 | Eng lead 1:1 | Engineering lead | Start the most important peer relationship |
 | <Add role> | <Name> | <Goal> |
 
-### What to hold back until Week 2+
+### What to hold back until Week 2+ <!--#what-to-hold-back-until-week-2-->
 - <Open strategic question or dispute>
 - <Technical debt conversation>
 - <Roadmap trade-offs requiring their input>
 
 ---
 
-## Weeks 2–4: Contextualize and Connect
+## Weeks 2–4: Contextualize and Connect <!--#weeks-2-4-contextualize-and-connect-->
 
 **Goal:** Build the executive's product-area knowledge and connect them to the people who will shape their success.
 
-### Product deep-dives (PM to lead)
+### Product deep-dives (PM to lead) <!--#product-deep-dives-pm-to-lead-->
 1. **Roadmap walk-through** — current bets, sequencing rationale, key trade-offs made in the last planning cycle
 2. **Strategy context** — why this market, why now, what the competitive position is
 3. **First open question** — one strategic question where the PM explicitly invites the executive's perspective (not a decision yet — a hypothesis to react to)
 
-### Relationship intros (PM to facilitate)
+### Relationship intros (PM to facilitate) <!--#relationship-intros-pm-to-facilitate-->
 | Person | Role | Framing for first meeting |
 |--------|------|---------------------------|
 | <Name> | Design lead | "She owns the design system — the biggest leverage point for velocity" |
 | <Name> | Key customer / design partner | "They represent our most advanced use case and give unfiltered feedback" |
 | <Name> | <Cross-functional peer> | <What they care about and why the relationship matters> |
 
-### By end of Week 4
+### By end of Week 4 <!--#by-end-of-week-4-->
 - Executive can articulate the product north star and the top 3 bets in their own words
 - Executive has met all direct reports and the 3–4 key cross-functional peers
 - PM and executive have agreed on a communication cadence (weekly 1:1 format, update frequency)
 
 ---
 
-## Days 30–90: Align and Decide
+## Days 30–90: Align and Decide <!--#days-30-90-align-and-decide-->
 
 **Goal:** Shift from orientation to active executive partnership — real input on real decisions.
 
-### Where the executive's input is needed
+### Where the executive's input is needed <!--#where-the-executive-s-input-is-needed-->
 - **Prioritization trade-off:** <specific call the PM has been waiting to make — e.g., "platform vs. features in Q3">
 - **Resource decision:** <headcount, budget, or tooling call requiring executive sponsorship>
 - **Org or process change:** <e.g., "Should discovery be embedded in squads or centralized?">
 - **External relationship:** <customer, investor, or partner conversation where executive sponsorship matters>
 
-### Day 30 check-in (PM to initiate)
+### Day 30 check-in (PM to initiate) <!--#day-30-check-in-pm-to-initiate-->
 Four questions to ask:
 1. What's landing well about how I'm supporting you?
 2. What's missing that you expected to have by now?
 3. What's the biggest open question you still have about the product area?
 4. Is there anything I'm holding back that you should know?
 
-### By day 90
+### By day 90 <!--#by-day-90-->
 - Executive owns 1–2 decisions visibly and confidently
 - PM and executive have co-authored or jointly presented at least one artifact to a broader audience
 - The PM's credibility with the executive is established
 
 ---
 
-## Relationship Map
+## Relationship Map <!--#relationship-map-->
 
 Key relationships the executive must form in the first 90 days:
 
@@ -110,7 +110,7 @@ Key relationships the executive must form in the first 90 days:
 
 ---
 
-## Landmines & Proactive Disclosures
+## Landmines & Proactive Disclosures <!--#landmines-proactive-disclosures-->
 
 Things the executive will discover eventually. Better from the PM first, framed as informed context.
 
@@ -122,7 +122,7 @@ Things the executive will discover eventually. Better from the PM first, framed 
 
 ---
 
-## Early Wins to Offer
+## Early Wins to Offer <!--#early-wins-to-offer-->
 
 Opportunities the PM can set up for the executive to claim a visible win before day 60:
 
