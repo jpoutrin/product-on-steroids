@@ -31,6 +31,7 @@ blocked. Stdlib only, plain `python3` (no uv) so it runs on an end user's machin
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -56,9 +57,36 @@ def _describe(want: list, i: int) -> str:
     return '"%s" (a %s section%s)' % (s.text, level, where)
 
 
+def project_root(payload: dict) -> Path:
+    """The consuming project's root: the env var Claude Code sets, else the
+    session's cwd from the hook payload, else the process cwd. Same precedence
+    as the SessionStart output-language hook."""
+    for candidate in (os.environ.get("CLAUDE_PROJECT_DIR"), payload.get("cwd")):
+        if candidate:
+            return Path(candidate)
+    return Path.cwd()
+
+
+def resolve_template(payload: dict, plugin_template: str) -> Path:
+    """The template to enforce: a project's own copy if it has one, else the
+    plugin's.
+
+    A team owns its document structure — they copy the skill's template.md to
+    `.config/pm-skills/<skill>/template.md` and edit it freely: translate the
+    headings, the bullet labels and the table column headers, drop sections they
+    never fill in, add ones they need.
+    """
+    plugin_path = Path(plugin_template)
+    skill = plugin_path.parent.name
+    override = project_root(payload) / ".config" / "pm-skills" / skill / "template.md"
+    return override if override.is_file() else plugin_path
+
+
 def evaluate(payload: dict, template_path: str) -> tuple[int, str]:
     """Return (exit_code, message). Pure — no I/O beyond reading the two files."""
-    tmpl = Path(template_path)
+    if not Path(template_path).is_file():
+        return 0, ""
+    tmpl = resolve_template(payload, template_path)
     if not tmpl.is_file():
         return 0, ""
     if payload.get("tool_name") not in ("Write", "Edit"):

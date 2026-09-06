@@ -118,3 +118,51 @@ def test_extra_document_sections_are_not_errors(tmp_path):
                  "## Market Definition\n- a\n## Bonus\n- z\n## TAM\nprose\n"
                  "## SAM\n| A | B |\n|---|---|\n## SOM\n> q\n")
     assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
+
+
+def test_project_root_prefers_the_env_var(tmp_path, monkeypatch):
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(tmp_path / "env"))
+    assert checker.project_root({"cwd": str(tmp_path / "payload")}) == tmp_path / "env"
+
+
+def test_project_root_falls_back_to_payload_cwd(tmp_path, monkeypatch):
+    monkeypatch.delenv("CLAUDE_PROJECT_DIR", raising=False)
+    assert checker.project_root({"cwd": str(tmp_path)}) == tmp_path
+
+
+def test_project_root_falls_back_to_process_cwd(monkeypatch):
+    monkeypatch.delenv("CLAUDE_PROJECT_DIR", raising=False)
+    assert checker.project_root({}) == Path.cwd()
+
+
+def test_resolve_template_returns_the_plugin_template_by_default(tmp_path, monkeypatch):
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(tmp_path))
+    plugin = _write(tmp_path, "template.md", TEMPLATE)
+    assert checker.resolve_template({}, plugin) == Path(plugin)
+
+
+def test_resolve_template_prefers_a_project_override(tmp_path, monkeypatch):
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(tmp_path))
+    skill_dir = tmp_path / "plugin" / "skills" / "market-sizing"
+    skill_dir.mkdir(parents=True)
+    plugin = skill_dir / "template.md"
+    plugin.write_text(TEMPLATE, encoding="utf-8")
+    override = tmp_path / ".config" / "pm-skills" / "market-sizing" / "template.md"
+    override.parent.mkdir(parents=True)
+    override.write_text("## Autre\n- x\n", encoding="utf-8")
+    assert checker.resolve_template({}, str(plugin)) == override
+
+
+def test_a_project_override_is_what_gets_enforced(tmp_path, monkeypatch):
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(tmp_path))
+    skill_dir = tmp_path / "plugin" / "skills" / "market-sizing"
+    skill_dir.mkdir(parents=True)
+    plugin = skill_dir / "template.md"
+    plugin.write_text(TEMPLATE, encoding="utf-8")   # 4 sections
+    override = tmp_path / ".config" / "pm-skills" / "market-sizing" / "template.md"
+    override.parent.mkdir(parents=True)
+    override.write_text("## Un\n- a\n## Deux\n- b\n", encoding="utf-8")  # 2 sections
+    art = _write(tmp_path, "memo.md", "## Un\n- a\n## Deux\n- b\n")
+    # Conformant to the override, though it has only half the plugin's sections.
+    assert checker.evaluate({"tool_name": "Write",
+                             "tool_input": {"file_path": art}}, str(plugin)) == (0, "")
