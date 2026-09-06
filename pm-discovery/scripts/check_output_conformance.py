@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Skill-scoped PostToolUse hook — verify a written artifact follows the skill's template.
 
-Distributed inside each plugin as `<plugin>/scripts/check_output_conformance.py` and
-wired from a skill's frontmatter:
+Distributed inside each plugin as `<plugin>/scripts/check_output_conformance.py`,
+alongside `md_shape.py`, and wired from a skill's frontmatter:
 
     hooks:
       PostToolUse:
@@ -14,44 +14,46 @@ wired from a skill's frontmatter:
                 - ${CLAUDE_PLUGIN_ROOT}/scripts/check_output_conformance.py
                 - ${CLAUDE_PLUGIN_ROOT}/skills/<skill>/template.md
 
-The argument is THIS skill's own template.md, so each skill validates against its own
-structure. Reads the PostToolUse JSON on stdin, and if the written file looks like the
-skill's deliverable (already matches >= half the template's sections, by
-`<!--#anchor-->` comment OR by heading text) but is missing some, exits 2 — the
-stderr message is fed back to Claude so it revises the file.
+The argument is THIS skill's own template.md, so each skill validates against its
+own structure. Reads the PostToolUse JSON on stdin, compares the written file's
+*shape* against the template's — heading depth, block kinds, table column counts,
+never heading text — and if the file looks like the skill's deliverable (matches
+at least half the template's sections) but is missing some, exits 2. The stderr
+message is fed back to Claude so it revises the file.
 
-Fail-open everywhere: any unexpected condition returns 0 so authoring is never blocked.
-Stdlib only, plain `python3` (no uv) so it runs on an end user's machine.
+Because shape survives translation, a deliverable written in the project's own
+language is recognised and enforced with no markers in it at all.
+
+Fail-open everywhere: any unexpected condition returns 0 so authoring is never
+blocked. Stdlib only, plain `python3` (no uv) so it runs on an end user's machine
+— which on stock macOS is still Python 3.9, hence the `__future__` import.
 """
+from __future__ import annotations
+
 import json
-import re
 import sys
 from pathlib import Path
 
-
-ANCHOR_RE = re.compile(r"<!--#([a-z0-9-]+)-->")
-
-
-def parse_headings(md: str) -> list[tuple[str, str]]:
-    """`(anchor, text)` for every level-2 (`## `) and level-3 (`### `) heading.
-
-    `anchor` is the slug inside a trailing `<!--#slug-->` comment, or `""` when the
-    heading carries none. `text` always has the comment stripped, so the two modes
-    below share one parse and error messages stay readable.
-
-    Level-3 is included so templates that group sections under `##` buckets with
-    the real sections as `###` (e.g. a 9-block canvas) are enforced fully.
-    """
-    out: list[tuple[str, str]] = []
-    for raw in re.findall(r"(?m)^#{2,3}\s+(.+?)\s*$", md):
-        m = ANCHOR_RE.search(raw)
-        out.append((m.group(1) if m else "", ANCHOR_RE.sub("", raw).strip()))
-    return out
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import md_shape  # noqa: E402  (sibling module, shipped in the same directory)
 
 
-def headings(md: str) -> list[str]:
-    """The anchor-stripped text of every level-2/level-3 heading, in order."""
-    return [text for _, text in parse_headings(md)]
+def _describe(want: list, i: int) -> str:
+    """Name a missing requirement using the template's own English headings, with
+    its neighbours so it can be located in a document written in another language."""
+    s = want[i]
+    level = "level-%d" % s.depth
+    before = want[i - 1].text if i > 0 else None
+    after = want[i + 1].text if i + 1 < len(want) else None
+    if before and after:
+        where = ' between "%s" and "%s"' % (before, after)
+    elif before:
+        where = ' after "%s"' % before
+    elif after:
+        where = ' before "%s"' % after
+    else:
+        where = ""
+    return '"%s" (a %s section%s)' % (s.text, level, where)
 
 
 def evaluate(payload: dict, template_path: str) -> tuple[int, str]:
@@ -67,44 +69,29 @@ def evaluate(payload: dict, template_path: str) -> tuple[int, str]:
     f = Path(fpath)
     if not f.is_file():
         return 0, ""
-    want = parse_headings(tmpl.read_text(encoding="utf-8"))
+
+    want = md_shape.collapse_repeats(
+        md_shape.parse_sections(tmpl.read_text(encoding="utf-8")))
     if not want:
         return 0, ""
-    content = f.read_text(encoding="utf-8")
+    got = md_shape.parse_sections(f.read_text(encoding="utf-8"))
+    pairs = md_shape.align(want, got)
 
-    # Anchor mode as soon as the template carries any `<!--#slug-->`: the anchor is
-    # language-independent, so a translated deliverable is still recognised and
-    # still enforced. A template with no anchors keeps today's text matching, which
-    # is what makes the migration incremental.
-    anchored = any(anchor for anchor, _ in want)
-
-    def found(anchor: str, text: str) -> bool:
-        if anchored and anchor:
-            return f"<!--#{anchor}-->" in content
-        return text in content
-
-    # Recognition is deliberately wider than enforcement: a section counts toward the
-    # threshold by anchor OR by heading text, but only the anchor satisfies it. So a
-    # document produced before the template gained anchors (all English headings, no
-    # anchors) is still recognised as the deliverable, flagged for every section, and
-    # told below to copy the anchors — it self-migrates on the next edit instead of
-    # silently dropping out of enforcement.
-    present = sum(1 for anchor, text in want if found(anchor, text) or text in content)
-    # Only treat this file as the skill's deliverable if it already matches at least
-    # half the template's sections — otherwise it's an unrelated file; stay silent.
-    if present * 2 < len(want):
+    # Only treat this file as the skill's deliverable if its shape already matches
+    # at least half the template's sections — otherwise it's an unrelated file.
+    # Unlike text matching, this threshold is reliable: a translated deliverable
+    # has the same shape, so it scores near 100% rather than zero.
+    matched = sum(1 for p in pairs if p is not None)
+    if matched * 2 < len(want):
         return 0, ""
-    missing = [text for anchor, text in want if not found(anchor, text)]
+
+    missing = [i for i, p in enumerate(pairs) if p is None]
     if missing:
-        msg = ("Output does not follow the skill's template.md. Missing sections: "
-               + "; ".join(missing)
-               + ". Add these sections (matching the template headings), or disregard "
-                 "if this file is not the skill's deliverable.")
-        if anchored:
-            msg += (" Copy each section's `<!--#anchor-->` comment from template.md "
-                    "verbatim — that is how the section is identified, whatever "
-                    "language the heading is written in.")
-        return 2, msg
+        return 2, ("Output does not follow the skill's template.md. Missing: "
+                   + "; ".join(_describe(want, i) for i in missing)
+                   + ". Add these sections — the headings may be written in this "
+                     "project's language, only the structure has to match. "
+                     "Disregard if this file is not the skill's deliverable.")
     return 0, ""
 
 

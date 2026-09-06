@@ -1,14 +1,24 @@
 """Tests for the skill-scoped output-conformance hook checker."""
 import importlib.util
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts" / "skel"))   # so the hook finds md_shape
 _spec = importlib.util.spec_from_file_location(
     "check_output_conformance", ROOT / "scripts" / "skel" / "check_output_conformance.py")
 checker = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(checker)
 
-TEMPLATE = "# T\n## Market Definition\nx\n## TAM\ny\n## SAM\nz\n## SOM\nw\n"
+# Each section has a DIFFERENT block kind, so alignment has exactly one best
+# answer and a test can assert which section was reported missing. Four sections
+# that all held a bullet list would be interchangeable to a shape matcher — see
+# the "coarse shape is coarse" risk in the spec.
+TEMPLATE = ("# T\n"
+            "## Market Definition\n- a\n"
+            "## TAM\nprose\n"
+            "## SAM\n| A | B |\n|---|---|\n"
+            "## SOM\n> q\n")
 
 
 def _payload(file_path, tool="Write"):
@@ -27,172 +37,84 @@ def _tmpl(tmp_path):
 
 def test_conformant_artifact_is_silent(tmp_path):
     art = _write(tmp_path, "memo.md",
-                 "## Market Definition\n## TAM\n## SAM\n## SOM\n")
-    code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
-    assert code == 0 and msg == ""
+                 "## Market Definition\n- a\n## TAM\nprose\n"
+                 "## SAM\n| A | B |\n|---|---|\n## SOM\n> q\n")
+    assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
 
 
-def test_missing_sections_returns_2_with_names(tmp_path):
-    # Has half the sections (Market Definition + TAM) — treated as the artifact — but
-    # is missing SAM and SOM.
-    art = _write(tmp_path, "memo.md", "## Market Definition\n## TAM\n")
+def test_french_artifact_with_no_markers_is_silent(tmp_path):
+    # The whole point: same shape, entirely different words, nothing to preserve.
+    art = _write(tmp_path, "memo.md",
+                 "## Définition du marché\n- a\n## Marché total\nprose\n"
+                 "## Marché adressable\n| A | B |\n|---|---|\n"
+                 "## Marché obtenable\n> q\n")
+    assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
+
+
+def test_missing_section_is_flagged_and_named_from_the_template(tmp_path):
+    # The table section is gone; the other three still align by block kind.
+    art = _write(tmp_path, "memo.md",
+                 "## Définition du marché\n- a\n## Marché total\nprose\n"
+                 "## Marché obtenable\n> q\n")
     code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
     assert code == 2
-    assert "SAM" in msg and "SOM" in msg
+    assert "SAM" in msg               # named in English, from the template
+    assert "TAM" in msg               # its neighbour, to locate it
+    assert "SOM" in msg               # its other neighbour
 
 
 def test_unrelated_file_stays_silent(tmp_path):
-    # Contains none of the template headings -> not the artifact -> silent.
     art = _write(tmp_path, "notes.md", "# Random notes\nnothing structured here\n")
-    code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
-    assert code == 0 and msg == ""
+    assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
 
 
 def test_non_markdown_file_ignored(tmp_path):
     art = _write(tmp_path, "code.py", "print('hi')")
-    code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
-    assert code == 0 and msg == ""
+    assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
 
 
 def test_non_write_tool_ignored(tmp_path):
-    art = _write(tmp_path, "memo.md", "## Market Definition\n")
-    code, msg = checker.evaluate(_payload(art, tool="Read"), _tmpl(tmp_path))
-    assert code == 0 and msg == ""
+    art = _write(tmp_path, "memo.md", TEMPLATE)
+    assert checker.evaluate(_payload(art, tool="Read"), _tmpl(tmp_path)) == (0, "")
 
 
-def test_headings_helper():
-    assert checker.headings(TEMPLATE) == ["Market Definition", "TAM", "SAM", "SOM"]
+def test_missing_template_is_silent(tmp_path):
+    art = _write(tmp_path, "memo.md", TEMPLATE)
+    assert checker.evaluate(_payload(art), str(tmp_path / "nope.md")) == (0, "")
 
 
-def test_headings_helper_captures_level3():
-    md = "# T\n## Create Value\n### Key Partnerships\n### Key Activities\n#### too-deep\n"
-    # h2 + h3 captured, in order; h1 and h4 ignored.
-    assert checker.headings(md) == ["Create Value", "Key Partnerships", "Key Activities"]
-
-
-def test_grouped_canvas_artifact_is_silent(tmp_path):
-    # Template groups sections as `###` under `##` buckets; a conformant artifact
-    # containing all of them (h2 + h3) must stay silent.
+def test_repeating_template_accepts_fewer_instances(tmp_path):
+    # The regression this change exists to kill: a 5-frame template must not
+    # force a 3-frame document.
     tmpl = _write(tmp_path, "template.md",
-                  "## Create Value\n### Key Partnerships\n### Key Activities\n")
-    art = _write(tmp_path, "canvas.md",
-                 "## Create Value\n### Key Partnerships\n### Key Activities\n")
-    code, msg = checker.evaluate(_payload(art), tmpl)
-    assert code == 0 and msg == ""
+                  "".join(f"## Frame {i} — <T>\n### Scene\n- s\n### Action\n- a\n"
+                          for i in range(1, 6)) + "## Takeaways\n- t\n")
+    art = _write(tmp_path, "story.md",
+                 "".join(f"## Scène {i}\n### Décor\n- s\n### Action\n- a\n"
+                         for i in range(1, 4)) + "## Conclusions\n- t\n")
+    assert checker.evaluate(_payload(art), tmpl) == (0, "")
+
+
+def test_repeating_template_still_requires_one_instance(tmp_path):
+    tmpl = _write(tmp_path, "template.md",
+                  "".join(f"## Frame {i} — <T>\n### Scene\n- s\n### Action\n- a\n"
+                          for i in range(1, 6)) + "## Takeaways\n- t\n")
+    art = _write(tmp_path, "story.md", "## Conclusions\n- t\n")
+    # Only 1 of 4 collapsed requirements matches -> below half -> not the deliverable.
+    assert checker.evaluate(_payload(art), tmpl) == (0, "")
 
 
 def test_grouped_canvas_missing_level3_is_flagged(tmp_path):
-    # Artifact has the bucket + one block but drops a `###` block -> flagged.
     tmpl = _write(tmp_path, "template.md",
-                  "## Create Value\n### Key Partnerships\n### Key Activities\n")
-    art = _write(tmp_path, "canvas.md", "## Create Value\n### Key Partnerships\n")
+                  "## Create Value\n- x\n### Key Partnerships\n- p\n### Key Activities\n- a\n")
+    art = _write(tmp_path, "canvas.md",
+                 "## Créer de la valeur\n- x\n### Partenariats\n- p\n")
     code, msg = checker.evaluate(_payload(art), tmpl)
-    assert code == 2
-    assert "Key Activities" in msg
+    assert code == 2 and "Key Activities" in msg
 
 
-ANCHORED = ("# T\n"
-            "## Market Definition <!--#market-definition-->\nx\n"
-            "## TAM <!--#tam-->\ny\n"
-            "## SAM <!--#sam-->\nz\n"
-            "## SOM <!--#som-->\nw\n")
-
-
-def _anchored_tmpl(tmp_path):
-    return _write(tmp_path, "template.md", ANCHORED)
-
-
-def test_parse_headings_splits_anchor_from_text():
-    assert checker.parse_headings(ANCHORED) == [
-        ("market-definition", "Market Definition"),
-        ("tam", "TAM"),
-        ("sam", "SAM"),
-        ("som", "SOM"),
-    ]
-
-
-def test_parse_headings_without_anchors_yields_empty_anchor():
-    assert checker.parse_headings(TEMPLATE) == [
-        ("", "Market Definition"), ("", "TAM"), ("", "SAM"), ("", "SOM")]
-
-
-def test_headings_helper_strips_anchors():
-    assert checker.headings(ANCHORED) == ["Market Definition", "TAM", "SAM", "SOM"]
-
-
-def test_french_artifact_with_all_anchors_is_silent(tmp_path):
+def test_extra_document_sections_are_not_errors(tmp_path):
     art = _write(tmp_path, "memo.md",
-                 "## Definition du marche <!--#market-definition-->\n"
-                 "## TAM <!--#tam-->\n"
-                 "## SAM <!--#sam-->\n"
-                 "## SOM <!--#som-->\n")
-    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 0 and msg == ""
-
-
-def test_french_artifact_missing_anchors_is_flagged_with_english_names(tmp_path):
-    # Two of four anchors present -> passes the half threshold -> is the deliverable.
-    art = _write(tmp_path, "memo.md",
-                 "## Definition du marche <!--#market-definition-->\n"
-                 "## TAM <!--#tam-->\n")
-    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 2
-    # Names the ENGLISH heading text, not the slug, so the feedback is readable.
-    assert "SAM" in msg and "SOM" in msg
-    assert "#sam" not in msg
-    # Tells the model to keep the anchors it just learned about.
-    assert "anchor" in msg.lower()
-
-
-def test_french_unrelated_file_stays_silent_in_anchor_mode(tmp_path):
-    art = _write(tmp_path, "notes.md", "# Notes diverses\nrien de structure ici\n")
-    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 0 and msg == ""
-
-
-def test_anchor_mode_flags_english_headings_without_anchors(tmp_path):
-    # An English artifact that dropped the anchors IS recognised — the threshold
-    # counts a section by anchor or by heading text — and every anchorless section
-    # is reported, so the next edit restores the anchors.
-    art = _write(tmp_path, "memo.md",
-                 "## Market Definition\n## TAM\n## SAM <!--#sam-->\n")
-    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 2
-    assert "Market Definition" in msg and "TAM" in msg and "SOM" in msg
-    assert "anchor" in msg.lower()
-
-
-def test_legacy_english_deliverable_without_anchors_is_flagged(tmp_path):
-    # A document produced before the template gained anchors: every English heading
-    # matches textually, none carries an anchor. It must not fall silently out of
-    # enforcement — it is recognised and told to copy every anchor.
-    art = _write(tmp_path, "memo.md",
-                 "# Memo\n## Market Definition\nx\n## TAM\ny\n"
-                 "## SAM\nz\n## SOM\nw\n")
-    code, msg = checker.evaluate(_payload(art), _anchored_tmpl(tmp_path))
-    assert code == 2
-    for section in ("Market Definition", "TAM", "SAM", "SOM"):
-        assert section in msg
-    assert "anchor" in msg.lower()
-
-
-def test_partially_anchored_template_falls_back_per_heading(tmp_path):
-    # Template has one anchored and one bare heading -> anchor mode is on, but the
-    # bare heading still matches on its text.
-    tmpl = _write(tmp_path, "template.md",
-                  "## Market Definition <!--#market-definition-->\n## Sources\n")
-    art = _write(tmp_path, "memo.md",
-                 "## Definition du marche <!--#market-definition-->\n## Sources\n")
-    code, msg = checker.evaluate(_payload(art), tmpl)
-    assert code == 0 and msg == ""
-
-
-def test_unanchored_template_uses_text_mode(tmp_path):
-    # Regression guard: a template that has not been migrated behaves exactly as
-    # it does today — a French artifact is unrecognised, not flagged.
-    art = _write(tmp_path, "memo.md",
-                 "## Definition du marche\n## TAM\n## SAM\n## SOM\n")
-    code, msg = checker.evaluate(_payload(art), _tmpl(tmp_path))
-    # "TAM"/"SAM"/"SOM" happen to be untranslated, so 3 of 4 match -> flagged on
-    # the one missing English heading. No anchors are involved.
-    assert code == 2 and "Market Definition" in msg
+                 "## Market Definition\n- a\n## Bonus\n- z\n## TAM\nprose\n"
+                 "## SAM\n| A | B |\n|---|---|\n## SOM\n> q\n")
+    assert checker.evaluate(_payload(art), _tmpl(tmp_path)) == (0, "")
