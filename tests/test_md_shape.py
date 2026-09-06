@@ -171,3 +171,30 @@ def test_collapse_on_the_real_storyboard_template():
     assert len(full) == 26
     assert len(out) == 6
     assert [s.depth for s in out] == [2, 3, 3, 3, 3, 2]
+
+
+def test_collapse_merges_headings_differing_only_by_a_non_index_digit():
+    """Known limitation, deliberately accepted.
+
+    `_signature` normalises every digit run, so two adjacent sections whose
+    headings differ only by a number merge even when the number is content
+    rather than an index. Tightening this to require a 1,2,3 sequence would
+    break real templates: user-story-mapping and user-story-splitting both
+    pair "Release 2 / Release N" and "Story 2 / Story N", where N is a literal
+    "and so on" placeholder and the family is genuine.
+
+    The failure direction is under-enforcement of one section, never a false
+    error. Pinned here so any future tightening is a deliberate change.
+    """
+    md = "## Top 10 Risks\n- a\n## Top 3 Risks\n- a\n"
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [s.text for s in out] == ["Top 10 Risks"]
+
+
+def test_collapse_handles_the_and_so_on_placeholder_idiom():
+    # "Release 2" followed by "Release N" is a genuine family: N is a literal
+    # placeholder meaning "and so on". Two shipped templates rely on this.
+    md = ("## Release 1 — <Scope>\n- a\n## Release 2 — <Scope>\n- a\n"
+          "## Release N — <Scope>\n- a\n")
+    out = ms.collapse_repeats(ms.parse_sections(md))
+    assert [s.text for s in out] == ["Release 1 — <Scope>"]

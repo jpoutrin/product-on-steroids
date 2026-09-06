@@ -200,7 +200,20 @@ def _units(sections: list[Section]) -> list[list[Section]]:
 
 def _signature(unit: list[Section]) -> tuple:
     """What makes two units the same repeated thing: the head's text with digit
-    runs normalised away, plus the depth sequence of its children."""
+    runs normalised away, plus the depth sequence of its children.
+
+    Accepted limitation: normalising *every* digit run means two adjacent
+    sections that differ only in a number merge even when the number is
+    content, not an index ("Top 10 Risks" / "Top 3 Risks" would collapse to
+    one). Tightening this to require a strict 1,2,3 sequence was considered
+    and rejected — `user-story-mapping` and `user-story-splitting` both pair
+    a numbered heading with a literal "N" placeholder ("Release 2" / "Release
+    N", "Story 2" / "Story N") meaning "and so on"; a sequential-index rule
+    would break those two shipped templates to guard against a shape that
+    does not occur anywhere in the corpus. Left coarse deliberately; see
+    test_collapse_merges_headings_differing_only_by_a_non_index_digit and
+    test_collapse_handles_the_and_so_on_placeholder_idiom.
+    """
     return (_DIGITS.sub("N", unit[0].text), tuple(s.depth for s in unit[1:]))
 
 
