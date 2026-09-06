@@ -50,6 +50,11 @@ def test_indented_language_key_is_not_a_declaration(tmp_path):
     assert hook.read_language(root) == ""
 
 
+def test_trailing_comment_is_stripped(tmp_path):
+    root = _settings(tmp_path, "language: fr  # comment\n")
+    assert hook.read_language(root) == "fr"
+
+
 def test_directive_names_the_language_and_the_rules():
     d = hook.directive("fr")
     assert "**French**" in d

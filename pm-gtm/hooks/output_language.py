@@ -27,7 +27,8 @@ from pathlib import Path
 
 SETTINGS_REL = Path(".config") / "pm-skills.yaml"
 # Top-level key only — an indented `language:` belongs to some other key.
-LANGUAGE_RE = re.compile(r"(?m)^language:[ \t]*(\S+)[ \t]*$")
+# The trailing (?:#.*)? tolerates a YAML inline comment after the value.
+LANGUAGE_RE = re.compile(r"(?m)^language:[ \t]*(\S+)[ \t]*(?:#.*)?$")
 ENGLISH = {"en", "en-us", "en-gb", "eng", "english"}
 
 # Codes worth naming in prose; anything else is passed through as-is.
