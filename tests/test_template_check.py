@@ -23,14 +23,13 @@ def test_empty_template_is_error(tmp_path):
     assert any("template.md" in e for e in r.errors)
 
 def test_fewer_headings_than_contract_warns(tmp_path):
-    d = _mk(tmp_path, SKILL_WITH_TEMPLATE, template_md="# T\n## A\n")  # 1 heading, 2 items
+    d = _mk(tmp_path, SKILL_WITH_TEMPLATE, template_md="# T\n## A\n")
     r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
     assert not r.errors
     assert any("Output Contract" in w for w in r.warnings)
 
+
 def test_level3_headings_count_toward_sections(tmp_path):
-    # 2 items in the contract; template groups them as `###` under one `##` bucket.
-    # h2 + h3 = 3 headings >= 2 items, so it must NOT warn.
     d = _mk(tmp_path, SKILL_WITH_TEMPLATE, template_md="# T\n## Bucket\n### A\n### B\n")
     r = vp.validate_template(d, SKILL_WITH_TEMPLATE)
     assert not r.errors and not r.warnings

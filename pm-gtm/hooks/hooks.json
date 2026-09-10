@@ -1,0 +1,17 @@
+{
+  "description": "Declare the project's deliverable language to the model at session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/output_language.py\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
